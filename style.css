@@ -1,0 +1,74 @@
+:root {
+    --nrows: 0;
+    --ncols: 0;
+    --tileX: 0;
+    --tileY: 0;
+}
+
+#map {
+
+	line-height: 0;
+	display: grid;
+  	padding: 10px;
+  	grid-column-gap: 0px;
+  	grid-row-gap: 0px;
+  	grid-template-columns: repeat(var(--ncols), var(--tileX));
+  	grid-template-rows: repeat(var(--nrows), var(--tileY));
+}
+
+#mapWrap {
+	overflow: auto;
+}
+
+#wrap {
+
+}
+
+#wrap h2 {
+	text-align: center;
+
+}
+
+#select { 
+
+	display: inline-block; 
+}
+
+#statDisplay {
+	top: 0;
+
+	display: inline-block; 
+}
+
+#terrainSelect {
+	/*float: right;*/
+	/*height: 300px;*/
+	width: 200px;
+	top: 0;
+}
+
+.terrain {
+	width: 50px;
+	height: 50px;
+	padding: 10px;
+	display: inline-block;
+}
+
+/*.tile {
+	padding: 0px;
+	margin: 0px;
+	display: inline-block;
+	background-color: blue;
+}*/
+
+.grid-container {
+  display: grid;
+
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.tile {
+  background-color: #292738;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
