@@ -16,6 +16,10 @@
   	grid-template-rows: repeat(var(--nrows), var(--tileY));
 }
 
+p {
+	font-size: 0px;
+}
+
 #mapWrap {
 	overflow: auto;
 }
@@ -71,4 +75,15 @@
 .tile {
   background-color: #292738;
   border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.center-div {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100em
+}
+
+body {
+	background-color: #191822;
+	color:white;
 }

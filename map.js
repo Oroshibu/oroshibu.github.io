@@ -3,7 +3,7 @@ $(document).ready(function(){
 	var tileDict = {};
 	var selectedColor = "#292738";
 	var selectedSprite = "none";
-	var selectedTerrainKey = " ";
+	var selectedTerrainKey = "B";
 	var width = parseInt($('#width').val());
 	var height = parseInt($('#height').val());
 	var multX = parseInt($('#multX').val());
@@ -24,7 +24,18 @@ $(document).ready(function(){
 
 	$('#exportjson').click(function(){
 		var fname = $('#filename').val(); 
-		download(JSON.stringify(tileDict), fname, "application/json")
+		var stringu = "";
+		for (k = 0; k < 27; k++) { 
+			for (i = 0; i < 27; i++) { 
+				if (tileDict[i+k*27]=="B") {
+					stringu += " ";
+				} else {
+					stringu += tileDict[i+k*27];
+				}
+			}
+			stringu += ";\n";
+		}
+		download(stringu, fname, "application/json")
 	});
 
 	$('.terrain').click(function() {
@@ -40,7 +51,20 @@ $(document).ready(function(){
 	    	//$(this).css({'background-color': selectedColor});
 			$(this).css({'background-color': selectedColor});
 			$(this).css({'background-image': selectedSprite});
-			$(this).css({'width': "16px"});
+			$(this).css({'background-size': "contain"});
+			$(this).css({'background-repeat': "no-repeat"});
+	    	var id = $(this).attr('id');
+	    	tileDict[id] = selectedTerrainKey;
+		}
+	});
+	
+	$('#map').on('mousedown', '.tile', function(e){
+		if (e.buttons === 1) {
+	    	//$(this).css({'background-color': selectedColor});
+			$(this).css({'background-color': selectedColor});
+			$(this).css({'background-image': selectedSprite});
+			$(this).css({'background-size': "contain"});
+			$(this).css({'background-repeat': "no-repeat"});
 	    	var id = $(this).attr('id');
 	    	tileDict[id] = selectedTerrainKey;
 		}
@@ -54,8 +78,8 @@ $(document).ready(function(){
 		var cols = Math.floor((width / tileSize) * multX);
 		var rows = Math.floor((height / tileSize) * multY);
 
-		var displayTileSizeX = 16;
-		var displayTileSizeY = 16;
+		var displayTileSizeX = 24;
+		var displayTileSizeY = 24;
 
 		document.getElementById('map').style.setProperty('--ncols', cols.toString());
 		document.getElementById('map').style.setProperty('--nrows', rows.toString());
@@ -86,6 +110,8 @@ $(document).ready(function(){
 	// Function to download data to a file
 	function download(data, filename, type) {
 	    var file = new Blob([data], {type: type});
+		
+		
 	    if (window.navigator.msSaveOrOpenBlob) // IE10+
 	        window.navigator.msSaveOrOpenBlob(file, filename);
 	    else { // Others
