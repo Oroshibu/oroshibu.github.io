@@ -75,6 +75,7 @@ p {
 .tile {
   background-color: #292738;
   border: 1px solid rgba(0, 0, 0, 0.2);
+  color :  #292738;
 }
 
 .center-div {

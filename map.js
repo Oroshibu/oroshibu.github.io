@@ -11,7 +11,20 @@ $(document).ready(function(){
 	var tileSize = parseInt($('#tileSize').val());
 	var nTiles = ((width * multX) / tileSize) * ((height * multY) / tileSize);
 	BuildMap(width, height, multX, multY, tileSize);
-		
+	//var indico = "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccxxxxxxcccxxxxxxccccccccccccxxxxxxcccxxxxxxcccccccccccxxxxxxxcccxxxxxxxccccccccxxxxxcccccccccccxxxxxccccccxxxxxcccccccccccxxxxxccccccxxxcccccccccccccccxxxccccccxxxccccxxcccxxccccxxxccccccxxxcccxxcccccxxcccxxxccccccxxxcccxcccccccxcccxxxcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccxxxcccxcccccccxcccxxxccccccxxxcccxxcccccxxcccxxxccccccxxxccccxxcccxxccccxxxccccccxxxcccccccccccccccxxxccccccxxxxxcccccccccccxxxxxccccccxxxxxcccccccccccxxxxxccccccccxxxxxxxcccxxxxxxxcccccccccccxxxxxxcccxxxxxxccccccccccccxxxxxxcccxxxxxxccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc";
+
+const copyToClipboard = str => {
+  const el = document.createElement('textarea');
+  el.value = str;
+  el.setAttribute('readonly', '');
+  el.style.position = 'absolute';
+  el.style.left = '-9999px';
+  document.body.appendChild(el);
+  el.select();
+  document.execCommand('copy');
+  document.body.removeChild(el);
+};
+	
 	$('#init').click(function() {
 		var width = parseInt($('#width').val());
 		var height = parseInt($('#height').val());
@@ -22,12 +35,13 @@ $(document).ready(function(){
 		BuildMap(width, height, multX, multY, tileSize);
 	});
 
-	$('#exportjson').click(function(){
+	$('#exportenemies').click(function(){
 		var fname = $('#filename').val(); 
 		var stringu = "";
+		stringu += "```\n";
 		for (k = 0; k < 27; k++) { 
 			for (i = 0; i < 27; i++) { 
-				if (tileDict[i+k*27]=="B") {
+				if (tileDict[i+k*27]=="B" || tileDict[i+k*27]=="#") {
 					stringu += " ";
 				} else {
 					stringu += tileDict[i+k*27];
@@ -35,7 +49,32 @@ $(document).ready(function(){
 			}
 			stringu += ";\n";
 		}
-		download(stringu, fname, "application/json")
+		stringu += "```";
+		copyToClipboard(stringu);
+		  
+		//download(stringu, fname, "application/json")
+	});
+	
+	$('#exportwalls').click(function(){
+		var fname = $('#filename').val(); 
+		var stringu = "";
+		stringu += "```\n";
+		for (k = 0; k < 13; k++) { 
+			for (i = 0; i < 13; i++) { 
+				if (tileDict[i+k*27]=="B") {
+					stringu += " ";
+				} else if (tileDict[i+k*27]=="#") {
+					stringu += tileDict[i+k*27];
+				} else {
+					stringu += " ";
+				}
+			}
+			stringu += ";\n";
+		}
+		stringu += "```";
+		copyToClipboard(stringu);
+		  
+		//download(stringu, fname, "application/json")
 	});
 
 	$('.terrain').click(function() {
@@ -54,7 +93,47 @@ $(document).ready(function(){
 			$(this).css({'background-size': "contain"});
 			$(this).css({'background-repeat': "no-repeat"});
 	    	var id = $(this).attr('id');
+			if ((selectedTerrainKey == "#") || (tileDict[id]== "#")) {
+				var origin = (id - id%27) + (27 - id%27) - 1;
+				
+				$('#'+ origin).css({'background-color': selectedColor});
+				$('#'+ origin).css({'background-image': selectedSprite});
+				$('#'+ origin).css({'background-size': "contain"});
+				$('#'+ origin).css({'background-repeat': "no-repeat"});
+				tileDict[origin] = selectedTerrainKey;
+				if (selectedTerrainKey == 'B') {
+					$('#'+ origin).css({'background-color': $(this).css('color')});
+				}
+				
+				var origin = (26 - Math.floor(id/27))*27 + id%27;
+				
+				$('#'+ origin).css({'background-color': selectedColor});
+				$('#'+ origin).css({'background-image': selectedSprite});
+				$('#'+ origin).css({'background-size': "contain"});
+				$('#'+ origin).css({'background-repeat': "no-repeat"});
+				tileDict[origin] = selectedTerrainKey;
+				if (selectedTerrainKey == 'B') {
+					$('#'+ origin).css({'background-color': $(this).css('color')});
+				}
+				
+				var origin = (origin - origin%27) + (27 - origin%27) - 1;
+				
+				$('#'+ origin).css({'background-color': selectedColor});
+				$('#'+ origin).css({'background-image': selectedSprite});
+				$('#'+ origin).css({'background-size': "contain"});
+				$('#'+ origin).css({'background-repeat': "no-repeat"});
+				tileDict[origin] = selectedTerrainKey;
+				if (selectedTerrainKey == 'B') {
+					$('#'+ origin).css({'background-color': $(this).css('color')});
+				}
+			}
+			if (selectedTerrainKey == 'B') {
+				$(this).css({'background-color': $(this).css('color')});
+			}
+			
+
 	    	tileDict[id] = selectedTerrainKey;
+			
 		}
 	});
 	
@@ -66,6 +145,45 @@ $(document).ready(function(){
 			$(this).css({'background-size': "contain"});
 			$(this).css({'background-repeat': "no-repeat"});
 	    	var id = $(this).attr('id');
+			if ((selectedTerrainKey == "#") || (tileDict[id]== "#")) {
+				var origin = (id - id%27) + (27 - id%27) - 1;
+				
+				$('#'+ origin).css({'background-color': selectedColor});
+				$('#'+ origin).css({'background-image': selectedSprite});
+				$('#'+ origin).css({'background-size': "contain"});
+				$('#'+ origin).css({'background-repeat': "no-repeat"});
+				tileDict[origin] = selectedTerrainKey;
+				if (selectedTerrainKey == 'B') {
+					$('#'+ origin).css({'background-color': $(this).css('color')});
+				}
+				
+				var origin = (26 - Math.floor(id/27))*27 + id%27;
+				
+				$('#'+ origin).css({'background-color': selectedColor});
+				$('#'+ origin).css({'background-image': selectedSprite});
+				$('#'+ origin).css({'background-size': "contain"});
+				$('#'+ origin).css({'background-repeat': "no-repeat"});
+				tileDict[origin] = selectedTerrainKey;
+				if (selectedTerrainKey == 'B') {
+					$('#'+ origin).css({'background-color': $(this).css('color')});
+				}
+				
+				var origin = (origin - origin%27) + (27 - origin%27) - 1;
+				
+				$('#'+ origin).css({'background-color': selectedColor});
+				$('#'+ origin).css({'background-image': selectedSprite});
+				$('#'+ origin).css({'background-size': "contain"});
+				$('#'+ origin).css({'background-repeat': "no-repeat"});
+				tileDict[origin] = selectedTerrainKey;
+				if (selectedTerrainKey == 'B') {
+					$('#'+ origin).css({'background-color': $(this).css('color')});
+				}
+			}
+			if (selectedTerrainKey == 'B') {
+				$(this).css({'background-color': $(this).css('color')});
+			}
+			
+
 	    	tileDict[id] = selectedTerrainKey;
 		}
 	});
@@ -104,7 +222,18 @@ $(document).ready(function(){
 		// color the origin
 		//var origin = Math.floor(((cols * rows) / 2) - (cols/2));
 		var origin = Math.floor(((cols * rows) / 2));
+
 		$('#'+origin).css('background-color', 'red');
+		$('#'+origin).css('color', 'red');
+		
+        var indico = "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccxxxxxxcccxxxxxxccccccccccccxxxxxxcccxxxxxxcccccccccccxxxxxxxcccxxxxxxxccccccccxxxxxcccccccccccxxxxxccccccxxxxxcccccccccccxxxxxccccccxxxcccccccccccccccxxxccccccxxxccccxxcccxxccccxxxccccccxxxcccxxcccccxxcccxxxccccccxxxcccxcccccccxcccxxxcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccxxxcccxcccccccxcccxxxccccccxxxcccxxcccccxxcccxxxccccccxxxccccxxcccxxccccxxxccccccxxxcccccccccccccccxxxccccccxxxxxcccccccccccxxxxxccccccxxxxxcccccccccccxxxxxccccccccxxxxxxxcccxxxxxxxcccccccccccxxxxxxcccxxxxxxccccccccccccxxxxxxcccxxxxxxccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc";
+		for (i = 0; i < 729; i++) {
+			if (indico.substring(i, i+1)=="x") {
+				origin = i;
+				$('#'+ origin).css('background-color', '#373548');
+				$('#'+ origin).css('color', '#373548');
+			}
+		}
 	}
 
 	// Function to download data to a file
