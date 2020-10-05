@@ -70,6 +70,13 @@ p {
 
   grid-column-gap: 0px;
   grid-row-gap: 0px;
+  user-drag: none; 
+user-select: none;
+-moz-user-select: none;
+-webkit-user-drag: none;
+-webkit-user-select: none;
+-ms-user-select: none;
+  
 }
 
 .tile {
@@ -78,6 +85,12 @@ p {
   color :  #292738;
   background-size': contain;
   background-repeat': no-repeat;
+  user-drag: none; 
+user-select: none;
+-moz-user-select: none;
+-webkit-user-drag: none;
+-webkit-user-select: none;
+-ms-user-select: none;
 }
 
 .center-div {
