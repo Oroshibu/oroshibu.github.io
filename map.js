@@ -50,7 +50,7 @@ const copyToClipboard = str => {
 			for (i = 0; i < 27; i++) { 
 					var origin = i+k*27;
 					tileDict[origin] = textE.substring(i+k*27+k*2, 1+i+k*27+k*2);
-					var impCol = "aqua";
+					var impCol = "#67dbd0";
 					var impSpr = "none";
 
 					switch (textE.substring(i+k*27+k*2, 1+i+k*27+k*2)) {
