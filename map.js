@@ -26,6 +26,9 @@ const copyToClipboard = str => {
 };
 	
 	$('#init').click(function() {
+		selectedColor = "#292738";
+		selectedSprite = "none";
+		selectedTerrainKey = "B";
 		var width = parseInt($('#width').val());
 		var height = parseInt($('#height').val());
 		var multX = parseInt($('#multX').val());
@@ -35,10 +38,96 @@ const copyToClipboard = str => {
 		BuildMap(width, height, multX, multY, tileSize);
 	});
 
+	$('#importenemies').click(function(){
+		//BuildMap(width, height, multX, multY, tileSize);
+		var textE = document.getElementById("mapImporter").value;
+		/*$(this).css({'background-color': selectedColor});
+		$(this).css({'background-image': selectedSprite});
+		$(this).css({'background-size': "contain"});
+		$(this).css({'background-repeat': "no-repeat"});*/
+		
+		for (k = 0; k < 27; k++) { 
+			for (i = 0; i < 27; i++) { 
+					var origin = i+k*27;
+					tileDict[origin] = textE.substring(i+k*27+k*2, 1+i+k*27+k*2);
+					var impCol = "aqua";
+					var impSpr = "none";
+
+					switch (textE.substring(i+k*27+k*2, 1+i+k*27+k*2)) {
+						case 'm':
+							impSpr = "url(images/mine.png)";
+							break;
+						default:
+							impCol = "white";
+							impSpr = "none";						
+							
+					}
+					if (textE.substring(i+k*27+k*2, 1+i+k*27+k*2) != " "){
+						$('#'+ origin).css({'background-size': "contain"});
+						$('#'+ origin).css({'background-repeat': "no-repeat"});
+						$('#'+ origin).css({'background-color': impCol});
+						$('#'+ origin).css({'background-image': impSpr});
+					}
+			}
+		}
+	});
+	
+	$('#importwalls').click(function(){
+		//BuildMap(width, height, multX, multY, tileSize);
+		var textE = document.getElementById("mapImporter").value;
+		/*$(this).css({'background-color': selectedColor});
+		$(this).css({'background-image': selectedSprite});
+		$(this).css({'background-size': "contain"});
+		$(this).css({'background-repeat': "no-repeat"});*/
+		
+		for (k = 0; k < 13; k++) { 
+			for (i = 0; i < 13; i++) { 
+					var origin = i+k*27;
+					tileDict[origin] = textE.substring(i+k*13+k*2, 1+i+k*13+k*2);
+					var impCol = "#292738";
+					var impSpr = "url(images/wall.png)";
+
+					if (textE.substring(i+k*13+k*2, 1+i+k*13+k*2) == "#"){
+						$('#'+ origin).css({'background-size': "contain"});
+						$('#'+ origin).css({'background-repeat': "no-repeat"});
+						$('#'+ origin).css({'background-color': impCol});
+						$('#'+ origin).css({'background-image': impSpr});
+						
+						var origin2 = (origin - origin%27) + (27 - origin%27) - 1;
+				
+						$('#'+ origin2).css({'background-size': "contain"});
+						$('#'+ origin2).css({'background-repeat': "no-repeat"});
+						$('#'+ origin2).css({'background-color': impCol});
+						$('#'+ origin2).css({'background-image': impSpr});
+						tileDict[origin2] = "#";
+
+						
+						origin = (26 - Math.floor(origin/27))*27 + origin%27;
+						
+						$('#'+ origin).css({'background-size': "contain"});
+						$('#'+ origin).css({'background-repeat': "no-repeat"});
+						$('#'+ origin).css({'background-color': impCol});
+						$('#'+ origin).css({'background-image': impSpr});
+						tileDict[origin] = "#";
+
+						
+						origin2 = (origin - origin%27) + (27 - origin%27) - 1;
+						
+						$('#'+ origin2).css({'background-size': "contain"});
+						$('#'+ origin2).css({'background-repeat': "no-repeat"});
+						$('#'+ origin2).css({'background-color': impCol});
+						$('#'+ origin2).css({'background-image': impSpr});
+						tileDict[origin2] = "#";
+
+					}
+			}
+		}
+	});
+	
 	$('#exportenemies').click(function(){
 		var fname = $('#filename').val(); 
 		var stringu = "";
-		stringu += "```\n";
+		//stringu += "```\n";
 		for (k = 0; k < 27; k++) { 
 			for (i = 0; i < 27; i++) { 
 				if (tileDict[i+k*27]=="B" || tileDict[i+k*27]=="#") {
@@ -49,7 +138,7 @@ const copyToClipboard = str => {
 			}
 			stringu += ";\n";
 		}
-		stringu += "```";
+		//stringu += "```";
 		copyToClipboard(stringu);
 		  
 		//download(stringu, fname, "application/json")
@@ -58,7 +147,7 @@ const copyToClipboard = str => {
 	$('#exportwalls').click(function(){
 		var fname = $('#filename').val(); 
 		var stringu = "";
-		stringu += "```\n";
+		//stringu += "```\n";
 		for (k = 0; k < 13; k++) { 
 			for (i = 0; i < 13; i++) { 
 				if (tileDict[i+k*27]=="B") {
@@ -71,7 +160,7 @@ const copyToClipboard = str => {
 			}
 			stringu += ";\n";
 		}
-		stringu += "```";
+		//stringu += "```";
 		copyToClipboard(stringu);
 		  
 		//download(stringu, fname, "application/json")
