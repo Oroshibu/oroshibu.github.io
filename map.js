@@ -37,8 +37,15 @@ const copyToClipboard = str => {
 		var nTiles = ((width * multX) / tileSize) * ((height * multY) / tileSize);
 		BuildMap(width, height, multX, multY, tileSize);
 	});
+	
+	$('#scrolldown').click(function() {
+	  document.body.scrollTop = 2000; // For Safari
+	  document.documentElement.scrollTop = 2000; // For Chrome, Firefox, IE and Opera
+	});
 
 	$('#importenemies').click(function(){
+		  document.body.scrollTop = 0; // For Safari
+		  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 		//BuildMap(width, height, multX, multY, tileSize);
 		var textE = document.getElementById("mapImporter").value;
 		/*$(this).css({'background-color': selectedColor});
@@ -54,9 +61,36 @@ const copyToClipboard = str => {
 					var impSpr = "none";
 
 					switch (textE.substring(i+k*27+k*2, 1+i+k*27+k*2)) {
-						case 'm':
+						case 's':
 							impSpr = "url(images/mine.png)";
 							break;
+						case 'm':
+							impSpr = "url(images/magnet.png)";
+							break;
+						case 'c':
+							impSpr = "url(images/core.png)";
+							break;
+						case 'b':
+							impSpr = "url(images/blackhole.png)";
+							break;
+						case 'o':
+							impSpr = "url(images/suck.png)";
+							break;
+						case 't':
+							impSpr = "url(images/stealer.png)";
+							break;
+						case '>':
+							impSpr = "url(images/right_huge.png)";
+							break;
+						case '<':
+							impSpr = "url(images/left_huge.png)";
+							break;	
+						case 'v':
+							impSpr = "url(images/down_huge.png)";
+							break;
+						case '^':
+							impSpr = "url(images/up_huge.png)";
+							break;							
 						default:
 							impCol = "white";
 							impSpr = "none";						
@@ -73,6 +107,8 @@ const copyToClipboard = str => {
 	});
 	
 	$('#importwalls').click(function(){
+		  document.body.scrollTop = 0; // For Safari
+		  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 		//BuildMap(width, height, multX, multY, tileSize);
 		var textE = document.getElementById("mapImporter").value;
 		/*$(this).css({'background-color': selectedColor});
