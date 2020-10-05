@@ -90,7 +90,10 @@ const copyToClipboard = str => {
 							break;
 						case '^':
 							impSpr = "url(images/up_huge.png)";
-							break;							
+							break;		
+						case 'r':
+							impSpr = "url(images/meteor.png)";
+							break;								
 						default:
 							impCol = "white";
 							impSpr = "none";						
@@ -166,13 +169,14 @@ const copyToClipboard = str => {
 		//stringu += "```\n";
 		for (k = 0; k < 27; k++) { 
 			for (i = 0; i < 27; i++) { 
-				if (tileDict[i+k*27]=="B" || tileDict[i+k*27]=="#") {
+				if (tileDict[i+k*27]=="B" || tileDict[i+k*27]=="#" || tileDict[i+k*27]=="b" || tileDict[i+k*27]=="x") {
 					stringu += " ";
 				} else {
 					stringu += tileDict[i+k*27];
 				}
 			}
-			stringu += ";\n";
+			//stringu += ";\n";
+			stringu += ";";
 		}
 		//stringu += "```";
 		copyToClipboard(stringu);
@@ -188,13 +192,14 @@ const copyToClipboard = str => {
 			for (i = 0; i < 13; i++) { 
 				if (tileDict[i+k*27]=="B") {
 					stringu += " ";
-				} else if (tileDict[i+k*27]=="#") {
+				} else if (tileDict[i+k*27]=="#" || tileDict[i+k*27]=="b" || tileDict[i+k*27]=="x") {
 					stringu += tileDict[i+k*27];
 				} else {
 					stringu += " ";
 				}
 			}
-			stringu += ";\n";
+			//stringu += ";\n";
+			stringu += ";";
 		}
 		//stringu += "```";
 		copyToClipboard(stringu);
@@ -218,7 +223,7 @@ const copyToClipboard = str => {
 			$(this).css({'background-size': "contain"});
 			$(this).css({'background-repeat': "no-repeat"});
 	    	var id = $(this).attr('id');
-			if ((selectedTerrainKey == "#") || (tileDict[id]== "#")) {
+			if ((selectedTerrainKey == "#") || (tileDict[id]== "#") || (selectedTerrainKey == "b") || (tileDict[id]== "b") || (selectedTerrainKey == "x") || (tileDict[id]== "x")) {
 				var origin = (id - id%27) + (27 - id%27) - 1;
 				
 				$('#'+ origin).css({'background-color': selectedColor});
@@ -270,7 +275,7 @@ const copyToClipboard = str => {
 			$(this).css({'background-size': "contain"});
 			$(this).css({'background-repeat': "no-repeat"});
 	    	var id = $(this).attr('id');
-			if ((selectedTerrainKey == "#") || (tileDict[id]== "#")) {
+			if ((selectedTerrainKey == "#") || (tileDict[id]== "#") || (selectedTerrainKey == "b") || (tileDict[id]== "b") || (selectedTerrainKey == "x") || (tileDict[id]== "x")) {
 				var origin = (id - id%27) + (27 - id%27) - 1;
 				
 				$('#'+ origin).css({'background-color': selectedColor});
