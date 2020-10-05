@@ -171,7 +171,7 @@ const copyToClipboard = str => {
 			for (i = 0; i < 27; i++) { 
 				if (tileDict[i+k*27]=="B" || tileDict[i+k*27]=="#" || tileDict[i+k*27]=="b" || tileDict[i+k*27]=="x") {
 					stringu += " ";
-				} else (tileDict[i+k*27]=="g") {
+				} else if (tileDict[i+k*27]=="g") {
 					stringu += "b";
 				} else {
 					stringu += tileDict[i+k*27];
