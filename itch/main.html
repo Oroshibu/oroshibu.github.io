@@ -1,20 +1,28 @@
 <style>
-/* [1] The container */
 .img-hover-zoom {
-  overflow: hidden; /* [1.2] Hide the overflowing of child elements */
-	position:relative;
+  overflow: hidden;
 }
 
-/* [2] Transition property for smooth transformation of images */
 .img-hover-zoom img {
-  transition: transform .5s ease;
+  transition: transform .5s, filter .5s ease-in-out;
 }
 
-/* [3] Finally, transforming the image when container gets hovered */
 .img-hover-zoom:hover img {
-  transform: scale(1.2);
-	filter: brightness(110%);
+  transform: scale(1.1);
+	filter: brightness(160%);
 }
+
+.relative {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+
+}
+
+.invisible {
+	pointer-events: none;
+}
+
 </style>
-<a href="https://saturnyoshi.itch.io/lymphosite"><img src="lymphosite_logo.png" width="206"></a>
-<div class="img-hover-zoom"><a href="https://saturnyoshi.itch.io/lymphosite"><img src="lymphosite_bg.png" width="206"></a></div>
+<div class="img-hover-zoom relative"><a href="https://saturnyoshi.itch.io/lymphosite" target="_blank"><img src="lymphosite_bg.png" width="206"></a></div>
+<div class="invisible relative"><img src="lymphosite_logo.png" width="206"></div>
