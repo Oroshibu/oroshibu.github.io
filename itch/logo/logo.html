@@ -1,0 +1,45 @@
+<style>
+
+.img-hover-zoom {
+  overflow: hidden;
+	border-radius: 15px;
+}
+
+.img-hover-zoom img {
+  transition: transform .3s, filter .3s ease-in-out;
+}
+
+.img-hover-zoom:hover img {
+  transform: scale(1.1);
+	filter: brightness(160%);
+}
+
+.relative {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+
+}
+
+.invisible {
+	pointer-events: none;
+}
+
+.floating {
+    animation-name: floating;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    /*margin-left: 30px;
+    margin-top: 5px;*/
+}
+
+@keyframes floating {
+    0% { transform: translate(0,  0px); }
+    50%  { transform: translate(0, 15px); }
+    100%   { transform: translate(0, -0px); }
+}
+
+
+</style>
+<div class="img-hover-zoom relative invisible floating"><img src="logo.png" width="300"></div>
