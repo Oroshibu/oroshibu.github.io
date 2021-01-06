@@ -1,8 +1,8 @@
 <style>
 /* [1] The container */
 .img-hover-zoom {
-  height: 300px; /* [1.1] Set it as per your need */
   overflow: hidden; /* [1.2] Hide the overflowing of child elements */
+	position:relative;
 }
 
 /* [2] Transition property for smooth transformation of images */
@@ -12,8 +12,9 @@
 
 /* [3] Finally, transforming the image when container gets hovered */
 .img-hover-zoom:hover img {
-  transform: scale(1.5);
+  transform: scale(1.2);
+	filter: brightness(110%);
 }
 </style>
-
+<a href="https://saturnyoshi.itch.io/lymphosite"><img src="lymphosite_logo.png" width="206"></a>
 <div class="img-hover-zoom"><a href="https://saturnyoshi.itch.io/lymphosite"><img src="lymphosite_bg.png" width="206"></a></div>
