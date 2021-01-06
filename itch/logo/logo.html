@@ -27,7 +27,7 @@
 
 .floating {
     animation-name: floating;
-    animation-duration: 5s;
+    animation-duration: 7s;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
     /*margin-left: 30px;
@@ -35,9 +35,9 @@
 }
 
 @keyframes floating {
-    0% { transform: translate(0,  0px); }
-    50%  { transform: translate(0, 15px); }
-    100%   { transform: translate(0, -0px); }
+    0% { transform: translate(0,  0px); transform: rotate(-3deg);}
+    50%  { transform: translate(0, 15px);transform: rotate(3deg); }
+    100%   { transform: translate(0, -0px); transform: rotate(-5deg);}
 }
 
 
