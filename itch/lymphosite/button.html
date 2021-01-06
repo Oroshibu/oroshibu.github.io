@@ -1,0 +1,30 @@
+<style>
+
+.img-hover-zoom {
+  overflow: hidden;
+	border-radius: 15px;
+}
+
+.img-hover-zoom img {
+  transition: transform .3s, filter .3s ease-in-out;
+}
+
+.img-hover-zoom:hover img {
+  transform: scale(1.1);
+	filter: brightness(160%);
+}
+
+.relative {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+
+}
+
+.invisible {
+	pointer-events: none;
+}
+
+</style>
+<div class="img-hover-zoom relative"><a href="https://saturnyoshi.itch.io/lymphosite" target="_blank"><img src="bg.png" width="180"></a></div>
+<div class="invisible relative"><img src="logo.png" width="180"></div>
