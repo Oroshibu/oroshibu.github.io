@@ -74,12 +74,7 @@ $(document).ready(function(){
 	DrawMap();
 
 	$('#reset').click(function() {
-		for (var i = 0; i < nY; i++) {
-			for (var k = 0; k < nX; k++) {
-				tiles[i][k] = "A";
-			}
-		}
-		entities = [];
+		ResetMap();
 		DrawMap();
 	});
 
@@ -209,6 +204,15 @@ $(document).ready(function(){
 
 	});
 
+	function ResetMap() {
+		for (var i = 0; i < nY; i++) {
+			for (var k = 0; k < nX; k++) {
+				tiles[i][k] = "A";
+			}
+		}
+		entities = [];
+	}
+
 		function CreateEntityEntry(name, x, y) {
 			entities.push([name, x, y])
 		}
@@ -223,6 +227,7 @@ $(document).ready(function(){
 
 		function DrawEntities() {
 			for (var i = 0; i < entities.length; i++) {
+				//console.log(entities[i][0]);
 				ctx.drawImage(img[entities[i][0]], entities[i][1], entities[i][2], tileSize, tileSize);
 			}
 		}
@@ -307,6 +312,42 @@ $(document).ready(function(){
 			download(stringu, fname, "application/csv")
 		});
 
+		document.getElementById("import").onchange = function(event)
+		{
+			var input = event.target;
+
+			var reader = new FileReader();
+			reader.onload = function(){
+				var text = reader.result;
+				loadLevel(text);
+				//var node = document.getElementById('output');
+				//node.innerText = text;
+				//console.log(reader.result.substring(0, 200));
+			};
+			reader.readAsText(input.files[0]);
+		};
+
+		function loadLevel(text) {
+			ResetMap();
+			var textL = text.split('\n');
+			var gridL = textL[0].split(':');
+			for (var i = 0; i < nY; i++) {
+				for (var k = 0; k < nX; k++) {
+					tiles[i][k] = gridL[i][k];
+				}
+			}
+
+			for (var i = 1; i < textL.length-1; i++) {
+				var entity = textL[i].split(',');
+				entity[1] =  parseFloat(entity[1]);
+				entity[2] =  parseFloat(entity[2]);
+				entities.push(entity);
+			}
+
+			DrawMap();
+
+		}
+
 		function download(data, filename, type) {
 				var file = new Blob([data], {type: type});
 
@@ -327,16 +368,7 @@ $(document).ready(function(){
 				}
 		}
 
-		var openFile = function(event) {
-			var input = event.target;
 
-			var reader = new FileReader();
-			reader.onload = function(){
-				var text = reader.result;
-				var node = document.getElementById('output');
-				node.innerText = text;
-				console.log(reader.result.substring(0, 200));
-			};
-			reader.readAsText(input.files[0]);
-		};
+
+
 });
