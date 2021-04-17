@@ -5,15 +5,10 @@
     --tileY: 0;
 }
 
-#map {
+#mapCanvas {
 
 	line-height: 0;
-	display: grid;
-  	padding: 10px;
-  	grid-column-gap: 0px;
-  	grid-row-gap: 0px;
-  	grid-template-columns: repeat(var(--ncols), var(--tileX));
-  	grid-template-rows: repeat(var(--nrows), var(--tileY));
+
 }
 
 p {
@@ -96,10 +91,10 @@ user-select: none;
 .center-div {
     margin-left: auto;
     margin-right: auto;
-    width: 100em
+    width: 200em;
 }
 
 body {
-	background-color: #191822;
+	background-color: #0d0d0d;
 	color:white;
 }

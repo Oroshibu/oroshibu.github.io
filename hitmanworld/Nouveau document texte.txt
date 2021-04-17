@@ -1,0 +1,12 @@
+canvas
+bouton tjr comme pr gunwyrm
+csv grid = string
+entities = enum(name), posx, posy
+
+
+Canvas
+
+
+entities placmeent
+export 
+import

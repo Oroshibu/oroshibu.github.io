@@ -11,7 +11,6 @@ $(document).ready(function(){
 	var tileSize = parseInt($('#tileSize').val());
 	var nTiles = ((width * multX) / tileSize) * ((height * multY) / tileSize);
 	BuildMap(width, height, multX, multY, tileSize);
-	//var indico = "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccxxxxxxcccxxxxxxccccccccccccxxxxxxcccxxxxxxcccccccccccxxxxxxxcccxxxxxxxccccccccxxxxxcccccccccccxxxxxccccccxxxxxcccccccccccxxxxxccccccxxxcccccccccccccccxxxccccccxxxccccxxcccxxccccxxxccccccxxxcccxxcccccxxcccxxxccccccxxxcccxcccccccxcccxxxcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccxxxcccxcccccccxcccxxxccccccxxxcccxxcccccxxcccxxxccccccxxxccccxxcccxxccccxxxccccccxxxcccccccccccccccxxxccccccxxxxxcccccccccccxxxxxccccccxxxxxcccccccccccxxxxxccccccccxxxxxxxcccxxxxxxxcccccccccccxxxxxxcccxxxxxxccccccccccccxxxxxxcccxxxxxxccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc";
 
 const copyToClipboard = str => {
   const el = document.createElement('textarea');
@@ -24,7 +23,7 @@ const copyToClipboard = str => {
   document.execCommand('copy');
   document.body.removeChild(el);
 };
-	
+
 	$('#init').click(function() {
 		selectedColor = "#292738";
 		selectedSprite = "none";
@@ -37,7 +36,7 @@ const copyToClipboard = str => {
 		var nTiles = ((width * multX) / tileSize) * ((height * multY) / tileSize);
 		BuildMap(width, height, multX, multY, tileSize);
 	});
-	
+
 	$('#scrolldown').click(function() {
 	  document.body.scrollTop = 2000; // For Safari
 	  document.documentElement.scrollTop = 2000; // For Chrome, Firefox, IE and Opera
@@ -48,13 +47,9 @@ const copyToClipboard = str => {
 		  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 		//BuildMap(width, height, multX, multY, tileSize);
 		var textE = document.getElementById("mapImporter").value;
-		/*$(this).css({'background-color': selectedColor});
-		$(this).css({'background-image': selectedSprite});
-		$(this).css({'background-size': "contain"});
-		$(this).css({'background-repeat': "no-repeat"});*/
-		
-		for (k = 0; k < 27; k++) { 
-			for (i = 0; i < 27; i++) { 
+
+		for (k = 0; k < 27; k++) {
+			for (i = 0; i < 27; i++) {
 					var origin = i+k*27;
 					tileDict[origin] = textE.substring(i+k*27+k*2, 1+i+k*27+k*2);
 					var impCol = "#67dbd0";
@@ -84,20 +79,20 @@ const copyToClipboard = str => {
 							break;
 						case '<':
 							impSpr = "url(images/left_huge.png)";
-							break;	
+							break;
 						case 'v':
 							impSpr = "url(images/down_huge.png)";
 							break;
 						case '^':
 							impSpr = "url(images/up_huge.png)";
-							break;		
+							break;
 						case 'r':
 							impSpr = "url(images/meteor.png)";
-							break;								
+							break;
 						default:
 							impCol = "white";
-							impSpr = "none";						
-							
+							impSpr = "none";
+
 					}
 					if (textE.substring(i+k*27+k*2, 1+i+k*27+k*2) != " "){
 						$('#'+ origin).css({'background-size': "contain"});
@@ -108,67 +103,30 @@ const copyToClipboard = str => {
 			}
 		}
 	});
-	
+/*
 	$('#importwalls').click(function(){
 		  document.body.scrollTop = 0; // For Safari
 		  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 		//BuildMap(width, height, multX, multY, tileSize);
 		var textE = document.getElementById("mapImporter").value;
-		/*$(this).css({'background-color': selectedColor});
-		$(this).css({'background-image': selectedSprite});
-		$(this).css({'background-size': "contain"});
-		$(this).css({'background-repeat': "no-repeat"});*/
-		
-		for (k = 0; k < 13; k++) { 
-			for (i = 0; i < 13; i++) { 
+
+		for (k = 0; k < 13; k++) {
+			for (i = 0; i < 13; i++) {
 					var origin = i+k*27;
 					tileDict[origin] = textE.substring(i+k*13+k*2, 1+i+k*13+k*2);
 					var impCol = "#292738";
 					var impSpr = "url(images/wall.png)";
 
-					if (textE.substring(i+k*13+k*2, 1+i+k*13+k*2) == "#"){
-						$('#'+ origin).css({'background-size': "contain"});
-						$('#'+ origin).css({'background-repeat': "no-repeat"});
-						$('#'+ origin).css({'background-color': impCol});
-						$('#'+ origin).css({'background-image': impSpr});
-						
-						var origin2 = (origin - origin%27) + (27 - origin%27) - 1;
-				
-						$('#'+ origin2).css({'background-size': "contain"});
-						$('#'+ origin2).css({'background-repeat': "no-repeat"});
-						$('#'+ origin2).css({'background-color': impCol});
-						$('#'+ origin2).css({'background-image': impSpr});
-						tileDict[origin2] = "#";
-
-						
-						origin = (26 - Math.floor(origin/27))*27 + origin%27;
-						
-						$('#'+ origin).css({'background-size': "contain"});
-						$('#'+ origin).css({'background-repeat': "no-repeat"});
-						$('#'+ origin).css({'background-color': impCol});
-						$('#'+ origin).css({'background-image': impSpr});
-						tileDict[origin] = "#";
-
-						
-						origin2 = (origin - origin%27) + (27 - origin%27) - 1;
-						
-						$('#'+ origin2).css({'background-size': "contain"});
-						$('#'+ origin2).css({'background-repeat': "no-repeat"});
-						$('#'+ origin2).css({'background-color': impCol});
-						$('#'+ origin2).css({'background-image': impSpr});
-						tileDict[origin2] = "#";
-
-					}
 			}
 		}
-	});
-	
+	});*/
+
 	$('#exportenemies').click(function(){
-		var fname = $('#filename').val(); 
+		var fname = $('#filename').val();
 		var stringu = "";
 		//stringu += "```\n";
-		for (k = 0; k < 27; k++) { 
-			for (i = 0; i < 27; i++) { 
+		for (k = 0; k < 27; k++) {
+			for (i = 0; i < 27; i++) {
 				if (tileDict[i+k*27]=="B" || tileDict[i+k*27]=="#" || tileDict[i+k*27]=="b" || tileDict[i+k*27]=="x") {
 					stringu += " ";
 				} else if (tileDict[i+k*27]=="g") {
@@ -182,16 +140,16 @@ const copyToClipboard = str => {
 		}
 		//stringu += "```";
 		copyToClipboard(stringu);
-		  
+
 		//download(stringu, fname, "application/json")
 	});
-	
+
 	$('#exportwalls').click(function(){
-		var fname = $('#filename').val(); 
+		var fname = $('#filename').val();
 		var stringu = "";
 		//stringu += "```\n";
-		for (k = 0; k < 13; k++) { 
-			for (i = 0; i < 13; i++) { 
+		for (k = 0; k < 13; k++) {
+			for (i = 0; i < 13; i++) {
 				if (tileDict[i+k*27]=="B") {
 					stringu += " ";
 				} else if (tileDict[i+k*27]=="#" || tileDict[i+k*27]=="b" || tileDict[i+k*27]=="x") {
@@ -205,7 +163,7 @@ const copyToClipboard = str => {
 		}
 		//stringu += "```";
 		copyToClipboard(stringu);
-		  
+
 		//download(stringu, fname, "application/json")
 	});
 
@@ -227,7 +185,7 @@ const copyToClipboard = str => {
 	    	var id = $(this).attr('id');
 			if ((selectedTerrainKey == "#") || (tileDict[id]== "#") || (selectedTerrainKey == "b") || (tileDict[id]== "b") || (selectedTerrainKey == "x") || (tileDict[id]== "x")) {
 				var origin = (id - id%27) + (27 - id%27) - 1;
-				
+
 				$('#'+ origin).css({'background-color': selectedColor});
 				$('#'+ origin).css({'background-image': selectedSprite});
 				$('#'+ origin).css({'background-size': "contain"});
@@ -236,9 +194,9 @@ const copyToClipboard = str => {
 				if (selectedTerrainKey == 'B') {
 					$('#'+ origin).css({'background-color': $(this).css('color')});
 				}
-				
+
 				var origin = (26 - Math.floor(id/27))*27 + id%27;
-				
+
 				$('#'+ origin).css({'background-color': selectedColor});
 				$('#'+ origin).css({'background-image': selectedSprite});
 				$('#'+ origin).css({'background-size': "contain"});
@@ -247,9 +205,9 @@ const copyToClipboard = str => {
 				if (selectedTerrainKey == 'B') {
 					$('#'+ origin).css({'background-color': $(this).css('color')});
 				}
-				
+
 				var origin = (origin - origin%27) + (27 - origin%27) - 1;
-				
+
 				$('#'+ origin).css({'background-color': selectedColor});
 				$('#'+ origin).css({'background-image': selectedSprite});
 				$('#'+ origin).css({'background-size': "contain"});
@@ -262,13 +220,13 @@ const copyToClipboard = str => {
 			if (selectedTerrainKey == 'B') {
 				$(this).css({'background-color': $(this).css('color')});
 			}
-			
+
 
 	    	tileDict[id] = selectedTerrainKey;
-			
+
 		}
 	});
-	
+
 	$('#map').on('mousedown', '.tile', function(e){
 		if (e.buttons === 1) {
 	    	//$(this).css({'background-color': selectedColor});
@@ -279,7 +237,7 @@ const copyToClipboard = str => {
 	    	var id = $(this).attr('id');
 			if ((selectedTerrainKey == "#") || (tileDict[id]== "#") || (selectedTerrainKey == "b") || (tileDict[id]== "b") || (selectedTerrainKey == "x") || (tileDict[id]== "x")) {
 				var origin = (id - id%27) + (27 - id%27) - 1;
-				
+
 				$('#'+ origin).css({'background-color': selectedColor});
 				$('#'+ origin).css({'background-image': selectedSprite});
 				$('#'+ origin).css({'background-size': "contain"});
@@ -288,9 +246,9 @@ const copyToClipboard = str => {
 				if (selectedTerrainKey == 'B') {
 					$('#'+ origin).css({'background-color': $(this).css('color')});
 				}
-				
+
 				var origin = (26 - Math.floor(id/27))*27 + id%27;
-				
+
 				$('#'+ origin).css({'background-color': selectedColor});
 				$('#'+ origin).css({'background-image': selectedSprite});
 				$('#'+ origin).css({'background-size': "contain"});
@@ -299,9 +257,9 @@ const copyToClipboard = str => {
 				if (selectedTerrainKey == 'B') {
 					$('#'+ origin).css({'background-color': $(this).css('color')});
 				}
-				
+
 				var origin = (origin - origin%27) + (27 - origin%27) - 1;
-				
+
 				$('#'+ origin).css({'background-color': selectedColor});
 				$('#'+ origin).css({'background-image': selectedSprite});
 				$('#'+ origin).css({'background-size': "contain"});
@@ -314,14 +272,14 @@ const copyToClipboard = str => {
 			if (selectedTerrainKey == 'B') {
 				$(this).css({'background-color': $(this).css('color')});
 			}
-			
+
 
 	    	tileDict[id] = selectedTerrainKey;
 		}
 	});
 
 	function BuildMap(width, height, multX, multY, tileSize) {
-		
+
 		tileDict = {};
 		$('#map').empty();
 
@@ -348,16 +306,16 @@ const copyToClipboard = str => {
 		$('#nTiles').text((cols * rows));
 		$('#cols').text(cols);
 		$('#rows').text(rows);
-		
+
 		//TODO - make tiles and map not draggable
-		
+
 		// color the origin
 		//var origin = Math.floor(((cols * rows) / 2) - (cols/2));
 		var origin = Math.floor(((cols * rows) / 2));
 
 		$('#'+origin).css('background-color', 'red');
 		$('#'+origin).css('color', 'red');
-		
+
         var indico = "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccxxxxxxcccxxxxxxccccccccccccxxxxxxcccxxxxxxcccccccccccxxxxxxxcccxxxxxxxccccccccxxxxxcccccccccccxxxxxccccccxxxxxcccccccccccxxxxxccccccxxxcccccccccccccccxxxccccccxxxccccxxcccxxccccxxxccccccxxxcccxxcccccxxcccxxxccccccxxxcccxcccccccxcccxxxcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccxxxcccxcccccccxcccxxxccccccxxxcccxxcccccxxcccxxxccccccxxxccccxxcccxxccccxxxccccccxxxcccccccccccccccxxxccccccxxxxxcccccccccccxxxxxccccccxxxxxcccccccccccxxxxxccccccccxxxxxxxcccxxxxxxxcccccccccccxxxxxxcccxxxxxxccccccccccccxxxxxxcccxxxxxxccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc";
 		for (i = 0; i < 729; i++) {
 			if (indico.substring(i, i+1)=="x") {
@@ -371,8 +329,8 @@ const copyToClipboard = str => {
 	// Function to download data to a file
 	function download(data, filename, type) {
 	    var file = new Blob([data], {type: type});
-		
-		
+
+
 	    if (window.navigator.msSaveOrOpenBlob) // IE10+
 	        window.navigator.msSaveOrOpenBlob(file, filename);
 	    else { // Others
@@ -384,10 +342,9 @@ const copyToClipboard = str => {
 	        a.click();
 	        setTimeout(function() {
 	            document.body.removeChild(a);
-	            window.URL.revokeObjectURL(url);  
-	        }, 0); 
+	            window.URL.revokeObjectURL(url);
+	        }, 0);
 	    }
 	}
 
 });
-
