@@ -32,18 +32,38 @@ $(document).ready(function(){
 	var mouseDownX = -1;
 	var mouseDownY = -1;
 
-	var tileMode = false;
+	var tileMode = true;
 
 	var img = new Array(2);
 	img = {};
 	img["A"] = new Image();
 	img["A"].src = "images/void.png";
 	img["B"] = new Image();
-	img["B"].src = "images/walltop.png";
+	img["B"].src = "images/floor.png";
 	img["C"] = new Image();
-	img["C"].src = "images/wallbot.png";
+	img["C"].src = "images/walltop.png";
+	img["D"] = new Image();
+	img["D"].src = "images/walltop.png";
+	img["E"] = new Image();
+	img["E"].src = "images/walltop.png";
+	img["F"] = new Image();
+	img["F"].src = "images/walltop.png";
+	img["G"] = new Image();
+	img["G"].src = "images/walltop.png";
+	img["3"] = new Image();
+	img["3"].src = "images/wallbot.png";
+	img["4"] = new Image();
+	img["4"].src = "images/wallbot1.png";
+	img["5"] = new Image();
+	img["5"].src = "images/wallbot2.png";
+	img["6"] = new Image();
+	img["6"].src = "images/wallbot3.png";
+	img["7"] = new Image();
+	img["7"].src = "images/wallbot4.png";
 	img["eraser"] = new Image();
 	img["eraser"].src = "images/eraser.png";
+	img["player"] = new Image();
+	img["player"].src = "images/player.png";
 	img["chair"] = new Image();
 	img["chair"].src = "images/chair.png";
 
@@ -209,9 +229,9 @@ $(document).ready(function(){
 
 		function DrawMap() {
 			ctx.clearRect(0, 0, canvas.width, canvas.height);
-			ctx.fillStyle = 'rgb(30, 30, 30)';
+			ctx.fillStyle = 'rgb(120, 120, 120)';
 			ctx.fillRect(0, 0, canvas.width, canvas.height);
-			ctx.fillStyle = 'rgb(35, 35, 35)';
+			ctx.fillStyle = 'rgb(125, 125, 125)';
 			for (var i = 0; i < nY; i++) {
 				ctx.fillRect(0, i*tileSize, canvas.width, 1);
 			}
@@ -223,9 +243,40 @@ $(document).ready(function(){
 				for (var k = 0; k < nX; k++) {
 					if (tiles[i][k] != "A") {
 						ctx.drawImage(img[tiles[i][k]], k*tileSize, i*tileSize, tileSize, tileSize);
-						if (tiles[i][k] == "B") {
-							if (tiles[i+1][k] == "A") {
-								ctx.drawImage(img["C"], k*tileSize, (i+1)*tileSize, tileSize, tileSize);
+					}
+				}
+			}
+
+			for (var i = 0; i < nY; i++) {
+				for (var k = 0; k < nX; k++) {
+					if (tiles[i][k] != "A") {
+						if (tiles[i][k] == "C") {
+							if (tiles[i+1][k] == "A" || tiles[i+1][k] == "B") {
+								ctx.drawImage(img["3"], k*tileSize, (i+1)*tileSize, tileSize, tileSize);
+							}
+						}
+
+						if (tiles[i][k] == "D") {
+							if (tiles[i+1][k] == "A" || tiles[i+1][k] == "B") {
+								ctx.drawImage(img["4"], k*tileSize, (i+1)*tileSize, tileSize, tileSize);
+							}
+						}
+
+						if (tiles[i][k] == "E") {
+							if (tiles[i+1][k] == "A" || tiles[i+1][k] == "B") {
+								ctx.drawImage(img["5"], k*tileSize, (i+1)*tileSize, tileSize, tileSize);
+							}
+						}
+
+						if (tiles[i][k] == "F") {
+							if (tiles[i+1][k] == "A" || tiles[i+1][k] == "B") {
+								ctx.drawImage(img["6"], k*tileSize, (i+1)*tileSize, tileSize, tileSize);
+							}
+						}
+
+						if (tiles[i][k] == "G") {
+							if (tiles[i+1][k] == "A" || tiles[i+1][k] == "B") {
+								ctx.drawImage(img["7"], k*tileSize, (i+1)*tileSize, tileSize, tileSize);
 							}
 						}
 					}
@@ -233,4 +284,59 @@ $(document).ready(function(){
 			}
 			DrawEntities();
 		}
+
+		$('#exportenemies').click(function(){
+			var fname = $('#filename').val();
+			fname = "map.csv";
+			var stringu = "";
+			for (var i = 0; i < nY; i++) {
+				for (var k = 0; k < nX; k++) {
+					stringu += tiles[i][k];
+				}
+				stringu += ":";
+			}
+			stringu += ",,\n";
+			//copyToClipboard(stringu);
+
+			for (var i = 0; i < entities.length; i++) {
+				stringu += entities[i][0] + ",";
+				stringu += entities[i][1].toString() + ",";
+				stringu += entities[i][2].toString() + "\n";
+			}
+
+			download(stringu, fname, "application/csv")
+		});
+
+		function download(data, filename, type) {
+				var file = new Blob([data], {type: type});
+
+
+				if (window.navigator.msSaveOrOpenBlob) // IE10+
+						window.navigator.msSaveOrOpenBlob(file, filename);
+				else { // Others
+						var a = document.createElement("a"),
+										url = URL.createObjectURL(file);
+						a.href = url;
+						a.download = filename;
+						document.body.appendChild(a);
+						a.click();
+						setTimeout(function() {
+								document.body.removeChild(a);
+								window.URL.revokeObjectURL(url);
+						}, 0);
+				}
+		}
+
+		var openFile = function(event) {
+			var input = event.target;
+
+			var reader = new FileReader();
+			reader.onload = function(){
+				var text = reader.result;
+				var node = document.getElementById('output');
+				node.innerText = text;
+				console.log(reader.result.substring(0, 200));
+			};
+			reader.readAsText(input.files[0]);
+		};
 });

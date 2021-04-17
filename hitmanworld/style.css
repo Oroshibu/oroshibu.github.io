@@ -98,3 +98,17 @@ body {
 	background-color: #0d0d0d;
 	color:white;
 }
+
+input {
+  background-color: #AAAAAA;
+  border: none;
+  color: #0d0d0d;
+  padding: 5px 9px;
+  text-decoration: none;
+  margin: 4px 1px;
+  border-radius: 10px;
+ font-weight: bold;
+}
+input:hover {
+ background-color:#FFFFFF;
+}

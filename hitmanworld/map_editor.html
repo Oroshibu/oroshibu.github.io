@@ -17,10 +17,14 @@
 					  <input type="hidden" name="multX" value="1" id="multX">
 					  <input type="hidden" name="multY" value="1" id="multY">
 					  <input type="hidden" name="tileSize" value="16" id="tileSize">
-					  <br><br>
+					  <br>
+						<input type="submit" value="Reset" id="reset">
 					  <input type="submit" value="Export" id="exportenemies">
-					  <input type="submit" value="Import" id="scrolldown">
-					  <input type="submit" value="Reset" id="reset">
+						<input type='file' accept='text/plain' onchange='openFile(event)'><br>
+<div id='output'>
+
+</div>
+					  <!--<input type="submit" value="Import" id="import">-->
 						<a>Hold shift to draw squares</a>
 										<!--<p><a href="/itch/main.html">aaaaaaa</a></p>-->
 				  </div>
@@ -39,10 +43,18 @@
 		  </div>
 
 		  	<div class="container" id="mapWrap">
-			<div class="terrain" style="background: #292738; border-style: solid;"><p>A</p></div>
-			<div class="terrain" style="background: #292738;background-image: url(images/wallbot.png); background-size: contain;background-repeat: no-repeat;"><p>B</p></div>
-			<div class="terrain" style="background: #292738;background-image: url(images/eraser.png); background-size: contain;background-repeat: no-repeat;"><p>eraser</p></div>
-			<div class="terrain" style="background: #292738;background-image: url(images/chair.png); background-size: contain;background-repeat: no-repeat;"><p>chair</p></div>
+			<div class="terrain" style="background: #787878; border-style: solid;"><p>A</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/floor.png); background-size: contain;background-repeat: no-repeat;"><p>B</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/wallbot.png); background-size: contain;background-repeat: no-repeat;"><p>C</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/wallbot1.png); background-size: contain;background-repeat: no-repeat;"><p>D</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/wallbot2.png); background-size: contain;background-repeat: no-repeat;"><p>E</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/wallbot3.png); background-size: contain;background-repeat: no-repeat;"><p>F</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/wallbot4.png); background-size: contain;background-repeat: no-repeat;"><p>G</p></div>
+
+			<br>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/eraser.png); background-size: contain;background-repeat: no-repeat;"><p>eraser</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/player.png); background-size: contain;background-repeat: no-repeat;"><p>player</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/chair.png); background-size: contain;background-repeat: no-repeat;"><p>chair</p></div>
 
 			<br>
 			<!--<div id="map"></div>-->
