@@ -83,6 +83,7 @@ $(document).ready(function(){
 	img["Z"] = new Image();
 	img["["] = new Image();
 	img["]"] = new Image();
+	img["("] = new Image();
 	img["!"] = new Image();
 
 	img["0"].src = "images/void.png";
@@ -129,6 +130,7 @@ $(document).ready(function(){
 	img["Z"].src = "images/wallside30.png";
 	img["["].src = "images/red_door.png";
 	img["]"].src = "images/green_door.png";
+	img["("].src = "images/blue_door.png";
 	img["!"].src = "images/exit_door.png";
 
 	img["eraser"] = new Image();
@@ -141,6 +143,7 @@ $(document).ready(function(){
 	img["shotgun"] = new Image();
 	img["key_red"] = new Image();
 	img["key_green"] = new Image();
+	img["key_blue"] = new Image();
 	img["cop_pistol"] = new Image();
 	img["cop_shotgun"] = new Image();
 	img["target"] = new Image();
@@ -172,6 +175,7 @@ $(document).ready(function(){
 	img["shotgun"].src = "images/shotgun.png";
 	img["key_red"].src = "images/key_red.png";
 	img["key_green"].src = "images/key_green.png";
+	img["key_blue"].src = "images/key_blue.png";
 	img["cop_pistol"].src = "images/cop_pistol.png";
 	img["cop_shotgun"].src = "images/cop_shotgun.png";
 	img["target"].src = "images/target.png";
@@ -237,7 +241,7 @@ $(document).ready(function(){
 			x = Math.floor(x/tileSize);
 			y = Math.floor(y/tileSize);
 
-			if (selectedTerrainKey != "%" || selectedTerrainKey != "[" || selectedTerrainKey != "]" || selectedTerrainKey != "!") {
+			if (selectedTerrainKey != "%" || selectedTerrainKey != "[" || selectedTerrainKey != "]"|| selectedTerrainKey != "(" || selectedTerrainKey != "!") {
 				ctx.drawImage(img[selectedTerrainKey], x*tileSize, y*tileSize, tileSize, tileSize);
 			} else {
 				ctx.drawImage(img[selectedTerrainKey], x*tileSize, y*tileSize-tileSize, tileSize, tileSize*2);
@@ -505,7 +509,7 @@ $(document).ready(function(){
 
 			for (var i = 0; i < nY; i++) {
 				for (var k = 0; k < nX; k++) {
-					if (tiles[i][k] == "%" || tiles[i][k] == "["  || tiles[i][k] == "]" || tiles[i][k] == "!") {
+					if (tiles[i][k] == "%" || tiles[i][k] == "["  || tiles[i][k] == "]" || tiles[i][k] == "(" || tiles[i][k] == "!") {
 						ctx.drawImage(img[tiles[i][k]], k*tileSize, i*tileSize-tileSize, tileSize, tileSize*2);
 					} else if (tiles[i][k] != "0") {
 						ctx.drawImage(img[tiles[i][k]], k*tileSize, i*tileSize, tileSize, tileSize);
