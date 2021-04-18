@@ -10,3 +10,24 @@ Canvas
 entities placmeent
 export 
 import
+
+
+vide
+floor
+top
+top1
+top2
+top3
+top4
+
+
+
+VOID - 0
+FLOOR1 - #
+FLOOR2 - $
+WALLTOP 1 - 1
+WALLTOP 5 - 5
+WALLSIDE 1 - 6
+WALLSIDE 4 - 9
+WALLSIDE 5 - A
+WALLSIDE 30 - Z

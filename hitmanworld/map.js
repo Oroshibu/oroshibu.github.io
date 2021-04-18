@@ -22,7 +22,7 @@ $(document).ready(function(){
 	}
 	for (var i = 0; i < nY; i++) {
 		for (var k = 0; k < nX; k++) {
-			tiles[i][k] = "A";
+			tiles[i][k] = "0";
 		}
 	}
 
@@ -36,36 +36,118 @@ $(document).ready(function(){
 
 	var img = new Array(2);
 	img = {};
-	img["A"] = new Image();
-	img["A"].src = "images/void.png";
-	img["B"] = new Image();
-	img["B"].src = "images/floor.png";
-	img["C"] = new Image();
-	img["C"].src = "images/walltop.png";
-	img["D"] = new Image();
-	img["D"].src = "images/walltop.png";
-	img["E"] = new Image();
-	img["E"].src = "images/walltop.png";
-	img["F"] = new Image();
-	img["F"].src = "images/walltop.png";
-	img["G"] = new Image();
-	img["G"].src = "images/walltop.png";
+	img["0"] = new Image();
+	img["#"] = new Image();
+	img["$"] = new Image();
+	img["1"] = new Image();
+	img["2"] = new Image();
 	img["3"] = new Image();
-	img["3"].src = "images/wallbot.png";
 	img["4"] = new Image();
-	img["4"].src = "images/wallbot1.png";
 	img["5"] = new Image();
-	img["5"].src = "images/wallbot2.png";
 	img["6"] = new Image();
-	img["6"].src = "images/wallbot3.png";
 	img["7"] = new Image();
-	img["7"].src = "images/wallbot4.png";
+	img["8"] = new Image();
+	img["9"] = new Image();
+	img["A"] = new Image();
+	img["B"] = new Image();
+	img["C"] = new Image();
+	img["D"] = new Image();
+	img["E"] = new Image();
+	img["F"] = new Image();
+	img["G"] = new Image();
+	img["H"] = new Image();
+	img["I"] = new Image();
+	img["J"] = new Image();
+	img["K"] = new Image();
+	img["L"] = new Image();
+	img["M"] = new Image();
+	img["N"] = new Image();
+	img["O"] = new Image();
+	img["P"] = new Image();
+	img["Q"] = new Image();
+	img["R"] = new Image();
+	img["S"] = new Image();
+	img["T"] = new Image();
+	img["U"] = new Image();
+	img["V"] = new Image();
+	img["W"] = new Image();
+	img["X"] = new Image();
+	img["Y"] = new Image();
+	img["Z"] = new Image();
+
+	img["0"].src = "images/void.png";
+	img["#"].src = "images/floor1.png";
+	img["$"].src = "images/floor2.png";
+	img["1"].src = "images/walltop1.png";
+	img["2"].src = "images/walltop2.png";
+	img["3"].src = "images/walltop3.png";
+	img["4"].src = "images/walltop4.png";
+	img["5"].src = "images/walltop5.png";
+	img["6"].src = "images/wallside1.png";
+	img["7"].src = "images/wallside2.png";
+	img["8"].src = "images/wallside3.png";
+	img["9"].src = "images/wallside4.png";
+	img["A"].src = "images/wallside5.png";
+	img["B"].src = "images/wallside6.png";
+	img["C"].src = "images/wallside7.png";
+	img["D"].src = "images/wallside8.png";
+	img["E"].src = "images/wallside9.png";
+	img["F"].src = "images/wallside10.png";
+	img["G"].src = "images/wallside11.png";
+	img["H"].src = "images/wallside12.png";
+	img["I"].src = "images/wallside13.png";
+	img["J"].src = "images/wallside14.png";
+	img["K"].src = "images/wallside15.png";
+	img["L"].src = "images/wallside16.png";
+	img["M"].src = "images/wallside17.png";
+	img["N"].src = "images/wallside18.png";
+	img["O"].src = "images/wallside19.png";
+	img["P"].src = "images/wallside20.png";
+	img["Q"].src = "images/wallside21.png";
+	img["R"].src = "images/wallside22.png";
+	img["S"].src = "images/wallside23.png";
+	img["T"].src = "images/wallside24.png";
+	img["U"].src = "images/wallside25.png";
+	img["V"].src = "images/wallside26.png";
+	img["W"].src = "images/wallside27.png";
+	img["X"].src = "images/wallside28.png";
+	img["Y"].src = "images/wallside29.png";
+	img["Z"].src = "images/wallside30.png";
+
 	img["eraser"] = new Image();
-	img["eraser"].src = "images/eraser.png";
 	img["player"] = new Image();
-	img["player"].src = "images/player.png";
 	img["chair"] = new Image();
+	img["knife"] = new Image();
+	img["suppressed_pistol"] = new Image();
+	img["pistol"] = new Image();
+	img["shotgun"] = new Image();
+	img["cop_pistol"] = new Image();
+	img["cop_shotgun"] = new Image();
+	img["light64"] = new Image();
+	img["light128"] = new Image();
+	img["light256"] = new Image();
+	img["coneN"] = new Image();
+	img["coneE"] = new Image();
+	img["coneS"] = new Image();
+	img["coneW"] = new Image();
+	img["eraser"].src = "images/eraser.png";
+	img["player"].src = "images/player.png";
 	img["chair"].src = "images/chair.png";
+	img["knife"].src = "images/knife.png";
+	img["suppressed_pistol"].src = "images/suppressed_pistol.png";
+	img["pistol"].src = "images/pistol.png";
+	img["shotgun"].src = "images/shotgun.png";
+	img["cop_pistol"].src = "images/cop_pistol.png";
+	img["cop_shotgun"].src = "images/cop_shotgun.png";
+	img["light64"].src = "images/light.png";
+	img["light64"].src = "images/light.png";
+	img["light128"].src = "images/light.png";
+	img["light256"].src = "images/light.png";
+	img["coneN"].src = "images/coneN.png";
+	img["coneE"].src = "images/coneE.png";
+	img["coneS"].src = "images/coneS.png";
+	img["coneW"].src = "images/coneW.png";
+
 
 	entities = new Array(0);
 
@@ -113,10 +195,19 @@ $(document).ready(function(){
 				tiles[y][x] = selectedTerrainKey;
 			}
 		} else {
-				ctx.drawImage(img[selectedTerrainKey], x-tileSize/2, y-tileSize/2, tileSize, tileSize);
+
+				if (selectedTerrainKey == "light64") {
+						ctx.drawImage(img[selectedTerrainKey], x-tileSize*2, y-tileSize*2, tileSize*4, tileSize*4);
+				} else if (selectedTerrainKey == "light128" || selectedTerrainKey == "coneN" || selectedTerrainKey == "coneE" || selectedTerrainKey == "coneS" || selectedTerrainKey == "coneW") {
+						ctx.drawImage(img[selectedTerrainKey], x-tileSize*4, y-tileSize*4, tileSize*8, tileSize*8);
+				} else if (selectedTerrainKey == "light256") {
+						ctx.drawImage(img[selectedTerrainKey], x-tileSize*8, y-tileSize*8, tileSize*16, tileSize*16);
+				} else {
+					ctx.drawImage(img[selectedTerrainKey], x-tileSize/2, y-tileSize/2, tileSize, tileSize);
+				}
 
 				if (mouseDown == true && selectedTerrainKey == "eraser") {
-					DeleteEntityEntry(x - tileSize/2, y - tileSize/2);
+					DeleteEntityEntry(x, y);
 				}
 		}
 
@@ -141,9 +232,9 @@ $(document).ready(function(){
 			x = e.clientX - rect.left;
 			y = e.clientY - rect.top;
 			if (selectedTerrainKey != "eraser") {
-				CreateEntityEntry(selectedTerrainKey, x - tileSize/2, y - tileSize/2);
+				CreateEntityEntry(selectedTerrainKey, x, y);
 			} else {
-				DeleteEntityEntry(x - tileSize/2, y - tileSize/2);
+				DeleteEntityEntry(x, y);
 			}
 
 			DrawMap();
@@ -207,7 +298,7 @@ $(document).ready(function(){
 	function ResetMap() {
 		for (var i = 0; i < nY; i++) {
 			for (var k = 0; k < nX; k++) {
-				tiles[i][k] = "A";
+				tiles[i][k] = "0";
 			}
 		}
 		entities = [];
@@ -228,7 +319,16 @@ $(document).ready(function(){
 		function DrawEntities() {
 			for (var i = 0; i < entities.length; i++) {
 				//console.log(entities[i][0]);
-				ctx.drawImage(img[entities[i][0]], entities[i][1], entities[i][2], tileSize, tileSize);
+				if (entities[i][0] == "light64") {
+						ctx.drawImage(img[entities[i][0]], entities[i][1]-tileSize*2, entities[i][2]-tileSize*2, tileSize*4, tileSize*4);
+				} else if (entities[i][0] == "light128" || entities[i][0] == "coneN" || entities[i][0] == "coneE" || entities[i][0] == "coneS" || entities[i][0] == "coneW") {
+						ctx.drawImage(img[entities[i][0]], entities[i][1]-tileSize*4, entities[i][2]-tileSize*4, tileSize*8, tileSize*8);
+				} else if (entities[i][0] == "light256") {
+						ctx.drawImage(img[entities[i][0]], entities[i][1]-tileSize*8, entities[i][2]-tileSize*8, tileSize*16, tileSize*16);
+				} else {
+					ctx.drawImage(img[entities[i][0]], entities[i][1]-tileSize/2, entities[i][2]-tileSize/2, tileSize, tileSize);
+				}
+
 			}
 		}
 
@@ -246,12 +346,16 @@ $(document).ready(function(){
 
 			for (var i = 0; i < nY; i++) {
 				for (var k = 0; k < nX; k++) {
-					if (tiles[i][k] != "A") {
+					if (tiles[i][k] != "0") {
 						ctx.drawImage(img[tiles[i][k]], k*tileSize, i*tileSize, tileSize, tileSize);
+					}
+
+					if (tiles[i][k] == "2" || tiles[i][k] == "3" || tiles[i][k] == "4" || tiles[i][k] == "5") {
+						ctx.drawImage(img[tiles[i][k]], k*tileSize, i*tileSize-tileSize, tileSize, tileSize*3);
 					}
 				}
 			}
-
+			/*
 			for (var i = 0; i < nY; i++) {
 				for (var k = 0; k < nX; k++) {
 					if (tiles[i][k] != "A") {
@@ -286,7 +390,7 @@ $(document).ready(function(){
 						}
 					}
 				}
-			}
+			}*/
 			DrawEntities();
 		}
 
