@@ -43,6 +43,8 @@ $(document).ready(function(){
 	img["%"] = new Image();
 	img["#"] = new Image();
 	img["$"] = new Image();
+	img["*"] = new Image();
+	img["+"] = new Image();
 	img["1"] = new Image();
 	img["2"] = new Image();
 	img["3"] = new Image();
@@ -78,11 +80,15 @@ $(document).ready(function(){
 	img["X"] = new Image();
 	img["Y"] = new Image();
 	img["Z"] = new Image();
+	img["["] = new Image();
+	img["]"] = new Image();
 
 	img["0"].src = "images/void.png";
 	img["%"].src = "images/glass.png";
 	img["#"].src = "images/floor1.png";
 	img["$"].src = "images/floor2.png";
+	img["*"].src = "images/floor3.png";
+	img["+"].src = "images/floor4.png";
 	img["1"].src = "images/walltop1.png";
 	img["2"].src = "images/walltop2.png";
 	img["3"].src = "images/walltop3.png";
@@ -118,10 +124,13 @@ $(document).ready(function(){
 	img["X"].src = "images/wallside28.png";
 	img["Y"].src = "images/wallside29.png";
 	img["Z"].src = "images/wallside30.png";
+	img["["].src = "images/red_door.png";
+	img["]"].src = "images/green_door.png";
 
 	img["eraser"] = new Image();
 	img["player"] = new Image();
 	img["chair"] = new Image();
+	img["monitor"] = new Image();
 	img["knife"] = new Image();
 	img["suppressed_pistol"] = new Image();
 	img["pistol"] = new Image();
@@ -133,6 +142,11 @@ $(document).ready(function(){
 	img["edit_nodes"] = new Image();
 	img["node"] = new Image();
 	img["grunt"] = new Image();
+	img["grunt_chair"] = new Image();
+	img["grunt_knife"] = new Image();
+	img["grunt_suppressed_pistol"] = new Image();
+	img["grunt_pistol"] = new Image();
+	img["grunt_shotgun"] = new Image();
 	img["light64"] = new Image();
 	img["light128"] = new Image();
 	img["light256"] = new Image();
@@ -143,6 +157,7 @@ $(document).ready(function(){
 	img["eraser"].src = "images/eraser.png";
 	img["player"].src = "images/player.png";
 	img["chair"].src = "images/chair.png";
+	img["monitor"].src = "images/monitor.png";
 	img["knife"].src = "images/knife.png";
 	img["suppressed_pistol"].src = "images/suppressed_pistol.png";
 	img["pistol"].src = "images/pistol.png";
@@ -154,6 +169,11 @@ $(document).ready(function(){
 	img["edit_nodes"].src = "images/edit_nodes.png";
 	img["node"].src = "images/node.png";
 	img["grunt"].src = "images/grunt.png";
+	img["grunt_chair"].src = "images/grunt_chair.png";
+	img["grunt_knife"].src = "images/grunt_knife.png";
+	img["grunt_suppressed_pistol"].src = "images/grunt_suppressed_pistol.png";
+	img["grunt_pistol"].src = "images/grunt_pistol.png";
+	img["grunt_shotgun"].src = "images/grunt_shotgun.png";
 	img["light64"].src = "images/light.png";
 	img["light64"].src = "images/light.png";
 	img["light128"].src = "images/light.png";
@@ -195,7 +215,7 @@ $(document).ready(function(){
 			x = Math.floor(x/tileSize);
 			y = Math.floor(y/tileSize);
 
-			if (selectedTerrainKey != "%") {
+			if (selectedTerrainKey != "%" || selectedTerrainKey != "[" || selectedTerrainKey != "]") {
 				ctx.drawImage(img[selectedTerrainKey], x*tileSize, y*tileSize, tileSize, tileSize);
 			} else {
 				ctx.drawImage(img[selectedTerrainKey], x*tileSize, y*tileSize-tileSize, tileSize, tileSize*2);
@@ -459,7 +479,7 @@ $(document).ready(function(){
 
 			for (var i = 0; i < nY; i++) {
 				for (var k = 0; k < nX; k++) {
-					if (tiles[i][k] == "%") {
+					if (tiles[i][k] == "%" || tiles[i][k] == "["  || tiles[i][k] == "]") {
 						ctx.drawImage(img[tiles[i][k]], k*tileSize, i*tileSize-tileSize, tileSize, tileSize*2);
 					} else if (tiles[i][k] != "0") {
 						ctx.drawImage(img[tiles[i][k]], k*tileSize, i*tileSize, tileSize, tileSize);
