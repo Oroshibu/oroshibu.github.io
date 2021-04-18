@@ -135,6 +135,8 @@ $(document).ready(function(){
 	img["suppressed_pistol"] = new Image();
 	img["pistol"] = new Image();
 	img["shotgun"] = new Image();
+	img["key_red"] = new Image();
+	img["key_green"] = new Image();
 	img["cop_pistol"] = new Image();
 	img["cop_shotgun"] = new Image();
 	img["target"] = new Image();
@@ -142,6 +144,7 @@ $(document).ready(function(){
 	img["edit_nodes"] = new Image();
 	img["node"] = new Image();
 	img["grunt"] = new Image();
+	img["grunt_monitor"] = new Image();
 	img["grunt_chair"] = new Image();
 	img["grunt_knife"] = new Image();
 	img["grunt_suppressed_pistol"] = new Image();
@@ -162,6 +165,8 @@ $(document).ready(function(){
 	img["suppressed_pistol"].src = "images/suppressed_pistol.png";
 	img["pistol"].src = "images/pistol.png";
 	img["shotgun"].src = "images/shotgun.png";
+	img["key_red"].src = "images/key_red.png";
+	img["key_green"].src = "images/key_green.png";
 	img["cop_pistol"].src = "images/cop_pistol.png";
 	img["cop_shotgun"].src = "images/cop_shotgun.png";
 	img["target"].src = "images/target.png";
@@ -169,6 +174,7 @@ $(document).ready(function(){
 	img["edit_nodes"].src = "images/edit_nodes.png";
 	img["node"].src = "images/node.png";
 	img["grunt"].src = "images/grunt.png";
+	img["grunt_monitor"].src = "images/grunt_monitor.png";
 	img["grunt_chair"].src = "images/grunt_chair.png";
 	img["grunt_knife"].src = "images/grunt_knife.png";
 	img["grunt_suppressed_pistol"].src = "images/grunt_suppressed_pistol.png";
