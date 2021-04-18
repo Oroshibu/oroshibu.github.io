@@ -1,28 +1,5 @@
-canvas
-bouton tjr comme pr gunwyrm
-csv grid = string
-entities = enum(name), posx, posy
-
-
-Canvas
-
-
-entities placmeent
-export 
-import
-
-
-vide
-floor
-top
-top1
-top2
-top3
-top4
-
-
-
 VOID - 0
+SOLID - @
 GLASS - %
 FLOOR1 - #
 FLOOR2 - $

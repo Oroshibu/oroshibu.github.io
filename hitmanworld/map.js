@@ -40,6 +40,7 @@ $(document).ready(function(){
 	var img = new Array(2);
 	img = {};
 	img["0"] = new Image();
+	img["@"] = new Image();
 	img["%"] = new Image();
 	img["#"] = new Image();
 	img["$"] = new Image();
@@ -84,6 +85,7 @@ $(document).ready(function(){
 	img["]"] = new Image();
 
 	img["0"].src = "images/void.png";
+	img["@"].src = "images/solid.png";
 	img["%"].src = "images/glass.png";
 	img["#"].src = "images/floor1.png";
 	img["$"].src = "images/floor2.png";
