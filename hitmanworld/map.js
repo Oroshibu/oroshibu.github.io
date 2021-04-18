@@ -202,6 +202,16 @@ $(document).ready(function(){
         selectedNodeId = -1;
 				selectedNodeEntity = -1;
     }
+
+		if (e.key === "+") {
+				tileSize = 32;
+				DrawMap();
+	 }
+
+	 if (e.key === "-") {
+			 tileSize = 16;
+			 DrawMap();
+	}
 });
 
 	$('#reset').click(function() {
@@ -589,23 +599,28 @@ $(document).ready(function(){
 				}
 			}
 
+			var nodeCount = 0;
 			for (var i = 1; i < textL.length-1; i++) {
 				var entity = textL[i].split(',');
 				entity[1] =  parseFloat(entity[1]);
 				entity[2] =  parseFloat(entity[2]);
 				if (entity[0] == "node") {
 					if (selectedNodeEntity == -1) {
-						selectedNodeEntity = i-2;
+						selectedNodeEntity = i-2-nodeCount;
 						CreateNodeProfile(selectedNodeEntity);
 					} else {
 						AddNode(entity[1], entity[2]);
 					}
+					nodeCount += 1;
 				} else {
 					entities.push(entity);
 					selectedNodeEntity = -1;
 				}
 
 			}
+
+			selectedNodeId = -1;
+			selectedNodeEntity = -1;
 
 			DrawMap();
 
