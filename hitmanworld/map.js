@@ -83,6 +83,7 @@ $(document).ready(function(){
 	img["Z"] = new Image();
 	img["["] = new Image();
 	img["]"] = new Image();
+	img["!"] = new Image();
 
 	img["0"].src = "images/void.png";
 	img["@"].src = "images/solid.png";
@@ -128,6 +129,7 @@ $(document).ready(function(){
 	img["Z"].src = "images/wallside30.png";
 	img["["].src = "images/red_door.png";
 	img["]"].src = "images/green_door.png";
+	img["!"].src = "images/exit_door.png";
 
 	img["eraser"] = new Image();
 	img["player"] = new Image();
@@ -235,7 +237,7 @@ $(document).ready(function(){
 			x = Math.floor(x/tileSize);
 			y = Math.floor(y/tileSize);
 
-			if (selectedTerrainKey != "%" || selectedTerrainKey != "[" || selectedTerrainKey != "]") {
+			if (selectedTerrainKey != "%" || selectedTerrainKey != "[" || selectedTerrainKey != "]" || selectedTerrainKey != "!") {
 				ctx.drawImage(img[selectedTerrainKey], x*tileSize, y*tileSize, tileSize, tileSize);
 			} else {
 				ctx.drawImage(img[selectedTerrainKey], x*tileSize, y*tileSize-tileSize, tileSize, tileSize*2);
@@ -503,7 +505,7 @@ $(document).ready(function(){
 
 			for (var i = 0; i < nY; i++) {
 				for (var k = 0; k < nX; k++) {
-					if (tiles[i][k] == "%" || tiles[i][k] == "["  || tiles[i][k] == "]") {
+					if (tiles[i][k] == "%" || tiles[i][k] == "["  || tiles[i][k] == "]" || tiles[i][k] == "!") {
 						ctx.drawImage(img[tiles[i][k]], k*tileSize, i*tileSize-tileSize, tileSize, tileSize*2);
 					} else if (tiles[i][k] != "0") {
 						ctx.drawImage(img[tiles[i][k]], k*tileSize, i*tileSize, tileSize, tileSize);
