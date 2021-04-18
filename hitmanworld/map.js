@@ -155,6 +155,7 @@ $(document).ready(function(){
 	img["light64"] = new Image();
 	img["light128"] = new Image();
 	img["light256"] = new Image();
+	img["light512"] = new Image();
 	img["coneN"] = new Image();
 	img["coneE"] = new Image();
 	img["coneS"] = new Image();
@@ -186,6 +187,7 @@ $(document).ready(function(){
 	img["light64"].src = "images/light.png";
 	img["light128"].src = "images/light.png";
 	img["light256"].src = "images/light.png";
+	img["light512"].src = "images/light.png";
 	img["coneN"].src = "images/coneN.png";
 	img["coneE"].src = "images/coneE.png";
 	img["coneS"].src = "images/coneS.png";
@@ -268,7 +270,9 @@ $(document).ready(function(){
 						ctx.drawImage(img[selectedTerrainKey], x-tileSize*4, y-tileSize*4, tileSize*8, tileSize*8);
 				} else if (selectedTerrainKey == "light256") {
 						ctx.drawImage(img[selectedTerrainKey], x-tileSize*8, y-tileSize*8, tileSize*16, tileSize*16);
-				} else {
+				} else if (selectedTerrainKey == "light512") {
+						ctx.drawImage(img[selectedTerrainKey], x-tileSize*16, y-tileSize*16, tileSize*32, tileSize*32);
+				}  else {
 					ctx.drawImage(img[selectedTerrainKey], x-tileSize/2, y-tileSize/2, tileSize, tileSize);
 				}
 
@@ -465,6 +469,8 @@ $(document).ready(function(){
 						ctx.drawImage(img[entities[i][0]], entities[i][1]-tileSize*4, entities[i][2]-tileSize*4, tileSize*8, tileSize*8);
 				} else if (entities[i][0] == "light256") {
 						ctx.drawImage(img[entities[i][0]], entities[i][1]-tileSize*8, entities[i][2]-tileSize*8, tileSize*16, tileSize*16);
+				} else if (entities[i][0] == "light512") {
+						ctx.drawImage(img[entities[i][0]], entities[i][1]-tileSize*16, entities[i][2]-tileSize*16, tileSize*32, tileSize*32);
 				} else {
 					if (entities[i].length > 3) {
 						ctx.strokeStyle = "#FF0000";
