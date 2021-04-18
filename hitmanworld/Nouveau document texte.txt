@@ -23,6 +23,7 @@ top4
 
 
 VOID - 0
+GLASS - %
 FLOOR1 - #
 FLOOR2 - $
 WALLTOP 1 - 1

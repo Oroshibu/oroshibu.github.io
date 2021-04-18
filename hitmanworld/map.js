@@ -32,11 +32,14 @@ $(document).ready(function(){
 	var mouseDownX = -1;
 	var mouseDownY = -1;
 
+	var selectedNodeEntity = -1;
+
 	var tileMode = true;
 
 	var img = new Array(2);
 	img = {};
 	img["0"] = new Image();
+	img["%"] = new Image();
 	img["#"] = new Image();
 	img["$"] = new Image();
 	img["1"] = new Image();
@@ -76,6 +79,7 @@ $(document).ready(function(){
 	img["Z"] = new Image();
 
 	img["0"].src = "images/void.png";
+	img["%"].src = "images/glass.png";
 	img["#"].src = "images/floor1.png";
 	img["$"].src = "images/floor2.png";
 	img["1"].src = "images/walltop1.png";
@@ -123,6 +127,10 @@ $(document).ready(function(){
 	img["shotgun"] = new Image();
 	img["cop_pistol"] = new Image();
 	img["cop_shotgun"] = new Image();
+	img["target"] = new Image();
+	img["bystander"] = new Image();
+	img["edit_nodes"] = new Image();
+	img["grunt"] = new Image();
 	img["light64"] = new Image();
 	img["light128"] = new Image();
 	img["light256"] = new Image();
@@ -139,6 +147,10 @@ $(document).ready(function(){
 	img["shotgun"].src = "images/shotgun.png";
 	img["cop_pistol"].src = "images/cop_pistol.png";
 	img["cop_shotgun"].src = "images/cop_shotgun.png";
+	img["target"].src = "images/target.png";
+	img["bystander"].src = "images/bystander.png";
+	img["edit_nodes"].src = "images/edit_nodes.png";
+	img["grunt"].src = "images/grunt.png";
 	img["light64"].src = "images/light.png";
 	img["light64"].src = "images/light.png";
 	img["light128"].src = "images/light.png";
@@ -171,7 +183,11 @@ $(document).ready(function(){
 			x = Math.floor(x/tileSize);
 			y = Math.floor(y/tileSize);
 
-			ctx.drawImage(img[selectedTerrainKey], x*tileSize, y*tileSize, tileSize, tileSize);
+			if (selectedTerrainKey != "%") {
+				ctx.drawImage(img[selectedTerrainKey], x*tileSize, y*tileSize, tileSize, tileSize);
+			} else {
+				ctx.drawImage(img[selectedTerrainKey], x*tileSize, y*tileSize-tileSize, tileSize, tileSize*2);
+			}
 
 			if (mouseDownX != -1) {
 				var distanceX = Math.abs(mouseDownX - x);
@@ -209,6 +225,10 @@ $(document).ready(function(){
 				if (mouseDown == true && selectedTerrainKey == "eraser") {
 					DeleteEntityEntry(x, y);
 				}
+
+				if (mouseDown == true && selectedTerrainKey == "edit_nodes") {
+					SelectEntityNode(x, y);
+				}
 		}
 
 
@@ -231,10 +251,12 @@ $(document).ready(function(){
 		} else {
 			x = e.clientX - rect.left;
 			y = e.clientY - rect.top;
-			if (selectedTerrainKey != "eraser") {
+			if (selectedTerrainKey != "eraser" && selectedTerrainKey != "edit_nodes") {
 				CreateEntityEntry(selectedTerrainKey, x, y);
-			} else {
+			} else if (selectedTerrainKey == "eraser") {
 				DeleteEntityEntry(x, y);
+			} else if (selectedTerrainKey == "edit_nodes") {
+				SelectEntityNode(x, y);
 			}
 
 			DrawMap();
@@ -316,6 +338,22 @@ $(document).ready(function(){
 			}
 		}
 
+		function SelectEntityNode(x, y) {
+			for (var i = 0; i < entities.length; i++) {
+				if (x > entities[i][1] - tileSize/2 && x < entities[i][1] + tileSize/2 && y > entities[i][2] - tileSize/2 && y < entities[i][2] + tileSize/2) {
+					if (entities[i][0].includes("grunt")) {
+						if (entities[i].length <= 3) {
+							CreateNodeProfile(i);
+						}
+					}
+				}
+			}
+		}
+
+		function CreateNodeProfile(n) {
+				var node1 = [entities[i][1], entities[i][0]];
+		}
+
 		function DrawEntities() {
 			for (var i = 0; i < entities.length; i++) {
 				//console.log(entities[i][0]);
@@ -346,7 +384,9 @@ $(document).ready(function(){
 
 			for (var i = 0; i < nY; i++) {
 				for (var k = 0; k < nX; k++) {
-					if (tiles[i][k] != "0") {
+					if (tiles[i][k] == "%") {
+						ctx.drawImage(img[tiles[i][k]], k*tileSize, i*tileSize-tileSize, tileSize, tileSize*2);
+					} else if (tiles[i][k] != "0") {
 						ctx.drawImage(img[tiles[i][k]], k*tileSize, i*tileSize, tileSize, tileSize);
 					}
 
