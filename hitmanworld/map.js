@@ -33,6 +33,7 @@ $(document).ready(function(){
 	var mouseDownY = -1;
 
 	var selectedNodeEntity = -1;
+	var selectedNodeId = -1;
 
 	var tileMode = true;
 
@@ -130,6 +131,7 @@ $(document).ready(function(){
 	img["target"] = new Image();
 	img["bystander"] = new Image();
 	img["edit_nodes"] = new Image();
+	img["node"] = new Image();
 	img["grunt"] = new Image();
 	img["light64"] = new Image();
 	img["light128"] = new Image();
@@ -150,6 +152,7 @@ $(document).ready(function(){
 	img["target"].src = "images/target.png";
 	img["bystander"].src = "images/bystander.png";
 	img["edit_nodes"].src = "images/edit_nodes.png";
+	img["node"].src = "images/node.png";
 	img["grunt"].src = "images/grunt.png";
 	img["light64"].src = "images/light.png";
 	img["light64"].src = "images/light.png";
@@ -161,11 +164,19 @@ $(document).ready(function(){
 	img["coneW"].src = "images/coneW.png";
 
 
+
 	entities = new Array(0);
 
 
 
 	DrawMap();
+
+	$(document).keyup(function(e) {
+     if (e.key === "Escape") { // escape key maps to keycode `27`
+        selectedNodeId = -1;
+				selectedNodeEntity = -1;
+    }
+});
 
 	$('#reset').click(function() {
 		ResetMap();
@@ -173,6 +184,7 @@ $(document).ready(function(){
 	});
 
 	$('#mapCanvas').on('mousemove', function(e){
+		console.log(selectedNodeEntity);
 		rect = canvas.getBoundingClientRect();
 		DrawMap();
 
@@ -231,6 +243,15 @@ $(document).ready(function(){
 				}
 		}
 
+		if (selectedNodeId != -1 && selectedNodeEntity != -1) {
+			ctx.strokeStyle = "#FF0000";
+			ctx.beginPath();
+			ctx.moveTo(entities[selectedNodeEntity][3][selectedNodeId]["x"], entities[selectedNodeEntity][3][selectedNodeId]["y"]);
+			ctx.lineTo(x, y);
+			ctx.lineTo(entities[selectedNodeEntity][3][(selectedNodeId+1)%entities[selectedNodeEntity][3].length]["x"], entities[selectedNodeEntity][3][(selectedNodeId+1)%entities[selectedNodeEntity][3].length]["y"]);
+			ctx.stroke();
+		}
+
 
 	});
 
@@ -256,7 +277,12 @@ $(document).ready(function(){
 			} else if (selectedTerrainKey == "eraser") {
 				DeleteEntityEntry(x, y);
 			} else if (selectedTerrainKey == "edit_nodes") {
-				SelectEntityNode(x, y);
+				if (selectedNodeEntity == -1) {
+					SelectEntityNode(x, y);
+				} else {
+					AddNode(x, y);
+				}
+
 			}
 
 			DrawMap();
@@ -335,12 +361,31 @@ $(document).ready(function(){
 				if (x > entities[i][1] - tileSize/2 && x < entities[i][1] + tileSize/2 && y > entities[i][2] - tileSize/2 && y < entities[i][2] + tileSize/2) {
 						entities.splice(i, 1);
 				}
+				if (entities[i].length > 3) {
+					for (var k = 0; k < entities[i][3].length; k++) {
+						if (x > entities[i][3][k]["x"] - tileSize/2 && x < entities[i][3][k]["x"] + tileSize/2 && y > entities[i][3][k]["y"] - tileSize/2 && y < entities[i][3][k]["y"] + tileSize/2) {
+							entities[i][3].splice(k, 1);
+						}
+
+					}
+				}
 			}
+			selectedNodeId = -1;
+			selectedNodeEntity = -1;
 		}
 
 		function SelectEntityNode(x, y) {
 			for (var i = 0; i < entities.length; i++) {
-				if (x > entities[i][1] - tileSize/2 && x < entities[i][1] + tileSize/2 && y > entities[i][2] - tileSize/2 && y < entities[i][2] + tileSize/2) {
+				if (entities[i].length > 3) {
+					for (var k = 0; k < entities[i][3].length; k++) {
+						if (x > entities[i][3][k]["x"] - tileSize/2 && x < entities[i][3][k]["x"] + tileSize/2 && y > entities[i][3][k]["y"] - tileSize/2 && y < entities[i][3][k]["y"] + tileSize/2) {
+							selectedNodeEntity = i;
+							selectedNodeId = k;
+						}
+
+					}
+				}
+				else if (x > entities[i][1] - tileSize/2 && x < entities[i][1] + tileSize/2 && y > entities[i][2] - tileSize/2 && y < entities[i][2] + tileSize/2) {
 					if (entities[i][0].includes("grunt")) {
 						if (entities[i].length <= 3) {
 							CreateNodeProfile(i);
@@ -351,7 +396,26 @@ $(document).ready(function(){
 		}
 
 		function CreateNodeProfile(n) {
-				var node1 = [entities[i][1], entities[i][0]];
+			selectedNodeEntity = n;
+			selectedNodeId = 0;
+			var node = {};
+			node["x"] = entities[n][1];
+			node["y"] = entities[n][2];
+			var newArray = new Array(0);
+			newArray.push(node);
+			entities[n].push(newArray);
+		}
+
+		Array.prototype.insert = function ( index, item ) {
+		    this.splice( index, 0, item );
+		};
+
+		function AddNode(x, y) {
+			var node = {};
+			node["x"] = x;
+			node["y"] = y;
+			entities[selectedNodeEntity][3].insert(selectedNodeId+1, node);
+			selectedNodeId += 1;
 		}
 
 		function DrawEntities() {
@@ -364,6 +428,17 @@ $(document).ready(function(){
 				} else if (entities[i][0] == "light256") {
 						ctx.drawImage(img[entities[i][0]], entities[i][1]-tileSize*8, entities[i][2]-tileSize*8, tileSize*16, tileSize*16);
 				} else {
+					if (entities[i].length > 3) {
+						ctx.strokeStyle = "#FF0000";
+						ctx.beginPath();
+						ctx.moveTo(entities[i][3][0]["x"], entities[i][3][0]["y"]);
+						for (var k = 0; k < entities[i][3].length; k++) {
+							ctx.drawImage(img["node"], entities[i][3][k]["x"]-tileSize/2, entities[i][3][k]["y"]-tileSize/2, tileSize, tileSize);
+							ctx.lineTo(entities[i][3][(k+1)%entities[i][3].length]["x"], entities[i][3][(k+1)%entities[i][3].length]["y"]);
+						}
+
+						ctx.stroke();
+					}
 					ctx.drawImage(img[entities[i][0]], entities[i][1]-tileSize/2, entities[i][2]-tileSize/2, tileSize, tileSize);
 				}
 
@@ -449,8 +524,15 @@ $(document).ready(function(){
 
 			for (var i = 0; i < entities.length; i++) {
 				stringu += entities[i][0] + ",";
-				stringu += entities[i][1].toString() + ",";
-				stringu += entities[i][2].toString() + "\n";
+				stringu += Math.round(entities[i][1]).toString() + ",";
+				stringu += Math.round(entities[i][2]).toString() + "\n";
+				if (entities[i].length > 3) {
+					for (var k = 0; k < entities[i][3].length; k++) {
+						stringu += "node,";
+						stringu += Math.round(entities[i][3][k]["x"]).toString() + ",";
+						stringu += Math.round(entities[i][3][k]["y"]).toString() + "\n";
+					}
+				}
 			}
 
 			download(stringu, fname, "application/csv")
@@ -485,7 +567,18 @@ $(document).ready(function(){
 				var entity = textL[i].split(',');
 				entity[1] =  parseFloat(entity[1]);
 				entity[2] =  parseFloat(entity[2]);
-				entities.push(entity);
+				if (entity[0] == "node") {
+					if (selectedNodeEntity == -1) {
+						selectedNodeEntity = i-2;
+						CreateNodeProfile(selectedNodeEntity);
+					} else {
+						AddNode(entity[1], entity[2]);
+					}
+				} else {
+					entities.push(entity);
+					selectedNodeEntity = -1;
+				}
+
 			}
 
 			DrawMap();
