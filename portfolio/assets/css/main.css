@@ -239,6 +239,21 @@ input, select, textarea {
 		text-align: right;
 	}
 
+	.floating {
+	    animation-name: floating;
+	    animation-duration: 7s;
+	    animation-iteration-count: infinite;
+	    animation-timing-function: ease-in-out;
+	    /*margin-left: 30px;
+	    margin-top: 5px;*/
+	}
+
+	@keyframes floating {
+	    0% { transform: translate(0,  0px) rotate(-2deg);}
+	    50%  { transform: translate(0, 10px) rotate(2deg); }
+	    100%   { transform: translate(0, -0px) rotate(-2deg);}
+	}
+
 /* Container */
 
 	.container {
@@ -2913,11 +2928,12 @@ input, select, textarea {
 /* Header */
 
 	#header {
-		padding: 9em 0 9em 0 ;
+		padding: 4em 0 11em 0 ;
 		background-color: #4686a0;
 		color: rgba(255, 255, 255, 0.75);
 		background-attachment: fixed,							fixed,							fixed;
-		background-image: url("images/overlay2.png"), url("images/overlay3.svg"), linear-gradient(45deg, #9dc66b 5%, #4fa49a 30%, #4361c2);
+		/*background-image: url("images/overlay2.png"), linear-gradient(45deg, #13151D 5%, #13151D 30%, #263e42);*/
+		background-image: linear-gradient(45deg, #13151D 30%, #263e42);*/
 		background-position: top left,						center center,					center center;
 		background-size: auto,							cover,							cover;
 		overflow: hidden;
