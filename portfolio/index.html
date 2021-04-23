@@ -16,6 +16,13 @@
 	</head>
 	<body class="is-preload">
 
+		<!-- The Modal -->
+			<span class="closePic" style="z-index: 200;">
+				<div id="myModal" class="modal">
+				<span class="close">&times;</span>
+				<img class="modal-content" id="img01" style="border-radius: 40px;">
+				</div>
+			</span>
 		<!-- Header -->
 			<section id="header">
 				<div class="inner">
@@ -41,7 +48,7 @@
 			</section>
 
 		<!-- One -->
-			<section id="one" class="main style1">
+			<section id="one" class="main style1" style="padding-bottom:1em; padding-top:4em;">
 				<div class="container">
 					<div class="row gtr-150">
 						<div class="col-6 col-12-medium">
@@ -49,8 +56,11 @@
 								<h2 style="font-size: 1.5em;"><strong style="font-size: 1.2em;">atoNement</strong> - Team Bugulon</h2>
 								<h2 style="font-size: .9em; margin-left:0.5em; margin-top:.5em;"><img style="height: .7em;" src="images/gamemaker.png"/> Game Maker Studio 2</h2>
 							</header>
-							<p>The Lunar Nobles have taken the light. infiltrate their facility and take back what is rightfully yours. Use the dark to sneak around and take out your target, though be careful, the cops are right on your tail.</p>
-							<p style="font-size: 1.2em; margin-bottom:1em;"><strong>Roles :</strong>
+							<p>The Lunar Nobles have taken the light. infiltrate their facility and take back what is rightfully yours. Use the dark to sneak around and take out your target, though be careful, the cops are right on your tail.
+								<br>
+								<br>Made in 48 hours for the GM48 Game Jam.
+							</p>
+							<p style="font-size: 1.2em; margin-bottom:1em;"><strong>Roles on the project</strong>
 								<ul>
 							   <li>Programming (HTML & JavaScript Dev Tool (Map editor))</li>
 							   <li>Level Design</li>
@@ -59,8 +69,17 @@
 						</div>
 						<div class="col-6 col-12-medium imp-medium">
 							<span class="image fit">
-								<iframe style="border-radius: 10px;" width="560" height="315" src="https://www.youtube.com/embed/prSWqxSTtMo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+								<iframe style="border-radius: 10px;" width="600" height="338" src="https://www.youtube.com/embed/prSWqxSTtMo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 							</span>
+
+							<span class="image">
+								<table width="600">
+									<tr style="background-color:#ffffff;">
+									<td><img id="modalImg" class="modalImgClass" width="100%" src="images/atonement_1.png"></td>
+									<td><img id="modalImg" class="modalImgClass" width="100%" src="images/atonement_2.png"></td>
+									<td><img id="modalImg" class="modalImgClass" width="100%" src="images/atonement_3.png"></td>
+									</table>
+								</span>
 						</div>
 					</div>
 				</div>
@@ -91,11 +110,8 @@
 		<!-- Footer -->
 			<section id="footer">
 				<ul class="icons">
-					<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
-					<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
-					<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-					<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-					<li><a href="#" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
+					<li><a href="https://twitter.com/oroshibu" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+					<li><a href="https://soundcloud.com/oroshibu" class="icon brands alt fa-soundcloud"><span class="label">Twitter</span></a></li>
 				</ul>
 				<!--<ul class="copyright">
 					<li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
@@ -109,6 +125,6 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-
+			<script src="assets/js/modal.js"></script>
 	</body>
 </html>
