@@ -103,7 +103,7 @@ $(document).ready(function(){
 	img["platform_moving"] = new Image();
   img["platform_rotating_clock"] = new Image();
   img["platform_rotating_counter"] = new Image();
-
+  img["mushroom"] = new Image();
 
 	img["eraser"].src = "images/eraser.png";
 	img["edit_nodes"].src = "images/edit_nodes.png";
@@ -116,7 +116,7 @@ $(document).ready(function(){
   img["platform_moving"].src = "images/platform_moving.png";
   img["platform_rotating_clock"].src = "images/platform_rotating_clock.png";
   img["platform_rotating_counter"].src = "images/platform_rotating_counter.png";
-
+  img["mushroom"].src = "images/mushroom.png";
 
 
 
@@ -321,7 +321,7 @@ $(document).ready(function(){
 
 		function CreateEntityEntry(name, x, y) {
 
-			if (name.includes("platform")) {
+			if (name.includes("platform") || name.includes("mushroom")) {
 				entities.push([name, x, y, [1,1]])
 			} else {
 				entities.push([name, x, y])
@@ -401,7 +401,7 @@ $(document).ready(function(){
 		function DrawEntities() {
 			for (var i = 0; i < entities.length; i++) {
 				//console.log(entities[i][0]);
-				if (entities[i][0].includes("platform")) {
+				if (entities[i][0].includes("platform") || entities[i][0].includes("mushroom")) {
 						ctx.drawImage(img[entities[i][0]], entities[i][1]-tileSize*entities[i][3][0]/2, entities[i][2]-tileSize*entities[i][3][1]/2, tileSize*entities[i][3][0], tileSize*entities[i][3][1]);
 				} else if (entities[i][0] == "light64") {
 						ctx.drawImage(img[entities[i][0]], entities[i][1]-tileSize*2, entities[i][2]-tileSize*2, tileSize*4, tileSize*4);
@@ -533,7 +533,7 @@ $(document).ready(function(){
 				var entity = textL[i].split(',');
 				entity[1] =  parseFloat(entity[1])*tileSize;
 				entity[2] =  parseFloat(entity[2])*tileSize;
-				if (entity[0].includes("platform")) {
+				if (entity[0].includes("platform") || entity[0].includes("mushroom")) {
 					entity[3] = [parseFloat(entity[3]),  parseFloat(entity[4])];
 					entity.splice(4, 1);
 				} else {
