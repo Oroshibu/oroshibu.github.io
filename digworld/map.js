@@ -213,7 +213,7 @@ $(document).ready(function(){
 				tiles[y][x] = selectedTerrainKey;
 			}
 		} else {
-			if (selectedTerrainKey.includes("platform") || selectedTerrainKey.includes("edit") || selectedTerrainKey.includes("eraser")) {
+			if (selectedTerrainKey.includes("platform") || selectedTerrainKey.includes("edit") || selectedTerrainKey.includes("eraser") || selectedTerrainKey.includes("mushroom")) {
 				x = (Math.floor((x*2)/tileSize)/2)*tileSize+tileSize/2;
 				y = (Math.floor((y*2)/tileSize)/2)*tileSize+tileSize/2;
 			} else {
@@ -280,7 +280,7 @@ $(document).ready(function(){
 		} else {
 			x = e.clientX - rect.left;
 			y = e.clientY - rect.top;
-			if (selectedTerrainKey.includes("platform") || selectedTerrainKey.includes("edit") || selectedTerrainKey.includes("eraser")) {
+			if (selectedTerrainKey.includes("platform") || selectedTerrainKey.includes("edit") || selectedTerrainKey.includes("eraser") || selectedTerrainKey.includes("mushroom")) {
 				x = (Math.floor((x*2)/tileSize)/2)*tileSize+tileSize/2;
 				y = (Math.floor((y*2)/tileSize)/2)*tileSize+tileSize/2;
 			} else {
@@ -444,7 +444,7 @@ $(document).ready(function(){
 
 		function EditWidth(x, y) {
 			for (var i = 0; i < entities.length; i++) {
-				if (entities[i][0].includes("platform")) {
+				if (entities[i][0].includes("platform") || entities[i][0].includes("mushroom")) {
 					if (x > entities[i][1] - tileSize/2 && x < entities[i][1] + tileSize/2 && y > entities[i][2] - tileSize/2 && y < entities[i][2] + tileSize/2) {
 						var newWidth = prompt("Enter Platform Width (in tiles)", entities[i][3][0]);
 						if (!(newWidth == null)) {
@@ -558,13 +558,16 @@ $(document).ready(function(){
 			ctx.clearRect(0, 0, canvas.width, canvas.height);
 			ctx.fillStyle = 'rgb(0, 0, 0)';
 			ctx.fillRect(0, 0, cropX, cropY);
-			ctx.fillStyle = 'rgb(10, 10, 10)';
+			ctx.fillStyle = 'rgb(15, 15, 15)';
 			for (var i = 0; i < nY; i++) {
 				ctx.fillRect(0, i*tileSize, canvas.width, 1);
 			}
 			for (var i = 0; i < nX; i++) {
 				ctx.fillRect(i*tileSize, 0, 1, canvas.height);
 			}
+
+			ctx.strokeStyle = "green";
+			ctx.strokeRect(0, 0, 400, 300);
 
 			for (var i = 0; i < nY; i++) {
 				for (var k = 0; k < nX; k++) {
