@@ -716,6 +716,72 @@ $(document).ready(function(){
 				}
 		}
 
+		document.getElementById("import2").onchange = function(event)
+		{
+			var input = event.target;
+
+			var reader = new FileReader();
+			reader.onload = function(){
+				var text = reader.result;
+				loadLevel2(text);
+				//var node = document.getElementById('output');
+				//node.innerText = text;
+				//console.log(reader.result.substring(0, 200));
+			};
+			reader.readAsText(input.files[0]);
+		};
+
+		function loadLevel2(text) {
+			ResetMap();
+			var textL = text.split('\n');
+			var gridL = textL[0].split(':');
+			for (var i = 0; i < 64; i++) {
+				for (var k = 0; k < 64; k++) {
+					tiles[i][k] = gridL[i][k];
+				}
+			}
+
+			var nodeCount = 0;
+			var seen_rotate = false;
+			for (var i = 1; i < textL.length-1; i++) {
+				var entity = textL[i].split(',');
+				entity[1] =  parseFloat(entity[1])*tileSize;
+				entity[2] =  parseFloat(entity[2])*tileSize;
+				if (entity[0].includes("platform") || entity[0].includes("mushroom") || entity[0].includes("fuzzy")) {
+					entity[3] = [parseFloat(entity[3]),  parseFloat(entity[4])];
+					entity.splice(4, 1);
+				} else {
+					entity.splice(3, 2);
+				}
+				if (entity[0].includes("rotating")) {
+					seen_rotate = true;
+				}
+				if (entity[0] == "node") {
+					if (selectedNodeEntity == -1) {
+						selectedNodeEntity = i-2-nodeCount;
+						CreateNodeProfile(selectedNodeEntity);
+						if (seen_rotate == true) {
+							AddNode(entity[1], entity[2]);
+							seen_rotate = false;
+						}
+					} else {
+						AddNode(entity[1], entity[2]);
+					}
+					nodeCount += 1;
+				} else {
+					entities.push(entity);
+					selectedNodeEntity = -1;
+				}
+
+			}
+
+			selectedNodeId = -1;
+			selectedNodeEntity = -1;
+
+			DrawMap();
+
+		}
+
 
 
 
