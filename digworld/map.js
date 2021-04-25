@@ -91,7 +91,12 @@ $(document).ready(function(){
 	img["2"].src = "images/sand.png";
 	img["3"].src = "images/bridge.png";
 	img["4"].src = "images/spike.png";
+	img["5"].src = "images/lock_red.png";
+	img["6"].src = "images/lock_green.png";
+	img["7"].src = "images/lock_blue.png";
 
+	img["crop_topleft"] = new Image();
+	img["crop_bottomright"] = new Image();
 	img["eraser"] = new Image();
 	img["edit_nodes"] = new Image();
 	img["edit_width"] = new Image();
@@ -107,7 +112,21 @@ $(document).ready(function(){
   img["platform_rotating_counter"] = new Image();
   img["mushroom"] = new Image();
   img["flag"] = new Image();
+	img["key_red"] = new Image();
+	img["key_green"] = new Image();
+	img["key_blue"] = new Image();
+	img["scarab"] = new Image();
+	img["fuzzy"] = new Image();
+	img["fuzzy_rotating_clock"] = new Image();
+	img["fuzzy_rotating_counter"] = new Image();
+	img["exit"] = new Image();
+	img["horzbug"] = new Image();
+	img["vertbug"] = new Image();
+	img["diamond"] = new Image();
+	img["virus"] = new Image();
 
+	img["crop_topleft"].src = "images/crop_topleft.png";
+	img["crop_bottomright"].src = "images/crop_bottomright.png";
 	img["eraser"].src = "images/eraser.png";
 	img["edit_nodes"].src = "images/edit_nodes.png";
 	img["edit_width"].src = "images/edit_width.png";
@@ -123,7 +142,18 @@ $(document).ready(function(){
   img["platform_rotating_counter"].src = "images/platform_rotating_counter.png";
   img["mushroom"].src = "images/mushroom.png";
   img["flag"].src = "images/flag.png";
-
+  img["key_red"].src = "images/key_red.png";
+  img["key_green"].src = "images/key_green.png";
+  img["key_blue"].src = "images/key_blue.png";
+	img["scarab"].src = "images/scarab.png";
+  img["fuzzy"].src = "images/fuzzy.png";
+	img["fuzzy_rotating_clock"].src = "images/fuzzy_rotating_clock.png";
+	img["fuzzy_rotating_counter"].src = "images/fuzzy_rotating_counter.png";
+	img["exit"].src = "images/exit.png";
+	img["horzbug"].src = "images/horzbug.png";
+	img["vertbug"].src = "images/vertbug.png";
+	img["diamond"].src = "images/diamond.png";
+	img["virus"].src = "images/virus.png";
 
 	entities = new Array(0);
 
@@ -183,8 +213,14 @@ $(document).ready(function(){
 				tiles[y][x] = selectedTerrainKey;
 			}
 		} else {
-			x = Math.floor(x/tileSize)*tileSize+tileSize/2;
-			y = Math.floor(y/tileSize)*tileSize+tileSize/2;
+			if (selectedTerrainKey.includes("platform") || selectedTerrainKey.includes("edit") || selectedTerrainKey.includes("eraser")) {
+				x = (Math.floor((x*2)/tileSize)/2)*tileSize+tileSize/2;
+				y = (Math.floor((y*2)/tileSize)/2)*tileSize+tileSize/2;
+			} else {
+				x = Math.floor(x/tileSize)*tileSize+tileSize/2;
+				y = Math.floor(y/tileSize)*tileSize+tileSize/2;
+			}
+
 
 				if (selectedTerrainKey == "light64") {
 						ctx.drawImage(img[selectedTerrainKey], x-tileSize*2, y-tileSize*2, tileSize*4, tileSize*4);
@@ -244,14 +280,21 @@ $(document).ready(function(){
 		} else {
 			x = e.clientX - rect.left;
 			y = e.clientY - rect.top;
-			x = Math.floor(x/tileSize)*tileSize+tileSize/2;
-			y = Math.floor(y/tileSize)*tileSize+tileSize/2;
-			if (selectedTerrainKey != "eraser" && selectedTerrainKey != "edit_nodes" && selectedTerrainKey != "edit_width" && selectedTerrainKey != "edit_height") {
+			if (selectedTerrainKey.includes("platform") || selectedTerrainKey.includes("edit") || selectedTerrainKey.includes("eraser")) {
+				x = (Math.floor((x*2)/tileSize)/2)*tileSize+tileSize/2;
+				y = (Math.floor((y*2)/tileSize)/2)*tileSize+tileSize/2;
+			} else {
+				x = Math.floor(x/tileSize)*tileSize+tileSize/2;
+				y = Math.floor(y/tileSize)*tileSize+tileSize/2;
+			}
+			if (selectedTerrainKey != "eraser" && selectedTerrainKey != "edit_nodes" && selectedTerrainKey != "edit_width" && selectedTerrainKey != "edit_height"  && selectedTerrainKey != "crop_topleft") {
 				CreateEntityEntry(selectedTerrainKey, x, y);
 			} else if (selectedTerrainKey == "eraser") {
 				DeleteEntityEntry(x, y);
 			} else if (selectedTerrainKey == "edit_width") {
 				EditWidth(x, y);
+			} else if (selectedTerrainKey == "crop_topleft") {
+				CropTop(x, y);
 			} else if (selectedTerrainKey == "edit_height") {
 				EditHeight(x, y);
 			} else if (selectedTerrainKey == "edit_nodes") {
@@ -332,10 +375,18 @@ $(document).ready(function(){
 
 		function CreateEntityEntry(name, x, y) {
 
-			if (name.includes("platform") || name.includes("mushroom")) {
-				entities.push([name, x, y, [1,1]])
+			if (name.includes("platform") || name.includes("mushroom") || name.includes("fuzzy")) {
+				entities.push([name, x, y, [1,1]]);
 			} else {
-				entities.push([name, x, y])
+				entities.push([name, x, y]);
+			}
+
+			if (name == "crop_bottomright") {
+				for (var i = 0; i < entities.length; i++) {
+					if (entities[i][0] == "crop_bottomright" && entities[i][1]!=x && entities[i][2]!=y) {
+						DeleteEntityEntry(entities[i][1], entities[i][2]);
+					}
+				}
 			}
 		}
 
@@ -357,14 +408,51 @@ $(document).ready(function(){
 			selectedNodeEntity = -1;
 		}
 
+
+		function CropTop(x, y) {
+			console.log(x,y);
+			x = Math.floor(x/tileSize);
+			y = Math.floor(y/tileSize);
+			for (var i = 0; i < nY-y; i++) {
+				for (var k = 0; k < nX-x; k++) {
+						tiles[i][k] = tiles[i+y][k+x];
+				}
+			}
+			for (var i = nY-y; i < nY; i++) {
+				for (var k = nX-x; k < nX; k++) {
+						tiles[i][k] = 0;
+				}
+			}
+
+			for (var i = 0; i < entities.length; i++) {
+				entities[i][1] -= x*tileSize;
+				entities[i][2] -= y*tileSize;
+				if (entities[i].length > 4) {
+						for (var k = 0; k < entities[i][4].length; k++) {
+							entities[i][4][k]["x"] -= x*tileSize;
+							entities[i][4][k]["y"] -= y*tileSize;
+						}
+				}
+			}
+			for (var i = 0; i < entities.length; i++) {
+				if (entities[i][1] < 0 || entities[i][2] < 0) {
+					DeleteEntityEntry(entities[i][1], entities[i][2]);
+				}
+			}
+		}
+
+
 		function EditWidth(x, y) {
 			for (var i = 0; i < entities.length; i++) {
-				if (x > entities[i][1] - tileSize/2 && x < entities[i][1] + tileSize/2 && y > entities[i][2] - tileSize/2 && y < entities[i][2] + tileSize/2) {
-					var newWidth = prompt("Enter Platform Width (in tiles)", entities[i][3][0]);
-					if (!(newWidth == null)) {
-						entities[i][3][0] = newWidth;
+				if (entities[i][0].includes("platform")) {
+					if (x > entities[i][1] - tileSize/2 && x < entities[i][1] + tileSize/2 && y > entities[i][2] - tileSize/2 && y < entities[i][2] + tileSize/2) {
+						var newWidth = prompt("Enter Platform Width (in tiles)", entities[i][3][0]);
+						if (!(newWidth == null)) {
+							entities[i][3][0] = newWidth;
+						}
 					}
 				}
+
 			}
 		}
 
@@ -394,7 +482,7 @@ $(document).ready(function(){
 					}
 				}
 				else if (x > entities[i][1] - tileSize/2 && x < entities[i][1] + tileSize/2 && y > entities[i][2] - tileSize/2 && y < entities[i][2] + tileSize/2) {
-					if (entities[i][0].includes("platform")) {
+					if (entities[i][0].includes("platform") || entities[i][0].includes("fuzzy")) {
 						if (entities[i].length <= 4) {
 							CreateNodeProfile(i);
 						}
@@ -431,8 +519,8 @@ $(document).ready(function(){
 				//console.log(entities[i][0]);
 				if (entities[i][0].includes("platform") || entities[i][0].includes("mushroom")) {
 						ctx.drawImage(img[entities[i][0]], entities[i][1]-tileSize*entities[i][3][0]/2, entities[i][2]-tileSize*entities[i][3][1]/2, tileSize*entities[i][3][0], tileSize*entities[i][3][1]);
-				} else if (entities[i][0] == "light64") {
-						ctx.drawImage(img[entities[i][0]], entities[i][1]-tileSize*2, entities[i][2]-tileSize*2, tileSize*4, tileSize*4);
+				} else if (entities[i][0] == "exit") {
+						ctx.drawImage(img[entities[i][0]], entities[i][1]-tileSize/2, entities[i][2]-tileSize/2, tileSize*2, tileSize*2);
 				} else if (entities[i][0] == "light128" || entities[i][0] == "coneN" || entities[i][0] == "coneE" || entities[i][0] == "coneS" || entities[i][0] == "coneW") {
 						ctx.drawImage(img[entities[i][0]], entities[i][1]-tileSize*4, entities[i][2]-tileSize*4, tileSize*8, tileSize*8);
 				} else if (entities[i][0] == "light256") {
@@ -459,9 +547,17 @@ $(document).ready(function(){
 		}
 
 		function DrawMap() {
+			var cropX = canvas.width;
+			var cropY = canvas.height;
+			for (var i = 0; i < entities.length; i++) {
+				if (entities[i][0] == "crop_bottomright") {
+						cropX = entities[i][1] + tileSize/2;
+						cropY = entities[i][2] + tileSize/2;
+				}
+			}
 			ctx.clearRect(0, 0, canvas.width, canvas.height);
 			ctx.fillStyle = 'rgb(0, 0, 0)';
-			ctx.fillRect(0, 0, canvas.width, canvas.height);
+			ctx.fillRect(0, 0, cropX, cropY);
 			ctx.fillStyle = 'rgb(10, 10, 10)';
 			for (var i = 0; i < nY; i++) {
 				ctx.fillRect(0, i*tileSize, canvas.width, 1);
@@ -501,8 +597,8 @@ $(document).ready(function(){
 
 			for (var i = 0; i < entities.length; i++) {
 				stringu += entities[i][0] + ",";
-				stringu += (Math.floor(entities[i][1]/tileSize)+0.5).toString() + ",";
-				stringu += (Math.floor(entities[i][2]/tileSize)+0.5).toString() + ",";
+				stringu += (Math.floor(2*entities[i][1]/tileSize)/2).toString() + ",";
+				stringu += (Math.floor(2*entities[i][2]/tileSize)/2).toString() + ",";
 				console.log(entities[i]);
 				if (entities[i].length > 3) {
 					stringu += entities[i][3][0].toString() + ",";
@@ -512,15 +608,15 @@ $(document).ready(function(){
 				}
 				stringu += "\n";
 				if (entities[i].length > 4) {
-					if (entities[i][0].includes("platform_rotating")) {
+					if (entities[i][0].includes("rotating")) {
 						stringu += "node,";
-						stringu += (Math.floor(entities[i][4][1]["x"]/tileSize)+0.5).toString() + ",";
-						stringu += (Math.floor(entities[i][4][1]["y"]/tileSize)+0.5).toString() + ",,\n";
+						stringu += (Math.floor(2*entities[i][4][1]["x"]/tileSize)/2).toString() + ",";
+						stringu += (Math.floor(2*entities[i][4][1]["y"]/tileSize)/2).toString() + ",,\n";
 					} else {
 						for (var k = 0; k < entities[i][4].length; k++) {
 							stringu += "node,";
-							stringu += (Math.floor(entities[i][4][k]["x"]/tileSize)+0.5).toString() + ",";
-							stringu += (Math.floor(entities[i][4][k]["y"]/tileSize)+0.5).toString() + ",,\n";
+							stringu += (Math.floor(2*entities[i][4][k]["x"]/tileSize)/2).toString() + ",";
+							stringu += (Math.floor(2*entities[i][4][k]["y"]/tileSize)/2).toString() + ",,\n";
 						}
 					}
 
@@ -561,13 +657,13 @@ $(document).ready(function(){
 				var entity = textL[i].split(',');
 				entity[1] =  parseFloat(entity[1])*tileSize;
 				entity[2] =  parseFloat(entity[2])*tileSize;
-				if (entity[0].includes("platform") || entity[0].includes("mushroom")) {
+				if (entity[0].includes("platform") || entity[0].includes("mushroom") || entity[0].includes("fuzzy")) {
 					entity[3] = [parseFloat(entity[3]),  parseFloat(entity[4])];
 					entity.splice(4, 1);
 				} else {
 					entity.splice(3, 2);
 				}
-				if (entity[0].includes("platform_rotating")) {
+				if (entity[0].includes("rotating")) {
 					seen_rotate = true;
 				}
 				if (entity[0] == "node") {
