@@ -1,5 +1,3 @@
-- we could have a third moving platform type that would also use nodes for path, but would be solid all the way through, so we need separate width /height)
-
 0 - Air
 1 - Ground
 2 - Sand

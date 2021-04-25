@@ -99,6 +99,7 @@ $(document).ready(function(){
 	img["player"] = new Image();
 	img["buggy"] = new Image();
   img["buggy2"] = new Image();
+  img["drooler"] = new Image();
 	img["platform_moving"] = new Image();
   img["platform_rotating_clock"] = new Image();
   img["platform_rotating_counter"] = new Image();
@@ -111,6 +112,7 @@ $(document).ready(function(){
  	img["player"].src = "images/player.png";
   img["buggy"].src = "images/buggy.png";
   img["buggy2"].src = "images/buggy2.png";
+  img["drooler"].src = "images/drooler.png";
   img["platform_moving"].src = "images/platform_moving.png";
   img["platform_rotating_clock"].src = "images/platform_rotating_clock.png";
   img["platform_rotating_counter"].src = "images/platform_rotating_counter.png";
