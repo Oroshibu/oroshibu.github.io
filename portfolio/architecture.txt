@@ -26,3 +26,8 @@ easymetric
 The Lunar Nobles have taken the light. infiltrate their facility and take back what is rightfully yours. Use the dark to sneak around and take out your target, though be careful, the cops are right on your tail. 
 Snake Tears is a puzzle platformer. Petra has been cursed by the gods an turned into a gorgon, using her petrifying gaze she can turn her opponents into stone and use them as platforms or solid blocks to solve puzzles. Will she manage to face the ones who cursed her and find a way to turn back into a human?
 In a world where parallax has been destroyed by evil forces, ROBOT CH13N is humanity's last hope. He has been sent in order to retrieve the powerful parallax artifact and fix reality.
+Easymetric is a software developped with the intent 
+
+Easymetric is a software able to create any type of isometric pixel art from any given flat pixel art surfaces. Thanks to its powerful layer system it is able to create a wide variety of complex isometric shapes and to texture them.
+
+Easymetric has been prototyped using Python.

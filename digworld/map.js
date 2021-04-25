@@ -87,117 +87,34 @@ $(document).ready(function(){
 	img["!"] = new Image();
 
 	img["0"].src = "images/void.png";
-	img["@"].src = "images/solid.png";
-	img["%"].src = "images/glass.png";
-	img["#"].src = "images/floor1.png";
-	img["$"].src = "images/floor2.png";
-	img["*"].src = "images/floor3.png";
-	img["+"].src = "images/floor4.png";
-	img["1"].src = "images/walltop1.png";
-	img["2"].src = "images/walltop2.png";
-	img["3"].src = "images/walltop3.png";
-	img["4"].src = "images/walltop4.png";
-	img["5"].src = "images/walltop5.png";
-	img["6"].src = "images/wallside1.png";
-	img["7"].src = "images/wallside2.png";
-	img["8"].src = "images/wallside3.png";
-	img["9"].src = "images/wallside4.png";
-	img["A"].src = "images/wallside5.png";
-	img["B"].src = "images/wallside6.png";
-	img["C"].src = "images/wallside7.png";
-	img["D"].src = "images/wallside8.png";
-	img["E"].src = "images/wallside9.png";
-	img["F"].src = "images/wallside10.png";
-	img["G"].src = "images/wallside11.png";
-	img["H"].src = "images/wallside12.png";
-	img["I"].src = "images/wallside13.png";
-	img["J"].src = "images/wallside14.png";
-	img["K"].src = "images/wallside15.png";
-	img["L"].src = "images/wallside16.png";
-	img["M"].src = "images/wallside17.png";
-	img["N"].src = "images/wallside18.png";
-	img["O"].src = "images/wallside19.png";
-	img["P"].src = "images/wallside20.png";
-	img["Q"].src = "images/wallside21.png";
-	img["R"].src = "images/wallside22.png";
-	img["S"].src = "images/wallside23.png";
-	img["T"].src = "images/wallside24.png";
-	img["U"].src = "images/wallside25.png";
-	img["V"].src = "images/wallside26.png";
-	img["W"].src = "images/wallside27.png";
-	img["X"].src = "images/wallside28.png";
-	img["Y"].src = "images/wallside29.png";
-	img["Z"].src = "images/wallside30.png";
-	img["["].src = "images/red_door.png";
-	img["]"].src = "images/green_door.png";
-	img["("].src = "images/blue_door.png";
-	img["!"].src = "images/exit_door.png";
+	img["1"].src = "images/ground.png";
+	img["2"].src = "images/sand.png";
+	img["3"].src = "images/bridge.png";
+	img["4"].src = "images/spike.png";
 
 	img["eraser"] = new Image();
-	img["player"] = new Image();
-	img["chair"] = new Image();
-	img["monitor"] = new Image();
-	img["knife"] = new Image();
-	img["suppressed_pistol"] = new Image();
-	img["pistol"] = new Image();
-	img["shotgun"] = new Image();
-	img["key_red"] = new Image();
-	img["key_green"] = new Image();
-	img["key_blue"] = new Image();
-	img["cop_pistol"] = new Image();
-	img["cop_shotgun"] = new Image();
-	img["target"] = new Image();
-	img["bystander"] = new Image();
 	img["edit_nodes"] = new Image();
+	img["edit_width"] = new Image();
 	img["node"] = new Image();
-	img["grunt"] = new Image();
-	img["grunt_monitor"] = new Image();
-	img["grunt_chair"] = new Image();
-	img["grunt_knife"] = new Image();
-	img["grunt_suppressed_pistol"] = new Image();
-	img["grunt_pistol"] = new Image();
-	img["grunt_shotgun"] = new Image();
-	img["light64"] = new Image();
-	img["light128"] = new Image();
-	img["light256"] = new Image();
-	img["light512"] = new Image();
-	img["coneN"] = new Image();
-	img["coneE"] = new Image();
-	img["coneS"] = new Image();
-	img["coneW"] = new Image();
+	img["player"] = new Image();
+	img["buggy"] = new Image();
+  img["buggy2"] = new Image();
+	img["platform_moving"] = new Image();
+  img["platform_rotating_clock"] = new Image();
+  img["platform_rotating_counter"] = new Image();
+
+
 	img["eraser"].src = "images/eraser.png";
-	img["player"].src = "images/player.png";
-	img["chair"].src = "images/chair.png";
-	img["monitor"].src = "images/monitor.png";
-	img["knife"].src = "images/knife.png";
-	img["suppressed_pistol"].src = "images/suppressed_pistol.png";
-	img["pistol"].src = "images/pistol.png";
-	img["shotgun"].src = "images/shotgun.png";
-	img["key_red"].src = "images/key_red.png";
-	img["key_green"].src = "images/key_green.png";
-	img["key_blue"].src = "images/key_blue.png";
-	img["cop_pistol"].src = "images/cop_pistol.png";
-	img["cop_shotgun"].src = "images/cop_shotgun.png";
-	img["target"].src = "images/target.png";
-	img["bystander"].src = "images/bystander.png";
 	img["edit_nodes"].src = "images/edit_nodes.png";
+	img["edit_width"].src = "images/edit_width.png";
 	img["node"].src = "images/node.png";
-	img["grunt"].src = "images/grunt.png";
-	img["grunt_monitor"].src = "images/grunt_monitor.png";
-	img["grunt_chair"].src = "images/grunt_chair.png";
-	img["grunt_knife"].src = "images/grunt_knife.png";
-	img["grunt_suppressed_pistol"].src = "images/grunt_suppressed_pistol.png";
-	img["grunt_pistol"].src = "images/grunt_pistol.png";
-	img["grunt_shotgun"].src = "images/grunt_shotgun.png";
-	img["light64"].src = "images/light.png";
-	img["light64"].src = "images/light.png";
-	img["light128"].src = "images/light.png";
-	img["light256"].src = "images/light.png";
-	img["light512"].src = "images/light.png";
-	img["coneN"].src = "images/coneN.png";
-	img["coneE"].src = "images/coneE.png";
-	img["coneS"].src = "images/coneS.png";
-	img["coneW"].src = "images/coneW.png";
+ 	img["player"].src = "images/player.png";
+  img["buggy"].src = "images/buggy.png";
+  img["buggy2"].src = "images/buggy2.png";
+  img["platform_moving"].src = "images/platform_moving.png";
+  img["platform_rotating_clock"].src = "images/platform_rotating_clock.png";
+  img["platform_rotating_counter"].src = "images/platform_rotating_counter.png";
+
 
 
 
@@ -212,16 +129,6 @@ $(document).ready(function(){
         selectedNodeId = -1;
 				selectedNodeEntity = -1;
     }
-
-		if (e.key === "+") {
-				tileSize = 32;
-				DrawMap();
-	 }
-
-	 if (e.key === "-") {
-			 tileSize = 16;
-			 DrawMap();
-	}
 });
 
 	$('#reset').click(function() {
@@ -269,6 +176,8 @@ $(document).ready(function(){
 				tiles[y][x] = selectedTerrainKey;
 			}
 		} else {
+			x = Math.floor(x/tileSize)*tileSize+tileSize/2;
+			y = Math.floor(y/tileSize)*tileSize+tileSize/2;
 
 				if (selectedTerrainKey == "light64") {
 						ctx.drawImage(img[selectedTerrainKey], x-tileSize*2, y-tileSize*2, tileSize*4, tileSize*4);
@@ -286,6 +195,10 @@ $(document).ready(function(){
 					DeleteEntityEntry(x, y);
 				}
 
+				if (mouseDown == true && selectedTerrainKey == "edit_width") {
+					EditWidth(x, y);
+				}
+
 				if (mouseDown == true && selectedTerrainKey == "edit_nodes") {
 					SelectEntityNode(x, y);
 				}
@@ -294,9 +207,9 @@ $(document).ready(function(){
 		if (selectedNodeId != -1 && selectedNodeEntity != -1) {
 			ctx.strokeStyle = "#FF0000";
 			ctx.beginPath();
-			ctx.moveTo(entities[selectedNodeEntity][3][selectedNodeId]["x"], entities[selectedNodeEntity][3][selectedNodeId]["y"]);
+			ctx.moveTo(entities[selectedNodeEntity][4][selectedNodeId]["x"], entities[selectedNodeEntity][4][selectedNodeId]["y"]);
 			ctx.lineTo(x, y);
-			ctx.lineTo(entities[selectedNodeEntity][3][(selectedNodeId+1)%entities[selectedNodeEntity][3].length]["x"], entities[selectedNodeEntity][3][(selectedNodeId+1)%entities[selectedNodeEntity][3].length]["y"]);
+			ctx.lineTo(entities[selectedNodeEntity][4][(selectedNodeId+1)%entities[selectedNodeEntity][4].length]["x"], entities[selectedNodeEntity][4][(selectedNodeId+1)%entities[selectedNodeEntity][4].length]["y"]);
 			ctx.stroke();
 		}
 
@@ -320,10 +233,14 @@ $(document).ready(function(){
 		} else {
 			x = e.clientX - rect.left;
 			y = e.clientY - rect.top;
-			if (selectedTerrainKey != "eraser" && selectedTerrainKey != "edit_nodes") {
+			x = Math.floor(x/tileSize)*tileSize+tileSize/2;
+			y = Math.floor(y/tileSize)*tileSize+tileSize/2;
+			if (selectedTerrainKey != "eraser" && selectedTerrainKey != "edit_nodes" && selectedTerrainKey != "edit_width") {
 				CreateEntityEntry(selectedTerrainKey, x, y);
 			} else if (selectedTerrainKey == "eraser") {
 				DeleteEntityEntry(x, y);
+			} else if (selectedTerrainKey == "edit_width") {
+				EditWidth(x, y);
 			} else if (selectedTerrainKey == "edit_nodes") {
 				if (selectedNodeEntity == -1) {
 					SelectEntityNode(x, y);
@@ -401,7 +318,12 @@ $(document).ready(function(){
 	}
 
 		function CreateEntityEntry(name, x, y) {
-			entities.push([name, x, y])
+
+			if (name.includes("platform")) {
+				entities.push([name, x, y, [1,1]])
+			} else {
+				entities.push([name, x, y])
+			}
 		}
 
 		function DeleteEntityEntry(x, y) {
@@ -409,10 +331,10 @@ $(document).ready(function(){
 				if (x > entities[i][1] - tileSize/2 && x < entities[i][1] + tileSize/2 && y > entities[i][2] - tileSize/2 && y < entities[i][2] + tileSize/2) {
 						entities.splice(i, 1);
 				}
-				if (entities[i].length > 3) {
-					for (var k = 0; k < entities[i][3].length; k++) {
-						if (x > entities[i][3][k]["x"] - tileSize/2 && x < entities[i][3][k]["x"] + tileSize/2 && y > entities[i][3][k]["y"] - tileSize/2 && y < entities[i][3][k]["y"] + tileSize/2) {
-							entities[i][3].splice(k, 1);
+				if (entities[i].length > 4) {
+					for (var k = 0; k < entities[i][4].length; k++) {
+						if (x > entities[i][4][k]["x"] - tileSize/2 && x < entities[i][4][k]["x"] + tileSize/2 && y > entities[i][4][k]["y"] - tileSize/2 && y < entities[i][4][k]["y"] + tileSize/2) {
+							entities[i][4].splice(k, 1);
 						}
 
 					}
@@ -422,11 +344,19 @@ $(document).ready(function(){
 			selectedNodeEntity = -1;
 		}
 
+		function EditWidth(x, y) {
+			for (var i = 0; i < entities.length; i++) {
+				if (x > entities[i][1] - tileSize/2 && x < entities[i][1] + tileSize/2 && y > entities[i][2] - tileSize/2 && y < entities[i][2] + tileSize/2) {
+						entities[i][3][0] = prompt("Enter Platform Width (in tiles)", entities[i][3][0]);
+				}
+			}
+		}
+
 		function SelectEntityNode(x, y) {
 			for (var i = 0; i < entities.length; i++) {
-				if (entities[i].length > 3) {
-					for (var k = 0; k < entities[i][3].length; k++) {
-						if (x > entities[i][3][k]["x"] - tileSize/2 && x < entities[i][3][k]["x"] + tileSize/2 && y > entities[i][3][k]["y"] - tileSize/2 && y < entities[i][3][k]["y"] + tileSize/2) {
+				if (entities[i].length > 4) {
+					for (var k = 0; k < entities[i][4].length; k++) {
+						if (x > entities[i][4][k]["x"] - tileSize/2 && x < entities[i][4][k]["x"] + tileSize/2 && y > entities[i][4][k]["y"] - tileSize/2 && y < entities[i][4][k]["y"] + tileSize/2) {
 							selectedNodeEntity = i;
 							selectedNodeId = k;
 						}
@@ -434,8 +364,8 @@ $(document).ready(function(){
 					}
 				}
 				else if (x > entities[i][1] - tileSize/2 && x < entities[i][1] + tileSize/2 && y > entities[i][2] - tileSize/2 && y < entities[i][2] + tileSize/2) {
-					if (entities[i][0].includes("grunt")) {
-						if (entities[i].length <= 3) {
+					if (entities[i][0].includes("platform")) {
+						if (entities[i].length <= 4) {
 							CreateNodeProfile(i);
 						}
 					}
@@ -462,14 +392,16 @@ $(document).ready(function(){
 			var node = {};
 			node["x"] = x;
 			node["y"] = y;
-			entities[selectedNodeEntity][3].insert(selectedNodeId+1, node);
+			entities[selectedNodeEntity][4].insert(selectedNodeId+1, node);
 			selectedNodeId += 1;
 		}
 
 		function DrawEntities() {
 			for (var i = 0; i < entities.length; i++) {
 				//console.log(entities[i][0]);
-				if (entities[i][0] == "light64") {
+				if (entities[i][0].includes("platform")) {
+						ctx.drawImage(img[entities[i][0]], entities[i][1]-tileSize*entities[i][3][0]/2, entities[i][2]-tileSize*entities[i][3][1]/2, tileSize*entities[i][3][0], tileSize*entities[i][3][1]);
+				} else if (entities[i][0] == "light64") {
 						ctx.drawImage(img[entities[i][0]], entities[i][1]-tileSize*2, entities[i][2]-tileSize*2, tileSize*4, tileSize*4);
 				} else if (entities[i][0] == "light128" || entities[i][0] == "coneN" || entities[i][0] == "coneE" || entities[i][0] == "coneS" || entities[i][0] == "coneW") {
 						ctx.drawImage(img[entities[i][0]], entities[i][1]-tileSize*4, entities[i][2]-tileSize*4, tileSize*8, tileSize*8);
@@ -477,14 +409,15 @@ $(document).ready(function(){
 						ctx.drawImage(img[entities[i][0]], entities[i][1]-tileSize*8, entities[i][2]-tileSize*8, tileSize*16, tileSize*16);
 				} else if (entities[i][0] == "light512") {
 						ctx.drawImage(img[entities[i][0]], entities[i][1]-tileSize*16, entities[i][2]-tileSize*16, tileSize*32, tileSize*32);
-				} else {
-					if (entities[i].length > 3) {
+				}
+					if (entities[i].length > 4) {
 						ctx.strokeStyle = "#FF0000";
 						ctx.beginPath();
-						ctx.moveTo(entities[i][3][0]["x"], entities[i][3][0]["y"]);
-						for (var k = 0; k < entities[i][3].length; k++) {
-							ctx.drawImage(img["node"], entities[i][3][k]["x"]-tileSize/2, entities[i][3][k]["y"]-tileSize/2, tileSize, tileSize);
-							ctx.lineTo(entities[i][3][(k+1)%entities[i][3].length]["x"], entities[i][3][(k+1)%entities[i][3].length]["y"]);
+						console.log(entities[i]);
+						ctx.moveTo(entities[i][4][0]["x"], entities[i][4][0]["y"]);
+						for (var k = 0; k < entities[i][4].length; k++) {
+							ctx.drawImage(img["node"], entities[i][4][k]["x"]-tileSize/2, entities[i][4][k]["y"]-tileSize/2, tileSize, tileSize);
+							ctx.lineTo(entities[i][4][(k+1)%entities[i][4].length]["x"], entities[i][4][(k+1)%entities[i][4].length]["y"]);
 						}
 
 						ctx.stroke();
@@ -492,14 +425,14 @@ $(document).ready(function(){
 					ctx.drawImage(img[entities[i][0]], entities[i][1]-tileSize/2, entities[i][2]-tileSize/2, tileSize, tileSize);
 				}
 
-			}
+
 		}
 
 		function DrawMap() {
 			ctx.clearRect(0, 0, canvas.width, canvas.height);
-			ctx.fillStyle = 'rgb(120, 120, 120)';
+			ctx.fillStyle = 'rgb(0, 0, 0)';
 			ctx.fillRect(0, 0, canvas.width, canvas.height);
-			ctx.fillStyle = 'rgb(125, 125, 125)';
+			ctx.fillStyle = 'rgb(10, 10, 10)';
 			for (var i = 0; i < nY; i++) {
 				ctx.fillRect(0, i*tileSize, canvas.width, 1);
 			}
@@ -515,47 +448,11 @@ $(document).ready(function(){
 						ctx.drawImage(img[tiles[i][k]], k*tileSize, i*tileSize, tileSize, tileSize);
 					}
 
-					if (tiles[i][k] == "2" || tiles[i][k] == "3" || tiles[i][k] == "4" || tiles[i][k] == "5") {
+					if (tiles[i][k] == "tempo") {
 						ctx.drawImage(img[tiles[i][k]], k*tileSize, i*tileSize-tileSize, tileSize, tileSize*3);
 					}
 				}
 			}
-			/*
-			for (var i = 0; i < nY; i++) {
-				for (var k = 0; k < nX; k++) {
-					if (tiles[i][k] != "A") {
-						if (tiles[i][k] == "C") {
-							if (tiles[i+1][k] == "A" || tiles[i+1][k] == "B") {
-								ctx.drawImage(img["3"], k*tileSize, (i+1)*tileSize, tileSize, tileSize);
-							}
-						}
-
-						if (tiles[i][k] == "D") {
-							if (tiles[i+1][k] == "A" || tiles[i+1][k] == "B") {
-								ctx.drawImage(img["4"], k*tileSize, (i+1)*tileSize, tileSize, tileSize);
-							}
-						}
-
-						if (tiles[i][k] == "E") {
-							if (tiles[i+1][k] == "A" || tiles[i+1][k] == "B") {
-								ctx.drawImage(img["5"], k*tileSize, (i+1)*tileSize, tileSize, tileSize);
-							}
-						}
-
-						if (tiles[i][k] == "F") {
-							if (tiles[i+1][k] == "A" || tiles[i+1][k] == "B") {
-								ctx.drawImage(img["6"], k*tileSize, (i+1)*tileSize, tileSize, tileSize);
-							}
-						}
-
-						if (tiles[i][k] == "G") {
-							if (tiles[i+1][k] == "A" || tiles[i+1][k] == "B") {
-								ctx.drawImage(img["7"], k*tileSize, (i+1)*tileSize, tileSize, tileSize);
-							}
-						}
-					}
-				}
-			}*/
 			DrawEntities();
 		}
 
@@ -569,19 +466,34 @@ $(document).ready(function(){
 				}
 				stringu += ":";
 			}
-			stringu += ",,\n";
+			stringu += ",,,,\n";
 			//copyToClipboard(stringu);
 
 			for (var i = 0; i < entities.length; i++) {
 				stringu += entities[i][0] + ",";
-				stringu += Math.round(entities[i][1]).toString() + ",";
-				stringu += Math.round(entities[i][2]).toString() + "\n";
+				stringu += (Math.floor(entities[i][1]/tileSize)+0.5).toString() + ",";
+				stringu += (Math.floor(entities[i][2]/tileSize)+0.5).toString() + ",";
+				console.log(entities[i]);
 				if (entities[i].length > 3) {
-					for (var k = 0; k < entities[i][3].length; k++) {
+					stringu += entities[i][3][0].toString() + ",";
+					stringu += entities[i][3][1].toString();
+				} else {
+					stringu += ",";
+				}
+				stringu += "\n";
+				if (entities[i].length > 4) {
+					if (entities[i][0].includes("platform_rotating")) {
 						stringu += "node,";
-						stringu += Math.round(entities[i][3][k]["x"]).toString() + ",";
-						stringu += Math.round(entities[i][3][k]["y"]).toString() + "\n";
+						stringu += (Math.floor(entities[i][4][1]["x"]/tileSize)+0.5).toString() + ",";
+						stringu += (Math.floor(entities[i][4][1]["y"]/tileSize)+0.5).toString() + ",,\n";
+					} else {
+						for (var k = 0; k < entities[i][4].length; k++) {
+							stringu += "node,";
+							stringu += (Math.floor(entities[i][4][k]["x"]/tileSize)+0.5).toString() + ",";
+							stringu += (Math.floor(entities[i][4][k]["y"]/tileSize)+0.5).toString() + ",,\n";
+						}
 					}
+
 				}
 			}
 
@@ -614,14 +526,28 @@ $(document).ready(function(){
 			}
 
 			var nodeCount = 0;
+			var seen_rotate = false;
 			for (var i = 1; i < textL.length-1; i++) {
 				var entity = textL[i].split(',');
-				entity[1] =  parseFloat(entity[1]);
-				entity[2] =  parseFloat(entity[2]);
+				entity[1] =  parseFloat(entity[1])*tileSize;
+				entity[2] =  parseFloat(entity[2])*tileSize;
+				if (entity[0].includes("platform")) {
+					entity[3] = [parseFloat(entity[3]),  parseFloat(entity[4])];
+					entity.splice(4, 1);
+				} else {
+					entity.splice(3, 2);
+				}
+				if (entity[0].includes("platform_rotating")) {
+					seen_rotate = true;
+				}
 				if (entity[0] == "node") {
 					if (selectedNodeEntity == -1) {
 						selectedNodeEntity = i-2-nodeCount;
 						CreateNodeProfile(selectedNodeEntity);
+						if (seen_rotate == true) {
+							AddNode(entity[1], entity[2]);
+							seen_rotate = false;
+						}
 					} else {
 						AddNode(entity[1], entity[2]);
 					}

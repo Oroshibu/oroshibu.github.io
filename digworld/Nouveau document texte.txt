@@ -1,15 +1,9 @@
-VOID - 0
-SOLID - @
-GLASS - %
-FLOOR1 - #
-FLOOR2 - $
-FLOOR3 - *
-FLOOR4 - +
-WALLTOP 1 - 1
-WALLTOP 5 - 5
-WALLSIDE 1 - 6
-WALLSIDE 4 - 9
-WALLSIDE 5 - A
-WALLSIDE 30 - Z
-RED DOOR - [
-GREEN DOOR - ]
+- we could have a third moving platform type that would also use nodes for path, but would be solid all the way through, so we need separate width /height)
+
+0 - Air
+1 - Ground
+2 - Sand
+3 - One Way Platform
+4 - Spike
+
+entity_name,X,Y,width,height
