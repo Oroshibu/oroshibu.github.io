@@ -518,7 +518,8 @@ $(document).ready(function(){
 			for (var i = 0; i < entities.length; i++) {
 				//console.log(entities[i][0]);
 				if (entities[i][0].includes("platform") || entities[i][0].includes("mushroom")) {
-						ctx.drawImage(img[entities[i][0]], entities[i][1]-tileSize*entities[i][3][0]/2, entities[i][2]-tileSize*entities[i][3][1]/2, tileSize*entities[i][3][0], tileSize*entities[i][3][1]);
+						//ctx.drawImage(img[entities[i][0]], entities[i][1]-tileSize*entities[i][3][0]/2, entities[i][2]-tileSize*entities[i][3][1]/2, tileSize*entities[i][3][0], tileSize*entities[i][3][1]);
+						ctx.drawImage(img[entities[i][0]], entities[i][1]-tileSize/2, entities[i][2]-tileSize/2, tileSize*entities[i][3][0], tileSize*entities[i][3][1]);
 				} else if (entities[i][0] == "exit") {
 						ctx.drawImage(img[entities[i][0]], entities[i][1]-tileSize/2, entities[i][2]-tileSize/2, tileSize*2, tileSize*2);
 				} else if (entities[i][0] == "light128" || entities[i][0] == "coneN" || entities[i][0] == "coneE" || entities[i][0] == "coneS" || entities[i][0] == "coneW") {
