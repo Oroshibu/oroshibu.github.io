@@ -350,7 +350,10 @@ $(document).ready(function(){
 		function EditWidth(x, y) {
 			for (var i = 0; i < entities.length; i++) {
 				if (x > entities[i][1] - tileSize/2 && x < entities[i][1] + tileSize/2 && y > entities[i][2] - tileSize/2 && y < entities[i][2] + tileSize/2) {
-						entities[i][3][0] = prompt("Enter Platform Width (in tiles)", entities[i][3][0]);
+					var newWidth = prompt("Enter Platform Width (in tiles)", entities[i][3][0]);
+					if (!(newWidth == null)) {
+						entities[i][3][0] = newWidth;
+					}
 				}
 			}
 		}
