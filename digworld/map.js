@@ -104,6 +104,7 @@ $(document).ready(function(){
   img["platform_rotating_clock"] = new Image();
   img["platform_rotating_counter"] = new Image();
   img["mushroom"] = new Image();
+  img["flag"] = new Image();
 
 	img["eraser"].src = "images/eraser.png";
 	img["edit_nodes"].src = "images/edit_nodes.png";
@@ -117,7 +118,7 @@ $(document).ready(function(){
   img["platform_rotating_clock"].src = "images/platform_rotating_clock.png";
   img["platform_rotating_counter"].src = "images/platform_rotating_counter.png";
   img["mushroom"].src = "images/mushroom.png";
-
+  img["flag"].src = "images/flag.png";
 
 
 	entities = new Array(0);
