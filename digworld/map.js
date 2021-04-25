@@ -95,12 +95,14 @@ $(document).ready(function(){
 	img["eraser"] = new Image();
 	img["edit_nodes"] = new Image();
 	img["edit_width"] = new Image();
+	img["edit_height"] = new Image();
 	img["node"] = new Image();
 	img["player"] = new Image();
 	img["buggy"] = new Image();
   img["buggy2"] = new Image();
   img["drooler"] = new Image();
 	img["platform_moving"] = new Image();
+	img["platform_moving_solid"] = new Image();
   img["platform_rotating_clock"] = new Image();
   img["platform_rotating_counter"] = new Image();
   img["mushroom"] = new Image();
@@ -109,12 +111,14 @@ $(document).ready(function(){
 	img["eraser"].src = "images/eraser.png";
 	img["edit_nodes"].src = "images/edit_nodes.png";
 	img["edit_width"].src = "images/edit_width.png";
+	img["edit_height"].src = "images/edit_height.png";
 	img["node"].src = "images/node.png";
  	img["player"].src = "images/player.png";
   img["buggy"].src = "images/buggy.png";
   img["buggy2"].src = "images/buggy2.png";
   img["drooler"].src = "images/drooler.png";
   img["platform_moving"].src = "images/platform_moving.png";
+  img["platform_moving_solid"].src = "images/platform_moving_solid.png";
   img["platform_rotating_clock"].src = "images/platform_rotating_clock.png";
   img["platform_rotating_counter"].src = "images/platform_rotating_counter.png";
   img["mushroom"].src = "images/mushroom.png";
@@ -202,6 +206,10 @@ $(document).ready(function(){
 					EditWidth(x, y);
 				}
 
+				if (mouseDown == true && selectedTerrainKey == "edit_height") {
+					EditHeight(x, y);
+				}
+
 				if (mouseDown == true && selectedTerrainKey == "edit_nodes") {
 					SelectEntityNode(x, y);
 				}
@@ -238,12 +246,14 @@ $(document).ready(function(){
 			y = e.clientY - rect.top;
 			x = Math.floor(x/tileSize)*tileSize+tileSize/2;
 			y = Math.floor(y/tileSize)*tileSize+tileSize/2;
-			if (selectedTerrainKey != "eraser" && selectedTerrainKey != "edit_nodes" && selectedTerrainKey != "edit_width") {
+			if (selectedTerrainKey != "eraser" && selectedTerrainKey != "edit_nodes" && selectedTerrainKey != "edit_width" && selectedTerrainKey != "edit_height") {
 				CreateEntityEntry(selectedTerrainKey, x, y);
 			} else if (selectedTerrainKey == "eraser") {
 				DeleteEntityEntry(x, y);
 			} else if (selectedTerrainKey == "edit_width") {
 				EditWidth(x, y);
+			} else if (selectedTerrainKey == "edit_height") {
+				EditHeight(x, y);
 			} else if (selectedTerrainKey == "edit_nodes") {
 				if (selectedNodeEntity == -1) {
 					SelectEntityNode(x, y);
@@ -357,6 +367,20 @@ $(document).ready(function(){
 				}
 			}
 		}
+
+		function EditHeight(x, y) {
+			for (var i = 0; i < entities.length; i++) {
+				if (entities[i][0].includes("solid")) {
+					if (x > entities[i][1] - tileSize/2 && x < entities[i][1] + tileSize/2 && y > entities[i][2] - tileSize/2 && y < entities[i][2] + tileSize/2) {
+						var newHeight = prompt("Enter Platform Height (in tiles)", entities[i][3][1]);
+						if (!(newHeight == null)) {
+							entities[i][3][1] = newHeight;
+						}
+					}
+				}
+			}
+		}
+
 
 		function SelectEntityNode(x, y) {
 			for (var i = 0; i < entities.length; i++) {
