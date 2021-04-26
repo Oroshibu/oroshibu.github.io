@@ -128,6 +128,16 @@ $(document).ready(function(){
 	img["weeper"] = new Image();
 	img["prion"] = new Image();
 
+	img["tutorial1"] = new Image();
+	img["tutorial2"] = new Image();
+	img["tutorial3"] = new Image();
+	img["tutorial4"] = new Image();
+	img["tutorial5"] = new Image();
+	img["arrow_left"] = new Image();
+	img["arrow_up"] = new Image();
+	img["arrow_right"] = new Image();
+	img["arrow_down"] = new Image();
+
 	img["crop_topleft"].src = "images/crop_topleft.png";
 	img["crop_bottomright"].src = "images/crop_bottomright.png";
 	img["eraser"].src = "images/eraser.png";
@@ -160,6 +170,16 @@ $(document).ready(function(){
 	img["token"].src = "images/token.png";
 	img["weeper"].src = "images/weeper.png";
 	img["prion"].src = "images/prion.png";
+
+	img["tutorial1"].src = "images/tutorial1.png";
+	img["tutorial2"].src = "images/tutorial2.png";
+	img["tutorial3"].src = "images/tutorial3.png";
+	img["tutorial4"].src = "images/tutorial4.png";
+	img["tutorial5"].src = "images/tutorial5.png";
+	img["arrow_left"].src = "images/arrow_left.png";
+	img["arrow_up"].src = "images/arrow_up.png";
+	img["arrow_right"].src = "images/arrow_right.png";
+	img["arrow_down"].src = "images/arrow_down.png";
 
 	entities = new Array(0);
 
@@ -526,7 +546,7 @@ $(document).ready(function(){
 				if (entities[i][0].includes("platform") || entities[i][0].includes("mushroom")) {
 						//ctx.drawImage(img[entities[i][0]], entities[i][1]-tileSize*entities[i][3][0]/2, entities[i][2]-tileSize*entities[i][3][1]/2, tileSize*entities[i][3][0], tileSize*entities[i][3][1]);
 						ctx.drawImage(img[entities[i][0]], entities[i][1]-tileSize/2, entities[i][2]-tileSize/2, tileSize*entities[i][3][0], tileSize*entities[i][3][1]);
-				} else if (entities[i][0] == "exit") {
+				} else if (entities[i][0] == "exit" || entities[i][0].includes("arrow")) {
 						ctx.drawImage(img[entities[i][0]], entities[i][1]-tileSize/2, entities[i][2]-tileSize/2, tileSize*2, tileSize*2);
 				} else if (entities[i][0] == "light128" || entities[i][0] == "coneN" || entities[i][0] == "coneE" || entities[i][0] == "coneS" || entities[i][0] == "coneW") {
 						ctx.drawImage(img[entities[i][0]], entities[i][1]-tileSize*4, entities[i][2]-tileSize*4, tileSize*8, tileSize*8);
