@@ -125,6 +125,8 @@ $(document).ready(function(){
 	img["diamond"] = new Image();
 	img["virus"] = new Image();
 	img["token"] = new Image();
+	img["weeper"] = new Image();
+	img["prion"] = new Image();
 
 	img["crop_topleft"].src = "images/crop_topleft.png";
 	img["crop_bottomright"].src = "images/crop_bottomright.png";
@@ -156,6 +158,8 @@ $(document).ready(function(){
 	img["diamond"].src = "images/diamond.png";
 	img["virus"].src = "images/virus.png";
 	img["token"].src = "images/token.png";
+	img["weeper"].src = "images/weeper.png";
+	img["prion"].src = "images/prion.png";
 
 	entities = new Array(0);
 
