@@ -124,6 +124,7 @@ $(document).ready(function(){
 	img["vertbug"] = new Image();
 	img["diamond"] = new Image();
 	img["virus"] = new Image();
+	img["token"] = new Image();
 
 	img["crop_topleft"].src = "images/crop_topleft.png";
 	img["crop_bottomright"].src = "images/crop_bottomright.png";
@@ -154,6 +155,7 @@ $(document).ready(function(){
 	img["vertbug"].src = "images/vertbug.png";
 	img["diamond"].src = "images/diamond.png";
 	img["virus"].src = "images/virus.png";
+	img["token"].src = "images/token.png";
 
 	entities = new Array(0);
 
