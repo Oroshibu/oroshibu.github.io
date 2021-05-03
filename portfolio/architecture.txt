@@ -30,4 +30,8 @@ Easymetric is a software developped with the intent
 
 Easymetric is a software able to create any type of isometric pixel art from any given flat pixel art surfaces. Thanks to its powerful layer system it is able to create a wide variety of complex isometric shapes and to texture them.
 
+
+Pixel Art Tree Generator was a prototype for a prodecural generator for trees in pixel art, this included procedural trunks, branches, leaves and even prodecural color palettes. 
+The procedural leaves are still in a very early state of development.
+
 Easymetric has been prototyped using Python.
