@@ -1,7 +1,17 @@
 0 - Air
 1 - Ground
-2 - Sand
-3 - One Way Platform
-4 - Spike
+2 - Arrow R
+3 - Arrow U
+4 - Arrow L
+5 - Arrow D
+6 - Semisolid
 
-entity_name,X,Y,width,height
+door
+wire
+inswire
+2xgenerator
+2xbattery
+robot
+robot2
+2xmagnetl
+2xmagnetr
