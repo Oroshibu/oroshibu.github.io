@@ -1,0 +1,7 @@
+0 - Air
+1 - Ground
+2 - Sand
+3 - One Way Platform
+4 - Spike
+
+entity_name,X,Y,width,height

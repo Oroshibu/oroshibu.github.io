@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="icon" href="favicon.png">
+	<title>edmund mcmillen</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	<script language="JavaScript" type="text/javascript" src="map.js"></script>
+</head>
+<body>
+	<div class="container" id="wrap">
+
+
+		<div class="row">
+				  <div class="col-sm-5">
+			  		  <input type="hidden" name="width" value="1344" id="width">
+					  <input type="hidden" name="height" value="2016" id="height">
+					  <input type="hidden" name="multX" value="1" id="multX">
+					  <input type="hidden" name="multY" value="1" id="multY">
+					  <input type="hidden" name="tileSize" value="16" id="tileSize">
+					  <br>
+						<input type="submit" value="Reset" id="reset">
+					  <input type="submit" value="Export" id="exportenemies">
+						<input type='file' accept='.csv' id="import">
+						 <!--Import old formats
+						<input type='file' accept='.csv' id="import2">-->
+						<br>
+						<div id='output'>
+
+</div>
+					  <!--<input type="submit" value="Import" id="import">-->
+
+										<!--<p><a href="/itch/main.html">aaaaaaa</a></p>-->
+				  </div>
+
+
+
+		  <!--<div id="statDisplay">
+		  	<div class="row"><label>NTiles:&nbsp;&nbsp;</label><p id=nTiles></p></div>
+		  	<div class="row"><label>Rows:&nbsp;&nbsp;</label><p id=rows></p></div>
+		  	<div class="row"><label>Cols:&nbsp;&nbsp;</label><p id=cols></p></div>
+		  </div>-->
+
+
+		  <div id="terrainSelect">
+
+		  </div>
+
+			<a style="color: #606060; font-size:0.7em;"><strong>Nodes : </strong>Only one for rotating platforms, rotating fuzzies. Multiple to draw a path for moving platforms, moving solid platforms, fuzzies. Esc to leave Node Edit Mode.
+			<br>
+			<strong>Width : </strong>Moving platforms, rotating platforms, moving solid platforms, mushrooms.
+			<br>
+			<strong>Height : </strong>Moving solid platforms.
+			<br>
+			<strong>Eraser : </strong>Entities and Nodes.
+			<br>
+			<strong>Crop Bottom Right : </strong>Very important to place one (and only one).</a>
+		  	<div class="container" id="mapWrap">
+					<div class="terrain" style="background: #0D0D0D;background-image: url(images/void.png); background-size: contain;background-repeat: no-repeat;"><p>0</p></div>
+					<div class="terrain" style="background: #0D0D0D;background-image: url(images/ground.png); background-size: contain;background-repeat: no-repeat;"><p>1</p></div>
+					<div class="terrain" style="background: #0D0D0D;background-image: url(images/arrowr.png); background-size: contain;background-repeat: no-repeat;"><p>2</p></div>
+					<div class="terrain" style="background: #0D0D0D;background-image: url(images/arrowu.png); background-size: contain;background-repeat: no-repeat;"><p>3</p></div>
+					<div class="terrain" style="background: #0D0D0D;background-image: url(images/arrowl.png); background-size: contain;background-repeat: no-repeat;"><p>4</p></div>
+					<div class="terrain" style="background: #0D0D0D;background-image: url(images/arrowd.png); background-size: contain;background-repeat: no-repeat;"><p>5</p></div>
+					<div class="terrain" style="background: #0D0D0D;background-image: url(images/semi.png); background-size: contain;background-repeat: no-repeat;"><p>6</p></div>
+
+			<br>
+			<a style="color: #606060">Hold Shift to draw squares using the tiles.</a>
+			<br>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/crop_topleft.png); background-size: contain;background-repeat: no-repeat;"><p>crop_topleft</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/crop_bottomright.png); background-size: contain;background-repeat: no-repeat;"><p>crop_bottomright</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/eraser.png); background-size: contain;background-repeat: no-repeat;"><p>eraser</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/edit_nodes.png); background-size: contain;background-repeat: no-repeat;"><p>edit_nodes</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/edit_width.png); background-size: contain;background-repeat: no-repeat;"><p>edit_width</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/edit_height.png); background-size: contain;background-repeat: no-repeat;"><p>edit_height</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/platform_moving_solid.png); background-size: contain;background-repeat: no-repeat;"><p>platform_moving_solid</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/platform_moving.png); background-size: contain;background-repeat: no-repeat;"><p>platform_moving</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/platform_rotating_clock.png); background-size: contain;background-repeat: no-repeat;"><p>platform_rotating_clock</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/platform_rotating_counter.png); background-size: contain;background-repeat: no-repeat;"><p>platform_rotating_counter</p></div>
+			<!--<div class="terrain" style="background: #0D0D0D;background-image: url(images/mushroom.png); background-size: contain;background-repeat: no-repeat;"><p>mushroom</p></div>-->
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/wire.png); background-size: contain;background-repeat: no-repeat;"><p>wire</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/inswire.png); background-size: contain;background-repeat: no-repeat;"><p>inswire</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/2xgenerator.png); background-size: contain;background-repeat: no-repeat;"><p>2xgenerator</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/2xbattery.png); background-size: contain;background-repeat: no-repeat;"><p>2xbattery</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/robot.png); background-size: contain;background-repeat: no-repeat;"><p>robot</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/robot2.png); background-size: contain;background-repeat: no-repeat;"><p>robot2</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/2xmagnetl.png); background-size: contain;background-repeat: no-repeat;"><p>2xmagnetl</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/2xmagnetr.png); background-size: contain;background-repeat: no-repeat;"><p>2xmagnetr</p></div>
+			<br>
+			 <!--<div class="terrain" style="background: #0D0D0D;background-image: url(images/buggy.png); background-size: contain;background-repeat: no-repeat;"><p>buggy</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/buggy2.png); background-size: contain;background-repeat: no-repeat;"><p>buggy2</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/drooler.png); background-size: contain;background-repeat: no-repeat;"><p>drooler</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/horzbug.png); background-size: contain;background-repeat: no-repeat;"><p>horzbug</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/vertbug.png); background-size: contain;background-repeat: no-repeat;"><p>vertbug</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/virus.png); background-size: contain;background-repeat: no-repeat;"><p>virus</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/fuzzy.png); background-size: contain;background-repeat: no-repeat;"><p>fuzzy</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/fuzzy_rotating_clock.png); background-size: contain;background-repeat: no-repeat;"><p>fuzzy_rotating_clock</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/fuzzy_rotating_counter.png); background-size: contain;background-repeat: no-repeat;"><p>fuzzy_rotating_counter</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/weeper.png); background-size: contain;background-repeat: no-repeat;"><p>weeper</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/prion.png); background-size: contain;background-repeat: no-repeat;"><p>prion</p></div>
+
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/arrow_left.png); background-size: contain;background-repeat: no-repeat;"><p>arrow_left</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/arrow_up.png); background-size: contain;background-repeat: no-repeat;"><p>arrow_up</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/arrow_right.png); background-size: contain;background-repeat: no-repeat;"><p>arrow_right</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/arrow_down.png); background-size: contain;background-repeat: no-repeat;"><p>arrow_down</p></div>-->
+
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/tutorial1.png); background-size: contain;background-repeat: no-repeat;"><p>tutorial1</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/tutorial2.png); background-size: contain;background-repeat: no-repeat;"><p>tutorial2</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/tutorial3.png); background-size: contain;background-repeat: no-repeat;"><p>tutorial3</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/tutorial4.png); background-size: contain;background-repeat: no-repeat;"><p>tutorial4</p></div>
+			<div class="terrain" style="background: #0D0D0D;background-image: url(images/tutorial5.png); background-size: contain;background-repeat: no-repeat;"><p>tutorial5</p></div>
+
+			<br><br>
+			<!--<div id="map"></div>-->
+			<canvas id="mapCanvas" width="1344" height="2016"></canvas>
+<!--
+
+			<br><br><br><br><br><br><br><br><br><br><br><br>
+
+			<input type="submit" value="Import Walls" id="importwalls">
+			<input type="submit" value="Import Enemies" id="importenemies"><br>
+			<textarea id="mapImporter" name="mapImporter" rows="28" cols="28">Won't work anymore for now cause sarn made me export all in one line xoxo</textarea>
+			<br><br>
+			<br><br>-->
+
+			</div>
+		</div>
+
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
