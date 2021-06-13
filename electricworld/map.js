@@ -178,7 +178,21 @@ $(document).ready(function(){
 	names.push("water2");
 	names.push("turret");
 	names.push("frayed");
-	
+	names.push("bzoo");
+	names.push("2xbzoo");
+	names.push("crate");
+	names.push("2xcrate");
+	names.push("2xmagnetu");
+	names.push("2xmagnetd");
+	names.push("buguloid");
+	names.push("sblockOFF");
+	names.push("sblockON");
+	names.push("switch");
+	names.push("turret2");
+	names.push("stationarybulb");
+	names.push("start");
+	names.push("end");
+
 	for (const element of names) {
 		img[element] = new Image();
 		img[element].src = "images/"+element+".png";
@@ -571,6 +585,10 @@ $(document).ready(function(){
 				} else if (entities[i][0] == "door") {
 						var dimx = 1;
 						var dimy = 3;
+						ctx.drawImage(img[entities[i][0]], entities[i][1]-tileSize/2, entities[i][2]-tileSize/2, tileSize*dimx, tileSize*dimy);
+				} else if (entities[i][0] == "button") {
+						var dimx = 3;
+						var dimy = 1;
 						ctx.drawImage(img[entities[i][0]], entities[i][1]-tileSize/2, entities[i][2]-tileSize/2, tileSize*dimx, tileSize*dimy);
 				}
 					if (entities[i].length > 4) {
