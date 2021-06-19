@@ -1,0 +1,108 @@
+:root {
+    --nrows: 0;
+    --ncols: 0;
+    --tileX: 0;
+    --tileY: 0;
+}
+
+#mapCanvas {
+
+	line-height: 0;
+
+}
+
+p {
+	font-size: 0px;
+}
+
+#mapWrap {
+	overflow: auto;
+}
+
+#wrap {
+
+}
+
+#wrap h2 {
+	text-align: center;
+
+}
+
+#select {
+
+	display: inline-block;
+}
+
+#statDisplay {
+	top: 0;
+
+	display: inline-block;
+}
+
+#terrainSelect {
+	/*float: right;*/
+	/*height: 300px;*/
+	width: 200px;
+	top: 0;
+}
+
+canvas {display: block;}
+
+.terrain {
+	width: 40px;
+	height: 40px;
+	padding: 0px;
+	display: inline-block;
+}
+
+/*.tile {
+	padding: 0px;
+	margin: 0px;
+	display: inline-block;
+	background-color: blue;
+}*/
+
+.grid-container {
+  display: grid;
+
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  user-drag: none;
+user-select: none;
+-moz-user-select: none;
+-webkit-user-drag: none;
+-webkit-user-select: none;
+-ms-user-select: none;
+
+}
+
+.center-div {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+body {
+	background-color: #0d0d0d;
+	color:white;
+}
+
+input {
+  background-color: #AAAAAA;
+  border: none;
+  color: #0d0d0d;
+  padding: 5px 9px;
+  text-decoration: none;
+  margin: 4px 1px;
+  border-radius: 10px;
+ font-weight: bold;
+}
+input:hover {
+ background-color:#FFFFFF;
+}

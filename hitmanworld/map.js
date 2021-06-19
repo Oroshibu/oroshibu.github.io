@@ -495,6 +495,7 @@ $(document).ready(function(){
 			}
 		}
 
+
 		function DrawMap() {
 			ctx.clearRect(0, 0, canvas.width, canvas.height);
 			ctx.fillStyle = 'rgb(120, 120, 120)';
