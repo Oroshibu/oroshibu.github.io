@@ -27,11 +27,21 @@ $(document).ready(function(){
 		corner.x = (canvas.width - config.guiWidth - config.tileSize*config.gridSize.x)/2 + config.guiWidth;
 	}
 
-	var mouse = {x:0, y:0, lastSeenAt:{x: null, y: null}, middleClick:false};
+	var mouse = {x:0, y:0, lastSeenAt:{x: null, y: null}, inGui:false};
+	var keys = {leftClick: false, middleClick:false, space:false};
 
 	canvas.onwheel = Zoom;
 
 	DrawCanvas();
+
+	function CursorPicker() {
+		if ((keys.space || keys.middleClick) && !mouse.inGui) {
+			document.body.style.cursor = "grab";
+		} else {
+			document.body.style.cursor = "default";
+		}
+		
+	}
 
 	function Clamp(number, min, max) {
 		return Math.max(min, Math.min(number, max));
@@ -45,21 +55,22 @@ $(document).ready(function(){
 	function Zoom(event) {
 		event.preventDefault();
 
-		if (scale >=config.zoomLimits.min && scale <= config.zoomLimits.max) {
+		if (!mouse.inGui) {
+			if (scale >=config.zoomLimits.min && scale <= config.zoomLimits.max) {
 
-			console.log(scale);
-			var newScale = scale + event.deltaY * -config.zoomScale;
-			newScale = Clamp(newScale, config.zoomLimits.min, config.zoomLimits.max);
-
-			corner.x += mouse.x/newScale - mouse.x/scale;
-			corner.y += mouse.y/newScale - mouse.y/scale;
-			
-			scale = newScale;
+				var newScale = scale + event.deltaY * -config.zoomScale;
+				newScale = Clamp(newScale, config.zoomLimits.min, config.zoomLimits.max);
+	
+				corner.x += mouse.x/newScale - mouse.x/scale;
+				corner.y += mouse.y/newScale - mouse.y/scale;
+				
+				scale = newScale;
+			}
+		  
+	
+			ClampCorners();
+			DrawCanvas();
 		}
-	  
-
-		ClampCorners();
-		DrawCanvas();
 	  
 	}
 	canvas.addEventListener('wheel', Zoom);
@@ -92,7 +103,12 @@ $(document).ready(function(){
 		mouse.x = e.clientX - rect.left;
 		mouse.y = e.clientY - rect.top;
 
-		if (mouse.middleClick) {
+		mouse.inGui = (mouse.x<config.guiWidth);
+
+		CursorPicker();
+
+		//DRAG CANVAS
+		if ((keys.middleClick || (keys.leftClick && keys.space)) && !mouse.inGui) {
 			if (mouse.lastSeenAt.x != null) {
 				var dist = {x:mouse.lastSeenAt.x - mouse.x, y:mouse.lastSeenAt.y - mouse.y};
 			
@@ -109,20 +125,44 @@ $(document).ready(function(){
 	});
 	
 	$('#mainCanvas').on('mousedown', function(e) {
-		if( e.which == 2 ) {
-		   e.preventDefault();
-
-			mouse.middleClick = true;
+		if (e.which == 1) {
+			e.preventDefault();
+			keys.leftClick = true;
 		}
+		else if( e.which == 2 ) {
+			e.preventDefault();
+			keys.middleClick = true;
+		}
+		CursorPicker();
 	});
 
 	$('#mainCanvas').on('mouseup', function(e) {
-		if( e.which == 2 ) {
-		   e.preventDefault();
-
-			mouse.middleClick = false;
+		if( e.which == 1 ) {
+			e.preventDefault();
+			keys.leftClick = false;
 			mouse.lastSeenAt.x = null;
 		}
+		else if( e.which == 2 ) {
+		   e.preventDefault();
+			keys.middleClick = false;
+			mouse.lastSeenAt.x = null;
+		}
+		CursorPicker();
 	});
+
+	$(document).keydown(function(e) {
+		if (e.key === " ") {
+			keys.space = true;
+		}
+		CursorPicker();
+   	});
+
+	$(document).keyup(function(e) {
+		console.log("GEY");
+		if (e.key === " ") {
+			keys.space = false;
+		}
+		CursorPicker();
+   	});
 
 });

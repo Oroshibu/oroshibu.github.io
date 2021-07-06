@@ -10,5 +10,5 @@ can import any map size
 
 default objects(name, sizeX, sizeY, gridSnap (0= infinite,0.25 tt les 0.25 tiles,1 =tt les 1 tiles), anchor X, anchor Y, categoryName, editNodes, editHeight, edi1tWidth, editAnchors)
 
-Hold Middle Click - Drag Map Around
+Hold Middle Click OR Space + Click - Drag Map Around
 Scroll - Zoom in and out
