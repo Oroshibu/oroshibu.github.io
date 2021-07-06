@@ -24,6 +24,15 @@ $(document).ready(function(){
 
 	DrawCanvas();
 
+	function Clamp(number, min, max) {
+		return Math.max(min, Math.min(number, max));
+	}
+
+	function ClampCorners() {
+		corner.x = Clamp(corner.x, -config.tileSize*(config.gridSize.x-1)+config.guiWidth/scale, canvas.width/scale-config.tileSize);
+		corner.y = Clamp(corner.y, -config.tileSize*(config.gridSize.y-1), canvas.height/scale-config.tileSize);
+	}
+
 	function Zoom(event) {
 		event.preventDefault();
 
@@ -31,33 +40,40 @@ $(document).ready(function(){
 
 			console.log(scale);
 			var newScale = scale + event.deltaY * -config.zoomScale;
-			newScale = Math.min(Math.max(config.zoomLimits.min, newScale), config.zoomLimits.max);
-			console.log(newScale);
+			newScale = Clamp(newScale, config.zoomLimits.min, config.zoomLimits.max);
 
-			corner.x -= mouse.x/newScale - mouse.x/scale;
-			corner.y -= mouse.y/newScale - mouse.y/scale;
-		  
+			corner.x += mouse.x/newScale - mouse.x/scale;
+			corner.y += mouse.y/newScale - mouse.y/scale;
+			
 			scale = newScale;
 		}
 	  
 
-
+		ClampCorners();
 		DrawCanvas();
 	  
 	}
 	canvas.addEventListener('wheel', Zoom);
 
 	function DrawCanvas() {
+		//DRAW GRID
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
-		ctx.fillStyle = config.bgColor;
+		ctx.fillStyle = config.masterBgColor;
 		ctx.fillRect(0, 0, canvas.width, canvas.height);
+		ctx.fillStyle = config.bgColor;
+		ctx.fillRect(corner.x*scale, corner.y*scale, config.gridSize.x*config.tileSize*scale, config.gridSize.y*config.tileSize*scale);
 		ctx.fillStyle = config.bgLinesColor;
-		for (var i = 0; i < 50; i++) {
-			ctx.fillRect(0, i*config.tileSize*scale-corner.y*scale, canvas.width, 1);
+		for (var i = 0; i < config.gridSize.y; i++) {
+			ctx.fillRect(corner.x*scale, i*config.tileSize*scale+corner.y*scale, config.gridSize.x*config.tileSize*scale, 1);
 		}
-		for (var i = 0; i < 50; i++) {
-			ctx.fillRect(i*config.tileSize*scale-corner.x*scale, 0, 1, canvas.height);
+		for (var i = 0; i < config.gridSize.x; i++) {
+			ctx.fillRect(i*config.tileSize*scale+corner.x*scale, corner.y*scale, 1, config.gridSize.y*config.tileSize*scale);
 		}
+		//DRAW ENTITES IDK
+
+		//DRAW GUI BAR
+		ctx.fillStyle = config.guiBgColor;
+		ctx.fillRect(0, 0, config.guiWidth, canvas.height);
 	}
 	
 	
@@ -71,8 +87,9 @@ $(document).ready(function(){
 			if (mouse.lastSeenAt.x != null) {
 				var dist = {x:mouse.lastSeenAt.x - mouse.x, y:mouse.lastSeenAt.y - mouse.y};
 			
-				corner.x += dist.x/scale;
-				corner.y += dist.y/scale;
+				corner.x -= dist.x/scale;
+				corner.y -= dist.y/scale;
+				ClampCorners();
 			}
 
 			mouse.lastSeenAt.x = mouse.x;
