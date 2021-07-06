@@ -1,0 +1,11 @@
+zooming
+scrolling
+ctrl z
+layers
+all in one edit tool
+polygon tools (circle, lines)
+fill tools
+selection tools
+can import any map size
+
+default objects(name, sizeX, sizeY, gridSnap (0= infinite,0.25 tt les 0.25 tiles,1 =tt les 1 tiles), anchor X, anchor Y, categoryName, editNodes, editHeight, edi1tWidth, editAnchors)
