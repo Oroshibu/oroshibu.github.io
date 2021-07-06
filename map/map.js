@@ -17,7 +17,16 @@ $(document).ready(function(){
 	var ctx = canvas.getContext('2d');
 
 	var scale = 1;
-	var corner = {x:0, y:0};
+	var corner = {x:config.guiWidth, y:0};
+
+	if (config.tileSize*config.gridSize.y < canvas.height) {
+		corner.y = (canvas.height - config.tileSize*config.gridSize.y)/2;
+	} 
+
+	if (config.tileSize*config.gridSize.x < canvas.width-config.guiWidth) {
+		corner.x = (canvas.width - config.guiWidth - config.tileSize*config.gridSize.x)/2 + config.guiWidth;
+	}
+
 	var mouse = {x:0, y:0, lastSeenAt:{x: null, y: null}, middleClick:false};
 
 	canvas.onwheel = Zoom;
