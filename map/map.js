@@ -1,6 +1,10 @@
 import { default as config } from "./modules/config.js";
+import { default as instances } from "./modules/instances.js";
+import { Block, Entity, Map } from "./modules/classes.js";
 
 $(document).ready(function(){
+
+	//INIT
 
 	var body = document.body;
 	var html = document.documentElement;
@@ -15,6 +19,7 @@ $(document).ready(function(){
     canvas.height = height;
 
 	var ctx = canvas.getContext('2d');
+	ctx.imageSmoothingEnabled = false;
 
 	var scale = 1;
 	var corner = {x:config.guiWidth, y:0};
@@ -27,17 +32,41 @@ $(document).ready(function(){
 		corner.x = (canvas.width - config.guiWidth - config.tileSize*config.gridSize.x)/2 + config.guiWidth;
 	}
 
-	var mouse = {x:0, y:0, lastSeenAt:{x: null, y: null}, inGui:false};
+	var mouse = {x:0, y:0, lastSeenAt:{x: null, y: null}, inGui:false, onGrid:{x:0, y:0}};
 	var keys = {leftClick: false, middleClick:false, space:false};
+
+	var mode = "default";
+
+	var map = new Map(config.gridSize, config.blockLayers, config.tileSize);
+
+	map._blockLayers[0]._blocks[2][4] = instances.wall;
+	map._blockLayers[0]._blocks[2][3] = instances.wall;
 
 	canvas.onwheel = Zoom;
 
 	DrawCanvas();
 
-	function CursorPicker() {
+	//FUNCTIONS
+
+	function MousePosToGridPos() {
+		var newX = (mouse.x - corner.x*scale)/scale;
+		var newY = (mouse.y - corner.y*scale)/scale;
+		return {x:newX, y:newY};
+	}
+
+	function ModePicker() {
 		if ((keys.space || keys.middleClick) && !mouse.inGui) {
-			document.body.style.cursor = "grab";
+			mode = "grab";
 		} else {
+			mode = "default";
+		}
+		CursorPicker();
+	}
+
+	function CursorPicker() {
+		if (mode == "grab") {
+			document.body.style.cursor = "grab";
+		} else if (mode == "default") {
 			document.body.style.cursor = "default";
 		}
 		
@@ -80,16 +109,21 @@ $(document).ready(function(){
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		ctx.fillStyle = config.masterBgColor;
 		ctx.fillRect(0, 0, canvas.width, canvas.height);
+		ctx.fillStyle = config.bgOutColor;
+		ctx.fillRect(corner.x*scale-2, corner.y*scale-2, config.gridSize.x*config.tileSize*scale+5, config.gridSize.y*config.tileSize*scale+5);
 		ctx.fillStyle = config.bgColor;
 		ctx.fillRect(corner.x*scale, corner.y*scale, config.gridSize.x*config.tileSize*scale, config.gridSize.y*config.tileSize*scale);
 		ctx.fillStyle = config.bgLinesColor;
-		for (var i = 0; i < config.gridSize.y; i++) {
+		//ctx.filter = "brightness(2)";
+		//ctx.filter = "none";
+		for (var i = 0; i < config.gridSize.y+1; i++) {
 			ctx.fillRect(corner.x*scale, i*config.tileSize*scale+corner.y*scale, config.gridSize.x*config.tileSize*scale, 1);
 		}
-		for (var i = 0; i < config.gridSize.x; i++) {
+		for (var i = 0; i < config.gridSize.x+1; i++) {
 			ctx.fillRect(i*config.tileSize*scale+corner.x*scale, corner.y*scale, 1, config.gridSize.y*config.tileSize*scale);
 		}
-		//DRAW ENTITES IDK
+		//DRAW MAP
+		map.draw(ctx, corner, scale);
 
 		//DRAW GUI BAR
 		ctx.fillStyle = config.guiBgColor;
@@ -103,9 +137,9 @@ $(document).ready(function(){
 		mouse.x = e.clientX - rect.left;
 		mouse.y = e.clientY - rect.top;
 
-		mouse.inGui = (mouse.x<config.guiWidth);
+		mouse.onGrid = MousePosToGridPos();
 
-		CursorPicker();
+		mouse.inGui = (mouse.x<config.guiWidth);
 
 		//DRAG CANVAS
 		if ((keys.middleClick || (keys.leftClick && keys.space)) && !mouse.inGui) {
@@ -132,6 +166,7 @@ $(document).ready(function(){
 		else if( e.which == 2 ) {
 			e.preventDefault();
 			keys.middleClick = true;
+			ModePicker();
 		}
 		CursorPicker();
 	});
@@ -143,9 +178,10 @@ $(document).ready(function(){
 			mouse.lastSeenAt.x = null;
 		}
 		else if( e.which == 2 ) {
-		   e.preventDefault();
+			e.preventDefault();
 			keys.middleClick = false;
 			mouse.lastSeenAt.x = null;
+			ModePicker();
 		}
 		CursorPicker();
 	});
@@ -153,14 +189,15 @@ $(document).ready(function(){
 	$(document).keydown(function(e) {
 		if (e.key === " ") {
 			keys.space = true;
+			ModePicker();
 		}
 		CursorPicker();
    	});
 
 	$(document).keyup(function(e) {
-		console.log("GEY");
 		if (e.key === " ") {
 			keys.space = false;
+			ModePicker();
 		}
 		CursorPicker();
    	});

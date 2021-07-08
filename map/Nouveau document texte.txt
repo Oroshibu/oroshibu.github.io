@@ -1,14 +1,18 @@
-zooming
-scrolling
+X zooming
+X scrolling
+X all in one edit tool
+X polygon tools (circle, lines)
+X fill tools
+X selection tools
+can import any map size
 ctrl z
 layers
-all in one edit tool
-polygon tools (circle, lines)
-fill tools
-selection tools
-can import any map size
+move around with arrows
+grab borders of grid to rescale it ?
 
 default objects(name, sizeX, sizeY, gridSnap (0= infinite,0.25 tt les 0.25 tiles,1 =tt les 1 tiles), anchor X, anchor Y, categoryName, editNodes, editHeight, edi1tWidth, editAnchors)
 
 Hold Middle Click OR Space + Click - Drag Map Around
 Scroll - Zoom in and out
+
+Tools - Dessin, Gomme, Edit entities and stuff, selection, polygon, Fill tool
