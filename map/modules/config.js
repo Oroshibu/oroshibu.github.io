@@ -13,7 +13,8 @@ var config = {
     GUIBgColor:"#16181c",
     GUIMargin:8,
     GUIY:100,
-    blockLayers: 1
+    blockLayers: 1,
+    canvasRefreshTime: 20 //50 FPS
 }
 
 export default config;

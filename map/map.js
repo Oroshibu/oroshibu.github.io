@@ -61,7 +61,7 @@ $(document).ready(function(){
 
 	canvas.onwheel = Zoom;
 
-	DrawCanvas();
+	//DrawCanvas();
 
 	//FUNCTIONS
 
@@ -115,7 +115,7 @@ $(document).ready(function(){
 		  
 	
 			ClampCorners();
-			DrawCanvas();
+			//DrawCanvas();
 		}
 	  
 	}
@@ -168,13 +168,13 @@ $(document).ready(function(){
 			mouse.lastSeenAt.x = mouse.x;
 			mouse.lastSeenAt.y = mouse.y;
 
-			DrawCanvas();
+			//DrawCanvas();
 		}
 
 		//HOVER GUI
 		if (mouse.inGUI && mouse.y > config.GUIY){
 			gui.hover(mouse.x, mouse.y);
-			DrawCanvas();
+			//DrawCanvas();
 		}
 
 	});
@@ -222,5 +222,7 @@ $(document).ready(function(){
 		}
 		CursorPicker();
    	});
+
+	setInterval(DrawCanvas, config.canvasRefreshTime);
 	   
 });

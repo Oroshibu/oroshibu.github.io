@@ -1,6 +1,11 @@
 import { default as config } from "./config.js";
 import { default as instances } from "./instances.js";
 
+
+function Clamp(number, min, max) {
+    return Math.max(min, Math.min(number, max));
+}
+
 export class GUI {
     constructor(size = {x:256, y:256}, y = 100){
         this._GUIY = y;
@@ -21,6 +26,7 @@ export class GUI {
     }
 
     hover(x, y) {
+        this.unhover();
         let relativex = Math.floor((x - (config.GUIWidth-this._size.x)/2 - this._adaptX - config.GUIMargin)/(config.GUITileSize+config.GUIMargin));
         let relativey = Math.floor((y - this._GUIY - config.GUIMargin - this._scroll)/(config.GUITileSize+config.GUIMargin));
         if (relativex >= 0 && relativey >= 0 && relativex < this._perX){
@@ -28,6 +34,12 @@ export class GUI {
             if (this._categories[this._categoriesNames[this._selectedCategory]][i] != null){
                 this._categories[this._categoriesNames[this._selectedCategory]][i].GUIHover();
             }
+        }
+    }
+
+    unhover() {
+        for (let i in this._categories[this._categoriesNames[this._selectedCategory]]){
+            this._categories[this._categoriesNames[this._selectedCategory]][i].GUIUnhover();
         }
     }
 
@@ -55,20 +67,23 @@ class Item {
         this._image = new Image();
         this._tileSize = config.tileSize;
         this._GUIhover = false;
-        this._glowLevel = 2;
+        this._glowLevel = 1;
         if (imageName == null) {
             this._image.src = "images/"+this._name+".png";
         } else {
             this._image.src = "images/"+imageName+".png";
         }
     }
-    
-    GUIHover() {
-        this._GUIhover = true;
-        //this._glowLevel = 2;
+  
+    GUIUnhover() {
+        this._GUIhover = false;
     }
 
-    drawOnUI(ctx, size, x, y) {
+    GUIHover() {
+        this._GUIhover = true;
+    }
+
+    drawOnUI(ctx, size, x, y) {/*
         if (this._GUIhover) {
             ctx.filter = "brightness("+this._glowLevel.toString()+")";
             ctx.drawImage(this._image, x-config.GUIMargin/2, y-config.GUIMargin/2, size+config.GUIMargin, size+config.GUIMargin);
@@ -76,14 +91,18 @@ class Item {
         } else {
             ctx.drawImage(this._image, x, y, size, size);
         }
-        this._GUIhover = false;
-        /*
-        ctx.filter = "brightness("+this._glowLevel.toString()+")";
-        ctx.drawImage(this._image, x, y, size, size);
-        ctx.filter = "none";
-        this._glowLevel -= 0.1;
-        if (this._glowLevel < 1) {this._glowLevel = 1};
         this._GUIhover = false;*/
+        
+        ctx.filter = "brightness("+this._glowLevel.toString()+")";
+        ctx.drawImage(this._image, x-(config.GUIMargin/2)*(this._glowLevel-1), y-(config.GUIMargin/2)*(this._glowLevel-1), size+(config.GUIMargin)*(this._glowLevel-1), size+(config.GUIMargin)*(this._glowLevel-1));
+        ctx.filter = "none";
+        if (!this._GUIhover) {
+            this._glowLevel -= 0.1;
+        } else {
+            this._glowLevel += 0.4;
+        }
+        this._glowLevel = Clamp(this._glowLevel, 1, 2);
+        //this._GUIhover = false;
     }
 
     drawOnGrid(ctx, scale, x, y){
