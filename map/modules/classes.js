@@ -55,7 +55,7 @@ class Item {
         this._image = new Image();
         this._tileSize = config.tileSize;
         this._GUIhover = false;
-        this._GlowLevel = 2;
+        this._glowLevel = 2;
         if (imageName == null) {
             this._image.src = "images/"+this._name+".png";
         } else {
@@ -65,24 +65,24 @@ class Item {
     
     GUIHover() {
         this._GUIhover = true;
-        //this._GlowLevel = 2;
+        //this._glowLevel = 2;
     }
 
     drawOnUI(ctx, size, x, y) {
         if (this._GUIhover) {
-            ctx.filter = "brightness("+this._GlowLevel.toString()+")";
-            ctx.drawImage(this._image, x, y, size, size);
+            ctx.filter = "brightness("+this._glowLevel.toString()+")";
+            ctx.drawImage(this._image, x-config.GUIMargin/2, y-config.GUIMargin/2, size+config.GUIMargin, size+config.GUIMargin);
             ctx.filter = "none";
         } else {
             ctx.drawImage(this._image, x, y, size, size);
         }
         this._GUIhover = false;
         /*
-        ctx.filter = "brightness("+this._GlowLevel.toString()+")";
+        ctx.filter = "brightness("+this._glowLevel.toString()+")";
         ctx.drawImage(this._image, x, y, size, size);
         ctx.filter = "none";
-        this._GlowLevel -= 0.1;
-        if (this._GlowLevel < 1) {this._GlowLevel = 1};
+        this._glowLevel -= 0.1;
+        if (this._glowLevel < 1) {this._glowLevel = 1};
         this._GUIhover = false;*/
     }
 
