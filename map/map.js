@@ -1,6 +1,19 @@
 import { default as config } from "./modules/config.js";
 import { default as instances } from "./modules/instances.js";
-import { Block, Entity, Map } from "./modules/classes.js";
+import { Block, Entity, GUI, Map } from "./modules/classes.js";
+
+CanvasRenderingContext2D.prototype.roundRect = function (x, y, width, height, radius) {
+	if (width < 2 * radius) radius = width / 2;
+	if (height < 2 * radius) radius = height / 2;
+	this.beginPath();
+	this.moveTo(x + radius, y);
+	this.arcTo(x + width, y, x + width, y + height, radius);
+	this.arcTo(x + width, y + height, x, y + height, radius);
+	this.arcTo(x, y + height, x, y, radius);
+	this.arcTo(x, y, x + width, y, radius);
+	this.closePath();
+	return this;
+}
 
 $(document).ready(function(){
 
@@ -22,25 +35,29 @@ $(document).ready(function(){
 	ctx.imageSmoothingEnabled = false;
 
 	var scale = 1;
-	var corner = {x:config.guiWidth, y:0};
+	var corner = {x:config.GUIWidth, y:0};
 
 	if (config.tileSize*config.gridSize.y < canvas.height) {
 		corner.y = (canvas.height - config.tileSize*config.gridSize.y)/2;
 	} 
 
-	if (config.tileSize*config.gridSize.x < canvas.width-config.guiWidth) {
-		corner.x = (canvas.width - config.guiWidth - config.tileSize*config.gridSize.x)/2 + config.guiWidth;
+	if (config.tileSize*config.gridSize.x < canvas.width-config.GUIWidth) {
+		corner.x = (canvas.width - config.GUIWidth - config.tileSize*config.gridSize.x)/2 + config.GUIWidth;
 	}
 
-	var mouse = {x:0, y:0, lastSeenAt:{x: null, y: null}, inGui:false, onGrid:{x:0, y:0}};
+	var mouse = {x:0, y:0, lastSeenAt:{x: null, y: null}, inGUI:false, onGrid:{x:0, y:0}};
 	var keys = {leftClick: false, middleClick:false, space:false};
 
 	var mode = "default";
 
-	var map = new Map(config.gridSize, config.blockLayers, config.tileSize);
+	var map = new Map(config.gridSize, config.blockLayers);
 
-	map._blockLayers[0]._blocks[2][4] = instances.wall;
-	map._blockLayers[0]._blocks[2][3] = instances.wall;
+	map._blockLayers[0]._blocks[1][5] = instances["wall"];
+	map._blockLayers[0]._blocks[1][2] = instances["wall"];
+	map._blockLayers[0]._blocks[4][5] = instances["wall"];
+	map._blockLayers[0]._blocks[4][2] = instances["wall"];
+
+	var gui = new GUI({x:config.GUISelectBlocksWidth, y:512}, config.GUIY);
 
 	canvas.onwheel = Zoom;
 
@@ -55,7 +72,7 @@ $(document).ready(function(){
 	}
 
 	function ModePicker() {
-		if ((keys.space || keys.middleClick) && !mouse.inGui) {
+		if ((keys.space || keys.middleClick) && !mouse.inGUI) {
 			mode = "grab";
 		} else {
 			mode = "default";
@@ -77,14 +94,14 @@ $(document).ready(function(){
 	}
 
 	function ClampCorners() {
-		corner.x = Clamp(corner.x, -config.tileSize*(config.gridSize.x-1)+config.guiWidth/scale, canvas.width/scale-config.tileSize);
+		corner.x = Clamp(corner.x, -config.tileSize*(config.gridSize.x-1)+config.GUIWidth/scale, canvas.width/scale-config.tileSize);
 		corner.y = Clamp(corner.y, -config.tileSize*(config.gridSize.y-1), canvas.height/scale-config.tileSize);
 	}
 
 	function Zoom(event) {
 		event.preventDefault();
 
-		if (!mouse.inGui) {
+		if (!mouse.inGUI) {
 			if (scale >=config.zoomLimits.min && scale <= config.zoomLimits.max) {
 
 				var newScale = scale + event.deltaY * -config.zoomScale;
@@ -114,8 +131,6 @@ $(document).ready(function(){
 		ctx.fillStyle = config.bgColor;
 		ctx.fillRect(corner.x*scale, corner.y*scale, config.gridSize.x*config.tileSize*scale, config.gridSize.y*config.tileSize*scale);
 		ctx.fillStyle = config.bgLinesColor;
-		//ctx.filter = "brightness(2)";
-		//ctx.filter = "none";
 		for (var i = 0; i < config.gridSize.y+1; i++) {
 			ctx.fillRect(corner.x*scale, i*config.tileSize*scale+corner.y*scale, config.gridSize.x*config.tileSize*scale, 1);
 		}
@@ -126,11 +141,10 @@ $(document).ready(function(){
 		map.draw(ctx, corner, scale);
 
 		//DRAW GUI BAR
-		ctx.fillStyle = config.guiBgColor;
-		ctx.fillRect(0, 0, config.guiWidth, canvas.height);
+		ctx.fillStyle = config.GUIBgColor;
+		ctx.fillRect(0, 0, config.GUIWidth, canvas.height);
+		gui.drawGUI(ctx);
 	}
-	
-	
 
 	$('#mainCanvas').on('mousemove', function(e){
 		var rect = canvas.getBoundingClientRect();
@@ -139,10 +153,10 @@ $(document).ready(function(){
 
 		mouse.onGrid = MousePosToGridPos();
 
-		mouse.inGui = (mouse.x<config.guiWidth);
+		mouse.inGUI = (mouse.x<config.GUIWidth);
 
 		//DRAG CANVAS
-		if ((keys.middleClick || (keys.leftClick && keys.space)) && !mouse.inGui) {
+		if ((keys.middleClick || (keys.leftClick && keys.space)) && !mouse.inGUI) {
 			if (mouse.lastSeenAt.x != null) {
 				var dist = {x:mouse.lastSeenAt.x - mouse.x, y:mouse.lastSeenAt.y - mouse.y};
 			
@@ -156,6 +170,13 @@ $(document).ready(function(){
 
 			DrawCanvas();
 		}
+
+		//HOVER GUI
+		if (mouse.inGUI && mouse.y > config.GUIY){
+			gui.hover(mouse.x, mouse.y);
+			DrawCanvas();
+		}
+
 	});
 	
 	$('#mainCanvas').on('mousedown', function(e) {
@@ -201,5 +222,5 @@ $(document).ready(function(){
 		}
 		CursorPicker();
    	});
-
+	   
 });

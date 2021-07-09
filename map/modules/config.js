@@ -4,11 +4,15 @@ var config = {
     bgLinesColor: "#202228",
     bgOutColor: "#3f424a",
     zoomScale:0.001,
-    zoomLimits:{min:0.5, max:4},
+    zoomLimits:{min:0.4, max:4},
     tileSize:16,
+    GUITileSize:32,
     gridSize:{x:50, y:50},
-    guiWidth:384,
-    guiBgColor:"#191B20",
+    GUIWidth:384,
+    GUISelectBlocksWidth:32*8+8*9,
+    GUIBgColor:"#16181c",
+    GUIMargin:8,
+    GUIY:100,
     blockLayers: 1
 }
 
