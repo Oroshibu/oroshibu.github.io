@@ -22,3 +22,5 @@ instances["wall16"] = new Block("1");
 instances["wall13"] = new Entity("1");
 instances["wall14"] = new Entity("1");
 instances["wall15"] = new Entity("1");
+instances["wall33"] = new Entity("1", {x:0.5, y:0.5}, {x:1, y:1}, 0, "Others");
+instances["wall34"] = new Entity("1", {x:0.5, y:0.5}, {x:1, y:1}, 0.5, "Gingus");

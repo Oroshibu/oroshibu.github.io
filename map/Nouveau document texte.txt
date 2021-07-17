@@ -5,14 +5,26 @@ X polygon tools (circle, lines)
 X fill tools
 X selection tools
 can import any map size
-ctrl z
-layers
-move around with arrows
+x ctrl z
+x layers
+x move around with arrows //dont care
 grab borders of grid to rescale it ?
 
 default objects(name, sizeX, sizeY, gridSnap (0= infinite,0.25 tt les 0.25 tiles,1 =tt les 1 tiles), anchor X, anchor Y, categoryName, editNodes, editHeight, edi1tWidth, editAnchors)
 
 Hold Middle Click OR Space + Click - Drag Map Around
 Scroll - Zoom in and out
+Shift + Click - Draw Blocks at once
+Ctrl + Z - Undo
+Ctrl + Y - Redo
+Hold Ctrl - Resize Canvas
 
-Tools - Dessin, Gomme, Edit entities and stuff, selection, polygon, Fill tool
+Tools - Gomme, Edit entities and stuff, selection
+puis export import, nom de la map maybe et taille
+
+bug go invert resize
+offset bug
+entites resize
+
+tool rack
+import export

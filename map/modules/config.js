@@ -14,7 +14,11 @@ var config = {
     GUIMargin:8,
     GUIY:100,
     blockLayers: 1,
-    canvasRefreshTime: 20 //50 FPS
+    canvasRefreshTime: 20, //50 FP
+    textColor1: "#848891",
+    textColor2: "#3f424a",
+    historySize: 40,
+    hoverResizeColor: "#ffffff"
 }
 
 export default config;
