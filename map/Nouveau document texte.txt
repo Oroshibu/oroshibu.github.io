@@ -28,3 +28,13 @@ entites resize
 
 tool rack
 import export
+
+
+OBJECTIVES:
+resize entities
+eraser
+fix entities copy
+add ID and text edits
+edit tool
+export
+import

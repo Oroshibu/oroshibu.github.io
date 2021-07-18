@@ -4,7 +4,7 @@ var config = {
     bgLinesColor: "#202228",
     bgOutColor: "#3f424a",
     zoomScale:0.001,
-    zoomLimits:{min:0.4, max:4},
+    zoomLimits:{min:0.2, max:4},
     tileSize:16,
     GUITileSize:32,
     gridSize:{x:50, y:50},
@@ -17,7 +17,7 @@ var config = {
     canvasRefreshTime: 20, //50 FP
     textColor1: "#848891",
     textColor2: "#3f424a",
-    historySize: 40,
+    historySize: 20,
     hoverResizeColor: "#ffffff"
 }
 

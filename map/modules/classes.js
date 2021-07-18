@@ -343,29 +343,41 @@ export class Map {
 
     resize(side, x, y){
         if (side == 1){
-            this._size.x = Math.floor(x/config.tileSize);
-            for (let i = 0; i < this._blockLayersCount; i++) {
-                this._blockLayers[i].resize(side, this._size.x);
+            let tmpRs = Math.floor(x/config.tileSize);
+            if (tmpRs > 0){
+                this._size.x = tmpRs;
+                for (let i = 0; i < this._blockLayersCount; i++) {
+                    this._blockLayers[i].resize(side, this._size.x);
+                }
+                this._entitiesLayer.resize(side, x);
             }
-            this._entitiesLayer.resize(side, x);
         } else if (side == 2){
-            this._size.y -= Math.floor(y/config.tileSize);
-            for (let i = 0; i < this._blockLayersCount; i++) {
-                this._blockLayers[i].resize(side, this._size.y);
+            let tmpRs = this._size.y - Math.floor(y/config.tileSize);
+            if (tmpRs > 0){
+                this._size.y = tmpRs;
+                for (let i = 0; i < this._blockLayersCount; i++) {
+                    this._blockLayers[i].resize(side, this._size.y);
+                }
+                this._entitiesLayer.resize(side, y);
             }
-            this._entitiesLayer.resize(side, y);
         } else if (side == 3){
-            this._size.x -= Math.floor(x/config.tileSize);
-            for (let i = 0; i < this._blockLayersCount; i++) {
-                this._blockLayers[i].resize(side, this._size.x);
+            let tmpRs = this._size.x - Math.floor(x/config.tileSize);
+            if (tmpRs > 0){
+                this._size.x = tmpRs;
+                for (let i = 0; i < this._blockLayersCount; i++) {
+                    this._blockLayers[i].resize(side, this._size.x);
+                }
+                this._entitiesLayer.resize(side, x);
             }
-            this._entitiesLayer.resize(side, x);
         } else if (side == 4){
-            this._size.y = Math.floor(y/config.tileSize);
-            for (let i = 0; i < this._blockLayersCount; i++) {
-                this._blockLayers[i].resize(side, this._size.y);
+            let tmpRs = Math.floor(y/config.tileSize);
+            if (tmpRs > 0){
+                this._size.y = tmpRs;
+                for (let i = 0; i < this._blockLayersCount; i++) {
+                    this._blockLayers[i].resize(side, this._size.y);
+                }
+                this._entitiesLayer.resize(side, y);       
             }
-            this._entitiesLayer.resize(side, y);       
         }
     }
 }
