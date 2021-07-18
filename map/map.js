@@ -309,6 +309,7 @@ $(document).ready(function(){
 			ModePicker();
 		} else {
 			mouse.hoverResize = 0;
+			ModePicker();
 		}
 
 		//RESIZE
@@ -347,6 +348,7 @@ $(document).ready(function(){
 			if (ctrlMode) {
 				ctrlMode = 0;
 				mouse.hoverResize = 0;
+				ModePicker();
 			}
 			if (shiftMode){
 				shiftMode = false;
