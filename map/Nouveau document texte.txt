@@ -38,3 +38,5 @@ add ID and text edits
 edit tool
 export
 import
+
+hold ctrl over borders cursor stays

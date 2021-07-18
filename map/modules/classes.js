@@ -233,7 +233,7 @@ export class BlockLayer extends Layer {
         }
     }
 
-    resize(side, value){
+    resize(side, value, offset=0){
         //calculate new geometry
         let newGeometry = {x:0, y:0, offset:{x:0, y:0}};
         if (side == 1){
@@ -242,11 +242,13 @@ export class BlockLayer extends Layer {
         } else if (side == 2) {
             newGeometry.x = this._size.x;
             newGeometry.y = value;
-            newGeometry.offset.y = (value - this._size.y);
+            //newGeometry.offset.y = (value - this._size.y);
+            newGeometry.offset.y = offset;
         } else if (side == 3) {
             newGeometry.x = value;
             newGeometry.y = this._size.y;
-            newGeometry.offset.x = (value - this._size.x);
+            //newGeometry.offset.x = (value - this._size.x);
+            newGeometry.offset.x = offset;
         } else if (side == 4) {
             newGeometry.x = this._size.x;
             newGeometry.y = value;
@@ -299,18 +301,35 @@ export class EntityLayer extends Layer {
         }
     }
 
-    resize(side, value){
+    resize(side, newsize, value=0){
+        newsize = newsize * config.tileSize;
         value = value * config.tileSize;
         if (side == 1) {
             for (var i = 0; i < this._entities.length; i++) {
-                if (this._entities[i].x > value){
+                if (this._entities[i].x > newsize){
                     this._entities.splice(i, 1);
                 }
             }            
         } else if (side == 2) {
             for (var i = 0; i < this._entities.length; i++) {
-                this._entities.y += value;
+                this._entities[i].y += value;
+                if (this._entities[i].y < 1){
+                    this._entities.splice(i, 1);
+                }
             }
+        } else if (side == 3) {
+            for (var i = 0; i < this._entities.length; i++) {
+                this._entities[i].x += value;
+                if (this._entities[i].x < 1){
+                    this._entities.splice(i, 1);
+                }
+            }
+        } else if (side == 4) {
+            for (var i = 0; i < this._entities.length; i++) {
+                if (this._entities[i].y > newsize){
+                    this._entities.splice(i, 1);
+                }
+            }            
         }
     }
 }
@@ -349,25 +368,27 @@ export class Map {
                 for (let i = 0; i < this._blockLayersCount; i++) {
                     this._blockLayers[i].resize(side, this._size.x);
                 }
-                this._entitiesLayer.resize(side, x);
+                this._entitiesLayer.resize(side, this._size.x);
             }
         } else if (side == 2){
             let tmpRs = this._size.y - Math.floor(y/config.tileSize);
             if (tmpRs > 0){
+                let offset = tmpRs-this._size.y;
                 this._size.y = tmpRs;
                 for (let i = 0; i < this._blockLayersCount; i++) {
-                    this._blockLayers[i].resize(side, this._size.y);
+                    this._blockLayers[i].resize(side, this._size.y, offset);
                 }
-                this._entitiesLayer.resize(side, y);
+                this._entitiesLayer.resize(side, this._size.y, offset);
             }
         } else if (side == 3){
             let tmpRs = this._size.x - Math.floor(x/config.tileSize);
             if (tmpRs > 0){
+                let offset = tmpRs-this._size.x;
                 this._size.x = tmpRs;
                 for (let i = 0; i < this._blockLayersCount; i++) {
-                    this._blockLayers[i].resize(side, this._size.x);
+                    this._blockLayers[i].resize(side, this._size.x, offset);
                 }
-                this._entitiesLayer.resize(side, x);
+                this._entitiesLayer.resize(side, this._size.x, offset);
             }
         } else if (side == 4){
             let tmpRs = Math.floor(y/config.tileSize);
@@ -375,8 +396,8 @@ export class Map {
                 this._size.y = tmpRs;
                 for (let i = 0; i < this._blockLayersCount; i++) {
                     this._blockLayers[i].resize(side, this._size.y);
-                }
-                this._entitiesLayer.resize(side, y);       
+                }     
+                this._entitiesLayer.resize(side, this._size.y); 
             }
         }
     }
@@ -417,7 +438,11 @@ export class History {
         }
         //CLONE ENTITIES
         for (let i = 0; i < this.top()._entitiesLayer._entities.length; i++){
-            clone._entitiesLayer._entities.push(this.top()._entitiesLayer._entities[i]);
+            let cloneEnt = {key:0, x:0, y:0};
+            cloneEnt.key = this.top()._entitiesLayer._entities[i].key;
+            cloneEnt.x = this.top()._entitiesLayer._entities[i].x;
+            cloneEnt.y = this.top()._entitiesLayer._entities[i].y;
+            clone._entitiesLayer._entities.push(cloneEnt);
         }
         //PUSH CLONE    
         this._maps.push(clone);
