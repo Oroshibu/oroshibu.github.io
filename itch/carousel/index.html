@@ -124,7 +124,7 @@ a.button:hover{
 </head>
 <body>
 
-<section class="slider autoplay">
+<div class="slider autoplay">
 
 <div class ="slide">
 <div class="container">
@@ -188,13 +188,11 @@ a.button:hover{
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="slick/slick.js"></script>
-<script>
-  $(document).ready(function(){
-    $('.autoplay').slick({
-      slidesToShow: 5,
+<script>$(document).ready(function(){
+  $('.autoplay').slick({
+      slidesToShow: 3,
       slidesToScroll: 1,
       autoplay: true,
       autoplaySpeed: 20,
-    });
-  });
-  </script> 
+  })
+});</script> 
