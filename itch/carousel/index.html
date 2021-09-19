@@ -1,415 +1,409 @@
 <html>
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Dosis&display=swap" rel="stylesheet"> 
-<link rel="stylesheet" href="slick/slick.css">
-<link rel="stylesheet" href="slick/slick-theme.css">
-<style>
-
-.container {
-  margin-top: 6px;
-  position: relative;
-  width: 180px;
-  overflow: hidden;
-  outline-offset: 4px;
-  outline: 1px solid #FFFFFF75;
-  background-color: #000000;
-}
-
-.image {
-  display: block;
-  width: 180px;
-  height: auto;
-  transition: filter .2s ease-in-out;
-  overflow: hidden;
-}
-
-.overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: #000000BF;
-  width: 100%;
-  height: 60px;
-  transition: .5s ease;
-}
-
-.container:hover .image{
-  filter: blur(5px);
-}
-
-.container:hover .overlay {
-  height: 100%;
-}
-
-.icon {
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  top: -190px;
-}
-
-.context {
-  height: 20px;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-  text-align: center;
-}
-
-.text {
-  color: white;
-  font-size: 13px;
-  position: absolute;
-  top: 66px;
-  width: 83%;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-  text-align: center;
-  font-family: 'Dosis', sans-serif;
-  text-justify: inter-word;
-}
-
-a.button{
-  display:inline-block;
-	
-	font:normal normal 300 18px 'Dosis';
-	text-decoration:none;	
-	
-	color:rgb(255, 255, 255);
-	border:1px solid rgb(255, 255, 255);
-	border-radius:12px;
-	
-	padding: .2em 2.5em;
-	margin:5px;
-			
-	background-size: 200% 100%;	
-	background-image: linear-gradient(to right, transparent 50%, rgb(255, 255, 255) 50%);
-	transition: background-position .3s cubic-bezier(0.19, 1, 0.22, 1) .1s, color .5s ease 0s, background-color .5s ease;
-  margin-left: auto;
-  margin-right: auto;
-  position: absolute;
-  top: 200px;
-  left: 14.5%;
-}
-
-a.button:hover{
-	color:rgb(0, 0, 0);
-	background-color:rgb(255, 255, 255);
-	background-position: -100% 100%;
-}
-
-.client-area{
-  padding: 150px 0 0;
-}
-
-.autoplay{
-  width: 880px;
-  height: 265px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.slick-slide{
-  margin: 0 20px;
-}
-
-.slick-slide img {
-  width: 100%;
-}
-
-.slick-list {
-  position: relative;
-  display: block;
-  overflow: hidden;
-  margin : 0;
-  padding: 0;
-}
-
-.slick-list:focus{
-  outline:none;
-}
-
-.slick-slide{
-  display:none;
-  float:left;
-  height:100%;
-  min-height: 1px;
-}
-
-.slick-slide img{
-  display:block;
-}
-
-.slick-initialized .slick-slide{
-  display: block;
-}
-
-.slick-loading .slick-slide{
-  visibility: hidden;
-}
-
-.panel {
-    background: #ccc;
-    height:200px;
-    margin: 10px;
-    font-size: 72px;
-    text-align: center;
-    line-height: 200px;
-}
-
-.resizer{
-  width:960px;
-  position: absolute;
-  left:0;
-}
-
-.slick-prev:before {
-  content: "‹";
-  color: white;
-  font-size: 60px;
-  font-family: 'Dosis', sans-serif;
-  font-weight: bolder;
-  line-height: 0px;
-}
-
-.slick-next:before {
-  content: "›";
-  color: white;
-  font-size: 60px;
-  font-family: 'Dosis', sans-serif;
-  font-weight: bolder;
-  line-height: 0px;
-}
-
-.slick-dots li button:before {
-    color: white;
-}
-
-.slick-dots li.slick-active button:before {
-    color:white !important;
-}
-
-
-</style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="slick/slick.css">
+    <link rel="stylesheet" href="slick/slick-theme.css">
+    <style>
+        .container {
+            margin-top: 6px;
+            position: relative;
+            width: 180px;
+            overflow: hidden;
+            outline-offset: 4px;
+            outline: 1px solid #FFFFFF75;
+            background-color: #000000;
+        }
+        
+        .image {
+            display: block;
+            width: 180px;
+            height: auto;
+            transition: filter .2s ease-in-out;
+            overflow: hidden;
+        }
+        
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #000000BF;
+            width: 100%;
+            height: 60px;
+            transition: .5s ease;
+        }
+        
+        .container:hover .image {
+            filter: blur(5px);
+        }
+        
+        .container:hover .overlay {
+            height: 100%;
+        }
+        
+        .icon {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            top: -190px;
+        }
+        
+        .context {
+            height: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            left: 0;
+            right: 0;
+            text-align: center;
+        }
+        
+        .text {
+            color: white;
+            font-size: 13px;
+            position: absolute;
+            top: 66px;
+            width: 83%;
+            margin-left: auto;
+            margin-right: auto;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-family: 'Dosis', sans-serif;
+            text-justify: inter-word;
+        }
+        
+        a.button {
+            display: inline-block;
+            font: normal normal 300 18px 'Dosis';
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            border: 1px solid rgb(255, 255, 255);
+            border-radius: 12px;
+            padding: .2em 2.5em;
+            margin: 5px;
+            background-size: 200% 100%;
+            background-image: linear-gradient(to right, transparent 50%, rgb(255, 255, 255) 50%);
+            transition: background-position .3s cubic-bezier(0.19, 1, 0.22, 1) .1s, color .5s ease 0s, background-color .5s ease;
+            margin-left: auto;
+            margin-right: auto;
+            position: absolute;
+            top: 200px;
+            left: 14.5%;
+        }
+        
+        a.button:hover {
+            color: rgb(0, 0, 0);
+            background-color: rgb(255, 255, 255);
+            background-position: -100% 100%;
+        }
+        
+        .client-area {
+            padding: 150px 0 0;
+        }
+        
+        .autoplay {
+            width: 880px;
+            height: 265px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .slick-slide {
+            margin: 0 20px;
+        }
+        
+        .slick-slide img {
+            width: 100%;
+        }
+        
+        .slick-list {
+            position: relative;
+            display: block;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .slick-list:focus {
+            outline: none;
+        }
+        
+        .slick-slide {
+            display: none;
+            float: left;
+            height: 100%;
+            min-height: 1px;
+        }
+        
+        .slick-slide img {
+            display: block;
+        }
+        
+        .slick-initialized .slick-slide {
+            display: block;
+        }
+        
+        .slick-loading .slick-slide {
+            visibility: hidden;
+        }
+        
+        .panel {
+            background: #ccc;
+            height: 200px;
+            margin: 10px;
+            font-size: 72px;
+            text-align: center;
+            line-height: 200px;
+        }
+        
+        .resizer {
+            width: 960px;
+            position: absolute;
+            left: 0;
+        }
+        
+        .slick-prev:before {
+            content: "‹";
+            color: white;
+            font-size: 60px;
+            font-family: 'Dosis', sans-serif;
+            font-weight: bolder;
+            line-height: 0px;
+        }
+        
+        .slick-next:before {
+            content: "›";
+            color: white;
+            font-size: 60px;
+            font-family: 'Dosis', sans-serif;
+            font-weight: bolder;
+            line-height: 0px;
+        }
+        
+        .slick-dots li button:before {
+            color: white;
+        }
+        
+        .slick-dots li.slick-active button:before {
+            color: white !important;
+        }
+    </style>
 </head>
+
 <body>
-<div class="resizer">
-<div class="slider autoplay">
+    <div class="resizer">
+        <div class="slider autoplay">
 
-<div class ="slide">
-  <div class="container">
-    <img src="img/hivemind/bg.png" class="image">
-    <div class="overlay">
-      <img src="img/icons/bugulon.png" class="icon" style="width:40px">
-      <img src="img/hivemind/logo.png">
-      <div class="text">
-        <img src="img/icons/staysafejam.png" class="context" style="width:auto;">
-        Under the threat of extermination, the great Hive King and his loyal bee subjects take matters into their own hands to stop those threatening their presence.
-      </div>
-    <a href='https://saturnyoshi.itch.io/hivemind' class='button' target='_blank'>PLAY</a>
-    </div>
-  </div>
-  </div>
-
-<div class ="slide">
-  <div class="container">
-    <img src="img/lymphosite/bg.png" class="image">
-    <div class="overlay">
-      <img src="img/icons/bugulon.png" class="icon" style="width:40px">
-      <img src="img/lymphosite/logo.png">
-      <div class="text">
-        <img src="img/icons/ludumdare.png" class="context" style="width:auto;">
-        The immune crystal is under attack! Just when all hope seems lost, the vigilant Pill Ship comes to save the day, no disease can combat this scrapper's arsenal. 
-      </div>
-    <a href='https://saturnyoshi.itch.io/lymphosite' class='button' target='_blank'>PLAY</a>
-    </div>
-  </div>
-  </div>
-
-  <div class ="slide">
-    <div class="container">
-      <img src="img/phractionated/bg.png" class="image">
-      <div class="overlay">
-        <img src="img/icons/utc.png" class="icon" style="width:40px">
-        <img src="img/phractionated/logo.png">
-        <div class="text">
-          Phractionated is an interactive puzzle game that takes place in a mysterious atmosphere in which you will have to solve different kinds of puzzles in order to progress...
-        </div>
-      <!-- <a href='#' class='button' target='_blank'>PLAY</a> -->
-      </div>
-    </div>
-    </div>
-
-  <div class ="slide">
-    <div class="container">
-      <img src="img/trickykeys/bg.png" class="image">
-      <div class="overlay">
-        <img src="img/icons/bugulon.png" class="icon" style="width:40px">
-        <img src="img/trickykeys/logo.png">
-        <div class="text">
-          <img src="img/icons/gmtkjam.png" class="context" style="height:35px;width:auto;">
-          Your computer has been infected! Solve platforming puzzles with a Virus looming over your shoulder, restricting your movement and even outright taking control!
-        </div>
-      <a href='https://saturnyoshi.itch.io/tricky-keys' class='button' target='_blank'>PLAY</a>
-      </div>
-    </div>
-    </div>
-
-<div class ="slide">
-  <div class="container">
-    <img src="img/gunwyrm/bg.png" class="image">
-    <div class="overlay">
-      <img src="img/icons/bugulon.png" class="icon" style="width:40px">
-      <img src="img/gunwyrm/logo.png">
-      <div class="text">
-        <img src="img/icons/ludumdare.png" class="context" style="width:auto;">
-        The Gunwyrm is tasked with destroying invaders, gathering parts to make its next iteration even more powerful. When the timer runs out, the next Gunwyrm activates, and the cycle continues!
-      </div>
-    <a href='https://saturnyoshi.itch.io/gunwyrm' class='button' target='_blank'>PLAY</a>
-    </div>
-  </div>
-  </div>
-
-  <div class ="slide">
-    <div class="container">
-      <img src="img/atonement/bg.png" class="image">
-      <div class="overlay">
-        <img src="img/icons/bugulon.png" class="icon" style="width:40px">
-        <img src="img/atonement/logo.png">
-        <div class="text">
-          <img src="img/icons/gm48.png" class="context" style="width:auto;">
-          The Lunar Nobles have taken the light. infiltrate their facility and take back what is rightfully yours. Use the dark to sneak around and take out your target, though be careful, the cops are right on your tail.
-        </div>
-      <a href='https://team-bugulon.itch.io/atonement' class='button' target='_blank'>PLAY</a>
-      </div>
-    </div>
-    </div>
-
-    <div class ="slide">
-      <div class="container">
-        <img src="img/tailspin/bg.png" class="image">
-        <div class="overlay">
-          <img src="img/icons/bugulon.png" class="icon" style="width:40px">
-          <img src="img/tailspin/logo.png">
-          <div class="text">
-            <img src="img/icons/ludumdare.png" class="context" style="width:auto;">
-            Play as a treasure seeking canary and drill through 4 unique worlds of action packed platforming. Can you survive the infested depths below and attain everlasting glory? 
-          </div>
-        <a href='https://team-bugulon.itch.io/tailspin' class='button' target='_blank'>PLAY</a>
-        </div>
-      </div>
-      </div>
-
-      <div class ="slide">
-        <div class="container">
-          <img src="img/20tobreak/bg.png" class="image">
-          <div class="overlay">
-            <img src="img/20tobreak/logo.png">
-            <div class="text">
-              <img src="img/icons/aiandgames.png" class="context" style="height:35px;width:auto;">
-              Rules aren't really made to be broken. But you don't care. You just want to cause as much havoc as possible, no matter how much trouble you get into. 
+            <div class="slide">
+                <div class="container">
+                    <img src="img/spurblo/bg.png" class="image">
+                    <div class="overlay">
+                        <img src="img/icons/oroshibu.png" class="icon" style="width:40px">
+                        <img src="img/spurblo/logo.png">
+                        <div class="text">
+                            <img src="img/icons/ffajam.png" class="context" style="width:auto;"> Help Spurblo get through different puzzles using his unique ability to rotate different parts of the world depending on his mood. This little dude is insane.
+                        </div>
+                        <a href='https://oroshibu.itch.io/spurblo' class='button' target='_blank'>PLAY</a>
+                    </div>
+                </div>
             </div>
-          <a href='https://oroshibu.itch.io/20-to-break' class='button' target='_blank'>PLAY</a>
-          </div>
-        </div>
-        </div>
 
-      <div class ="slide">
-        <div class="container">
-          <img src="img/staticcling/bg.png" class="image">
-          <div class="overlay">
-            <img src="img/icons/bugulon.png" class="icon" style="width:40px">
-            <img src="img/staticcling/logo.png">
-            <div class="text">
-              <img src="img/icons/gmtkjam.png" class="context" style="height:35px;width:auto;">
-              Play as a rogue spark restrained to electronic devices, running, climbing and stretching through unique puzzles. Can you free yourself of your electric tethers?
+
+            <div class="slide">
+                <div class="container">
+                    <img src="img/thermaltrail/bg.png" class="image">
+                    <div class="overlay">
+                        <img src="img/icons/ouroboa.png" class="icon" style="width:40px">
+                        <img src="img/thermaltrail/logo.png">
+                        <div class="text">
+                            <img src="img/icons/ngjam.png" class="context" style="width:auto;"> Play as Yolka, a mountain goat who found an unknown egg. Keep the egg warm as you navigate the 3 distinct worlds, and bring it to the hottest place you know:
+                            the depths of a volcano.
+                        </div>
+                        <a href='https://www.newgrounds.com/portal/view/807111' class='button' target='_blank'>PLAY</a>
+                    </div>
+                </div>
             </div>
-          <a href='https://team-bugulon.itch.io/static-cling' class='button' target='_blank'>PLAY</a>
-          </div>
-        </div>
-        </div>
-
-        <div class ="slide">
-          <div class="container">
-            <img src="img/greachers/bg.png" class="image">
-            <div class="overlay">
-              <img src="img/greachers/logo.png">
-              <div class="text">
-                <img src="img/icons/lowrezjam.png" class="context" style="width:auto;">
-                Manage a team of randomly generated little fellas as they fight other greachers in a sidescrolling world with beautiful procedurally generated graphics. 
-              </div>
-            <a href='https://duckonaut.itch.io/greachers' class='button' target='_blank'>PLAY</a>
+            <div class="slide">
+                <div class="container">
+                    <img src="img/stargrove/bg.png" class="image">
+                    <div class="overlay">
+                        <img src="img/icons/bugulon.png" class="icon" style="width:40px">
+                        <img src="img/stargrove/logo.png">
+                        <div class="text">
+                            <img src="img/icons/ngjam.png" class="context" style="width:auto;"> Your son has been taken! Sling your eggs at foes and platform through three unique worlds in search of his captor. Though tread lightly, his henchmen will
+                            try to stop you at every turn.
+                        </div>
+                        <a href='https://team-bugulon.itch.io/stargrove-scramble' class='button' target='_blank'>PLAY</a>
+                    </div>
+                </div>
             </div>
-          </div>
-          </div>
 
-  <div class ="slide">
-    <div class="container">
-      <img src="img/stargrove/bg.png" class="image">
-      <div class="overlay">
-        <img src="img/icons/bugulon.png" class="icon" style="width:40px">
-        <img src="img/stargrove/logo.png">
-        <div class="text">
-          <img src="img/icons/ngjam.png" class="context" style="width:auto;">
-          Your son has been taken! Sling your eggs at foes and platform through three unique worlds in search of his captor. Though tread lightly, his henchmen will try to stop you at every turn. 
+            <div class="slide">
+                <div class="container">
+                    <img src="img/greachers/bg.png" class="image">
+                    <div class="overlay">
+                        <img src="img/greachers/logo.png">
+                        <div class="text">
+                            <img src="img/icons/lowrezjam.png" class="context" style="width:auto;"> Manage a team of randomly generated little fellas as they fight other greachers in a sidescrolling world with beautiful procedurally generated graphics.
+                        </div>
+                        <a href='https://duckonaut.itch.io/greachers' class='button' target='_blank'>PLAY</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="container">
+                    <img src="img/staticcling/bg.png" class="image">
+                    <div class="overlay">
+                        <img src="img/icons/bugulon.png" class="icon" style="width:40px">
+                        <img src="img/staticcling/logo.png">
+                        <div class="text">
+                            <img src="img/icons/gmtkjam.png" class="context" style="height:35px;width:auto;"> Play as a rogue spark restrained to electronic devices, running, climbing and stretching through unique puzzles. Can you free yourself of your
+                            electric tethers?
+                        </div>
+                        <a href='https://team-bugulon.itch.io/static-cling' class='button' target='_blank'>PLAY</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="container">
+                    <img src="img/20tobreak/bg.png" class="image">
+                    <div class="overlay">
+                        <img src="img/20tobreak/logo.png">
+                        <div class="text">
+                            <img src="img/icons/aiandgames.png" class="context" style="height:35px;width:auto;"> Rules aren't really made to be broken. But you don't care. You just want to cause as much havoc as possible, no matter how much trouble you
+                            get into.
+                        </div>
+                        <a href='https://oroshibu.itch.io/20-to-break' class='button' target='_blank'>PLAY</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="container">
+                    <img src="img/tailspin/bg.png" class="image">
+                    <div class="overlay">
+                        <img src="img/icons/bugulon.png" class="icon" style="width:40px">
+                        <img src="img/tailspin/logo.png">
+                        <div class="text">
+                            <img src="img/icons/ludumdare.png" class="context" style="width:auto;"> Play as a treasure seeking canary and drill through 4 unique worlds of action packed platforming. Can you survive the infested depths below and attain
+                            everlasting glory?
+                        </div>
+                        <a href='https://team-bugulon.itch.io/tailspin' class='button' target='_blank'>PLAY</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="container">
+                    <img src="img/atonement/bg.png" class="image">
+                    <div class="overlay">
+                        <img src="img/icons/bugulon.png" class="icon" style="width:40px">
+                        <img src="img/atonement/logo.png">
+                        <div class="text">
+                            <img src="img/icons/gm48.png" class="context" style="width:auto;"> The Lunar Nobles have taken the light. infiltrate their facility and take back what is rightfully yours. Use the dark to sneak around and take out your target,
+                            though be careful, the cops are right on your tail.
+                        </div>
+                        <a href='https://team-bugulon.itch.io/atonement' class='button' target='_blank'>PLAY</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="container">
+                    <img src="img/gunwyrm/bg.png" class="image">
+                    <div class="overlay">
+                        <img src="img/icons/bugulon.png" class="icon" style="width:40px">
+                        <img src="img/gunwyrm/logo.png">
+                        <div class="text">
+                            <img src="img/icons/ludumdare.png" class="context" style="width:auto;"> The Gunwyrm is tasked with destroying invaders, gathering parts to make its next iteration even more powerful. When the timer runs out, the next Gunwyrm
+                            activates, and the cycle continues!
+                        </div>
+                        <a href='https://saturnyoshi.itch.io/gunwyrm' class='button' target='_blank'>PLAY</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="container">
+                    <img src="img/trickykeys/bg.png" class="image">
+                    <div class="overlay">
+                        <img src="img/icons/bugulon.png" class="icon" style="width:40px">
+                        <img src="img/trickykeys/logo.png">
+                        <div class="text">
+                            <img src="img/icons/gmtkjam.png" class="context" style="height:35px;width:auto;"> Your computer has been infected! Solve platforming puzzles with a Virus looming over your shoulder, restricting your movement and even outright
+                            taking control!
+                        </div>
+                        <a href='https://saturnyoshi.itch.io/tricky-keys' class='button' target='_blank'>PLAY</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="container">
+                    <img src="img/phractionated/bg.png" class="image">
+                    <div class="overlay">
+                        <img src="img/icons/utc.png" class="icon" style="width:40px">
+                        <img src="img/phractionated/logo.png">
+                        <div class="text">
+                            Phractionated is an interactive puzzle game that takes place in a mysterious atmosphere in which you will have to solve different kinds of puzzles in order to progress...
+                        </div>
+                        <!-- <a href='#' class='button' target='_blank'>PLAY</a> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="container">
+                    <img src="img/lymphosite/bg.png" class="image">
+                    <div class="overlay">
+                        <img src="img/icons/bugulon.png" class="icon" style="width:40px">
+                        <img src="img/lymphosite/logo.png">
+                        <div class="text">
+                            <img src="img/icons/ludumdare.png" class="context" style="width:auto;"> The immune crystal is under attack! Just when all hope seems lost, the vigilant Pill Ship comes to save the day, no disease can combat this scrapper's
+                            arsenal.
+                        </div>
+                        <a href='https://saturnyoshi.itch.io/lymphosite' class='button' target='_blank'>PLAY</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="container">
+                    <img src="img/hivemind/bg.png" class="image">
+                    <div class="overlay">
+                        <img src="img/icons/bugulon.png" class="icon" style="width:40px">
+                        <img src="img/hivemind/logo.png">
+                        <div class="text">
+                            <img src="img/icons/staysafejam.png" class="context" style="width:auto;"> Under the threat of extermination, the great Hive King and his loyal bee subjects take matters into their own hands to stop those threatening their presence.
+                        </div>
+                        <a href='https://saturnyoshi.itch.io/hivemind' class='button' target='_blank'>PLAY</a>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
-      <a href='https://team-bugulon.itch.io/stargrove-scramble' class='button' target='_blank'>PLAY</a>
-      </div>
     </div>
-    </div>
-
-    <div class ="slide">
-      <div class="container">
-        <img src="img/thermaltrail/bg.png" class="image">
-        <div class="overlay">
-          <img src="img/icons/ouroboa.png" class="icon" style="width:40px">
-          <img src="img/thermaltrail/logo.png">
-          <div class="text">
-            <img src="img/icons/ngjam.png" class="context" style="width:auto;">
-            Play as Yolka, a mountain goat who found an unknown egg. Keep the egg warm as you navigate the 3 distinct worlds, and bring it to the hottest place you know: the depths of a volcano.
-          </div>
-        <a href='https://www.newgrounds.com/portal/view/807111' class='button' target='_blank'>PLAY</a>
-        </div>
-      </div>
-      </div>
-
-      <div class ="slide">
-        <div class="container">
-          <img src="img/spurblo/bg.png" class="image">
-          <div class="overlay">
-            <img src="img/icons/oroshibu.png" class="icon" style="width:40px">
-            <img src="img/spurblo/logo.png">
-            <div class="text">
-              <img src="img/icons/ffajam.png" class="context" style="width:auto;">
-              Help Spurblo get through different puzzles using his unique ability to rotate different parts of the world depending on his mood. This little dude is insane.
-            </div>
-          <a href='https://oroshibu.itch.io/spurblo' class='button' target='_blank'>PLAY</a>
-          </div>
-        </div>
-        </div>
-
-</div>
-</div>
 </body>
+
 </html>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="slick/slick.js"></script>
-<script>$(document).ready(function(){
-  var length = $('.slider .container').length
-  var randomSlideId = Math.random() * (length+1) | 0
-  $('.autoplay').slick({
-      dots: true,
-      slidesToShow: 4,
-      slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 2000,
-      initialSlide: +randomSlideId
-  })
-});</script> 
+<script>
+    $(document).ready(function() {
+        $('.autoplay').slick({
+            dots: true,
+            slidesToShow: 4,
+            slidesToScroll: 4,
+            autoplay: true,
+            autoplaySpeed: 3000
+        })
+    });
+</script>
