@@ -32,7 +32,6 @@
   left: 0;
   right: 0;
   background-color: #000000BF;
-  overflow: hidden;
   width: 100%;
   height: 60px;
   transition: .5s ease;
@@ -46,17 +45,35 @@
   height: 100%;
 }
 
+.icon {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: -190px;
+}
+
+.context {
+  height: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
 .text {
   color: white;
-  font-size: 16px;
+  font-size: 13px;
   position: absolute;
   top: 66px;
-  left: 28%;
+  width: 83%;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
   text-align: center;
-  -webkit-transform: translateX(-20%);
-  -ms-transform: translateX(-20%);
-  transform: translateX(-20%);
   font-family: 'Dosis', sans-serif;
+  text-justify: inter-word;
 }
 
 a.button{
@@ -78,7 +95,7 @@ a.button{
   margin-left: auto;
   margin-right: auto;
   position: absolute;
-  top: 190px;
+  top: 200px;
   left: 14.5%;
 }
 
@@ -186,59 +203,64 @@ a.button:hover{
 <div class="slider autoplay">
 
 <div class ="slide">
-<div class="container">
-  <img src="img/gunwyrm/bg.png" class="image">
-  <div class="overlay">
-    <img src="img/gunwyrm/logo.png">
-    <div class="text">Action-Arcade game where mechanical snakes infinitely construct each other.</div>
-	<a href='#' class='button'>PLAY</a>
+  <div class="container">
+    <img src="img/hivemind/bg.png" class="image">
+    <div class="overlay">
+      <img src="img/icons/bugulon.png" class="icon" style="width:40px">
+      <img src="img/hivemind/logo.png">
+      <div class="text">
+        <img src="img/icons/staysafejam.png" class="context" style="width:auto;">
+        Under the threat of extermination, the great Hive King and his loyal bee subjects take matters into their own hands to stop those threatening their presence.
+      </div>
+    <a href='https://saturnyoshi.itch.io/hivemind' class='button' target='_blank'>PLAY</a>
+    </div>
   </div>
-</div>
-</div>
+  </div>
 
 <div class ="slide">
-<div class="container">
-  <img src="img/gunwyrm/bg.png" class="image">
-  <div class="overlay">
-    <img src="img/gunwyrm/logo.png">
-    <div class="text">Action-Arcade game where mechanical snakes infinitely construct each other.</div>
-	<a href='#' class='button'>PLAY</a>
+  <div class="container">
+    <img src="img/lymphosite/bg.png" class="image">
+    <div class="overlay">
+      <img src="img/icons/bugulon.png" class="icon" style="width:40px">
+      <img src="img/lymphosite/logo.png">
+      <div class="text">
+        <img src="img/icons/ludumdare.png" class="context" style="width:auto;">
+        The immune crystal is under attack! Just when all hope seems lost, the vigilant Pill Ship comes to save the day, no disease can combat this scrapper's arsenal. 
+      </div>
+    <a href='https://saturnyoshi.itch.io/lymphosite' class='button' target='_blank'>PLAY</a>
+    </div>
   </div>
-</div>
-</div>
-
-<div class ="slide">
-<div class="container">
-  <img src="img/gunwyrm/bg.png" class="image">
-  <div class="overlay">
-    <img src="img/gunwyrm/logo.png">
-    <div class="text">Action-Arcade game where mechanical snakes infinitely construct each other.</div>
-	<a href='#' class='button'>PLAY</a>
   </div>
-</div>
-</div>
 
 <div class ="slide">
   <div class="container">
     <img src="img/gunwyrm/bg.png" class="image">
     <div class="overlay">
+      <img src="img/icons/bugulon.png" class="icon" style="width:40px">
       <img src="img/gunwyrm/logo.png">
-      <div class="text">Action-Arcade game where mechanical snakes infinitely construct each other.</div>
-    <a href='#' class='button'>PLAY</a>
+      <div class="text">
+        <img src="img/icons/ludumdare.png" class="context" style="width:auto;">
+        The Gunwyrm is tasked with destroying invaders, gathering parts to make its next iteration even more powerful. When the timer runs out, the next Gunwyrm activates, and the cycle continues!
+      </div>
+    <a href='https://saturnyoshi.itch.io/gunwyrm' class='button' target='_blank'>PLAY</a>
     </div>
   </div>
-</div>
-  
-<div class ="slide">
-  <div class="container">
-    <img src="img/gunwyrm/bg.png" class="image">
-    <div class="overlay">
-      <img src="img/gunwyrm/logo.png">
-      <div class="text">Action-Arcade game where mechanical snakes infinitely construct each other.</div>
-    <a href='#' class='button'>PLAY</a>
-    </div>
   </div>
-</div>
+
+  <div class ="slide">
+    <div class="container">
+      <img src="img/stargrove/bg.png" class="image">
+      <div class="overlay">
+        <img src="img/icons/bugulon.png" class="icon" style="width:40px">
+        <img src="img/stargrove/logo.png">
+        <div class="text">
+          <img src="img/icons/ngjam.png" class="context" style="width:auto;">
+          Your son has been taken! Sling your eggs at foes and platform through three unique worlds in search of his captor. Though tread lightly, his henchmen will try to stop you at every turn. 
+        </div>
+      <a href='https://team-bugulon.itch.io/stargrove-scramble' class='button' target='_blank'>PLAY</a>
+      </div>
+    </div>
+    </div>
 
 </div>
 </div>
@@ -253,6 +275,6 @@ a.button:hover{
       slidesToShow: 4,
       slidesToScroll: 1,
       autoplay: true,
-      autoplaySpeed: 2000,
+      autoplaySpeed: 1500,
   })
 });</script> 
