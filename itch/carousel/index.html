@@ -1,0 +1,200 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dosis&display=swap" rel="stylesheet"> 
+<link rel="stylesheet" href="slick/slick.css">
+<link rel="stylesheet" href="slick/slick-theme.css">
+<style>
+.container {
+  position: relative;
+  width: 300px;
+}
+
+.image {
+  display: block;
+  width: 300px;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #000000BF;
+  overflow: hidden;
+  width: 100%;
+  height: 100px;
+  transition: .5s ease;
+}
+
+.container:hover .overlay {
+  height: 100%;
+}
+
+.text {
+  color: white;
+  font-size: 22px;
+  position: absolute;
+  top: 100px;
+  left: 28%;
+  text-align: center;
+  -webkit-transform: translateX(-20%);
+  -ms-transform: translateX(-20%);
+  transform: translateX(-20%);
+  font-family: 'Dosis', sans-serif;
+  font-weight: bold;
+}
+
+a.button{
+  display:inline-block;
+	
+	font:normal normal 300 1.3em 'Dosis';
+	text-decoration:none;	
+	
+	color:rgb(255, 255, 255);
+	border:1px solid rgb(255, 255, 255);
+	border-radius:100px;
+	
+	padding: .3em 3em;
+	margin:5px;
+			
+	background-size: 200% 100%;	
+	background-image: linear-gradient(to right, transparent 50%, rgb(255, 255, 255) 50%);
+	transition: background-position .3s cubic-bezier(0.19, 1, 0.22, 1) .1s, color .5s ease 0s, background-color .5s ease;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  top: 320px;
+  left: 22%;
+}
+
+a.button:hover{
+	color:rgb(0, 0, 0);
+	background-color:rgb(255, 255, 255);
+	background-position: -100% 100%;
+}
+
+.client-area{
+  padding: 150px 0 0;
+}
+
+.slick-slide{
+  margin: 0 20px;
+}
+
+.slick-slide img {
+  width: 100%;
+}
+
+.slick-list {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  margin : 0;
+  padding: 0;
+}
+
+.slick-list:focus{
+  outline:none;
+}
+
+.slick-slide{
+  display:none;
+  float:left;
+  height:100%;
+  min-height: 1px;
+}
+
+.slick-slide img{
+  display:block;
+}
+
+.slick-initialized .slick-slide{
+  display: block;
+}
+
+.slick-loading .slick-slide{
+  visibility: hidden;
+}
+
+</style>
+</head>
+<body>
+
+<section class="slider autoplay">
+
+<div class ="slide">
+<div class="container">
+  <img src="img/gunwyrm/bg.png" class="image">
+  <div class="overlay">
+    <img src="img/gunwyrm/logo.png">
+    <div class="text">Action-Arcade game where mechanical snakes infinitely construct each other. Made in 72 hours for Ludum Dare 47.</div>
+	<a href='#' class='button'>PLAY</a>
+  </div>
+</div>
+</div>
+
+<div class ="slide">
+<div class="container">
+  <img src="img/gunwyrm/bg.png" class="image">
+  <div class="overlay">
+    <img src="img/gunwyrm/logo.png">
+    <div class="text">Action-Arcade game where mechanical snakes infinitely construct each other. Made in 72 hours for Ludum Dare 47.</div>
+	<a href='#' class='button'>PLAY</a>
+  </div>
+</div>
+</div>
+
+<div class ="slide">
+<div class="container">
+  <img src="img/gunwyrm/bg.png" class="image">
+  <div class="overlay">
+    <img src="img/gunwyrm/logo.png">
+    <div class="text">Action-Arcade game where mechanical snakes infinitely construct each other. Made in 72 hours for Ludum Dare 47.</div>
+	<a href='#' class='button'>PLAY</a>
+  </div>
+</div>
+</div>
+
+<div class ="slide">
+  <div class="container">
+    <img src="img/gunwyrm/bg.png" class="image">
+    <div class="overlay">
+      <img src="img/gunwyrm/logo.png">
+      <div class="text">Action-Arcade game where mechanical snakes infinitely construct each other. Made in 72 hours for Ludum Dare 47.</div>
+    <a href='#' class='button'>PLAY</a>
+    </div>
+  </div>
+</div>
+  
+<div class ="slide">
+  <div class="container">
+    <img src="img/gunwyrm/bg.png" class="image">
+    <div class="overlay">
+      <img src="img/gunwyrm/logo.png">
+      <div class="text">Action-Arcade game where mechanical snakes infinitely construct each other. Made in 72 hours for Ludum Dare 47.</div>
+    <a href='#' class='button'>PLAY</a>
+    </div>
+  </div>
+</div>
+
+</div>
+
+</body>
+</html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="slick/slick.js"></script>
+<script>
+  $(document).ready(function(){
+    $('.autoplay').slick({
+      slidesToShow: 5,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 20,
+    });
+  });
+  </script> 
