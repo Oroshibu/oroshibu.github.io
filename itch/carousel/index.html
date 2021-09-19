@@ -9,13 +9,17 @@
 <style>
 .container {
   position: relative;
-  width: 200px;
+  width: 180px;
+  transform: skewX(-8deg);
+  overflow: hidden;
 }
 
 .image {
   display: block;
-  width: 200px;
+  width: 180px;
   height: auto;
+  transition: transform .3s, filter .3s ease-in-out;
+  overflow: hidden;
 }
 
 .overlay {
@@ -26,8 +30,13 @@
   background-color: #000000BF;
   overflow: hidden;
   width: 100%;
-  height: 66px;
+  height: 60px;
   transition: .5s ease;
+}
+
+.container:hover .image{
+  filter: blur(5px);
+  overflow: hidden;
 }
 
 .container:hover .overlay {
@@ -36,7 +45,7 @@
 
 .text {
   color: white;
-  font-size: 18px;
+  font-size: 16px;
   position: absolute;
   top: 66px;
   left: 28%;
@@ -45,20 +54,19 @@
   -ms-transform: translateX(-20%);
   transform: translateX(-20%);
   font-family: 'Dosis', sans-serif;
-  font-weight: bold;
 }
 
 a.button{
   display:inline-block;
 	
-	font:normal normal 300 1.3em 'Dosis';
+	font:normal normal 300 18px 'Dosis';
 	text-decoration:none;	
 	
 	color:rgb(255, 255, 255);
 	border:1px solid rgb(255, 255, 255);
 	border-radius:12px;
 	
-	padding: .3em 2.5em;
+	padding: .2em 2.5em;
 	margin:5px;
 			
 	background-size: 200% 100%;	
@@ -67,8 +75,8 @@ a.button{
   margin-left: auto;
   margin-right: auto;
   position: absolute;
-  top: 235px;
-  left: 13%;
+  top: 190px;
+  left: 14.5%;
 }
 
 a.button:hover{
@@ -83,12 +91,12 @@ a.button:hover{
 
 .autoplay{
   width: 880px;
-  height: 300px;
+  height: 260px;
   margin-left: auto;
   margin-right: auto;
 }
 .slick-slide{
-  margin: 0 10px;
+  margin: 0 20px;
 }
 
 .slick-slide img {
@@ -147,7 +155,7 @@ a.button:hover{
   font-size: 60px;
   font-family: 'Dosis', sans-serif;
   font-weight: bolder;
-  line-height: 10px;
+  line-height: 0px;
 }
 
 .slick-next:before {
@@ -156,7 +164,7 @@ a.button:hover{
   font-size: 60px;
   font-family: 'Dosis', sans-serif;
   font-weight: bolder;
-  line-height: 10px;
+  line-height: 0px;
 }
 
 .slick-dots li button:before {
