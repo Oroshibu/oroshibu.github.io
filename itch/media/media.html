@@ -1,29 +1,49 @@
 <style>
 
-.img-hover-zoom {
-  overflow: hidden;
-	border-radius: 15px;
-}
+	.img-hover-zoom img {
+		transition: transform .3s, filter .3s ease-in-out;
+	}
 
-.img-hover-zoom img {
-  transition: transform .3s, filter .3s ease-in-out;
-}
+	.img-hover-zoom:hover img {
+		transform: scale(1.2);
+		filter: brightness(160%);
+	}
 
-.img-hover-zoom:hover img {
-  transform: scale(1.2);
-	filter: brightness(160%);
-}
+	.relative {
+		top: 0px;
+		left: 0px;
+	}
 
-.relative {
-	position: absolute;
-	top: 0px;
-	left: 0px;
-
-}
-
-.invisible {
-	pointer-events: none;
-}
-
+	.invisible {
+		pointer-events: none;
+	}
 </style>
-<div class="img-hover-zoom relative"><a href="https://twitter.com/TeamBugulon" target="_blank"><img src="twitter.png" width="100%"></a></div>
+<table>
+	<tr>
+		<td>
+			<div class="img-hover-zoom relative">
+				<a href="https://soundcloud.com/oroshibu" target="_blank">
+					<img src="youtube.png" width="100%">
+				</a>
+			</div>
+		</td>
+		<td width="20%">
+		</td>
+		<td>
+			<div class="img-hover-zoom relative">
+				<a href="https://twitter.com/Oroshibu" target="_blank">
+					<img src="twitter.png" width="100%">
+				</a>
+			</div>
+		</td>
+		<td width="20%">
+		</td>
+		<td>
+			<div class="img-hover-zoom relative">
+				<a href="https://oroshibu.newgrounds.com/" target="_blank">
+					<img src="newgrounds.png" width="100%">
+				</a>
+			</div>
+		</td>
+	</tr>
+</table>
