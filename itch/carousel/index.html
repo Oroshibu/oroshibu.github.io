@@ -7,17 +7,14 @@
 <link rel="stylesheet" href="slick/slick.css">
 <link rel="stylesheet" href="slick/slick-theme.css">
 <style>
-body{
-  background-color: #000000BF;
-}
 .container {
   position: relative;
-  width: 256px;
+  width: 200px;
 }
 
 .image {
   display: block;
-  width: 256px;
+  width: 200px;
   height: auto;
 }
 
@@ -29,7 +26,7 @@ body{
   background-color: #000000BF;
   overflow: hidden;
   width: 100%;
-  height: 85px;
+  height: 66px;
   transition: .5s ease;
 }
 
@@ -41,7 +38,7 @@ body{
   color: white;
   font-size: 18px;
   position: absolute;
-  top: 85px;
+  top: 66px;
   left: 28%;
   text-align: center;
   -webkit-transform: translateX(-20%);
@@ -59,9 +56,9 @@ a.button{
 	
 	color:rgb(255, 255, 255);
 	border:1px solid rgb(255, 255, 255);
-	border-radius:100px;
+	border-radius:12px;
 	
-	padding: .3em 3em;
+	padding: .3em 2.5em;
 	margin:5px;
 			
 	background-size: 200% 100%;	
@@ -70,8 +67,8 @@ a.button{
   margin-left: auto;
   margin-right: auto;
   position: absolute;
-  top: 250px;
-  left: 17%;
+  top: 235px;
+  left: 13%;
 }
 
 a.button:hover{
@@ -140,6 +137,8 @@ a.button:hover{
 
 .resizer{
   width:960px;
+  position: absolute;
+  left:0;
 }
 
 </style>
@@ -153,7 +152,7 @@ a.button:hover{
   <img src="img/gunwyrm/bg.png" class="image">
   <div class="overlay">
     <img src="img/gunwyrm/logo.png">
-    <div class="text">Action-Arcade game where mechanical snakes infinitely construct each other. Made in 72 hours for Ludum Dare 47.</div>
+    <div class="text">Action-Arcade game where mechanical snakes infinitely construct each other.</div>
 	<a href='#' class='button'>PLAY</a>
   </div>
 </div>
@@ -164,7 +163,7 @@ a.button:hover{
   <img src="img/gunwyrm/bg.png" class="image">
   <div class="overlay">
     <img src="img/gunwyrm/logo.png">
-    <div class="text">Action-Arcade game where mechanical snakes infinitely construct each other. Made in 72 hours for Ludum Dare 47.</div>
+    <div class="text">Action-Arcade game where mechanical snakes infinitely construct each other.</div>
 	<a href='#' class='button'>PLAY</a>
   </div>
 </div>
@@ -175,7 +174,7 @@ a.button:hover{
   <img src="img/gunwyrm/bg.png" class="image">
   <div class="overlay">
     <img src="img/gunwyrm/logo.png">
-    <div class="text">Action-Arcade game where mechanical snakes infinitely construct each other. Made in 72 hours for Ludum Dare 47.</div>
+    <div class="text">Action-Arcade game where mechanical snakes infinitely construct each other.</div>
 	<a href='#' class='button'>PLAY</a>
   </div>
 </div>
@@ -186,7 +185,7 @@ a.button:hover{
     <img src="img/gunwyrm/bg.png" class="image">
     <div class="overlay">
       <img src="img/gunwyrm/logo.png">
-      <div class="text">Action-Arcade game where mechanical snakes infinitely construct each other. Made in 72 hours for Ludum Dare 47.</div>
+      <div class="text">Action-Arcade game where mechanical snakes infinitely construct each other.</div>
     <a href='#' class='button'>PLAY</a>
     </div>
   </div>
@@ -197,7 +196,7 @@ a.button:hover{
     <img src="img/gunwyrm/bg.png" class="image">
     <div class="overlay">
       <img src="img/gunwyrm/logo.png">
-      <div class="text">Action-Arcade game where mechanical snakes infinitely construct each other. Made in 72 hours for Ludum Dare 47.</div>
+      <div class="text">Action-Arcade game where mechanical snakes infinitely construct each other.</div>
     <a href='#' class='button'>PLAY</a>
     </div>
   </div>
@@ -212,7 +211,7 @@ a.button:hover{
 <script src="slick/slick.js"></script>
 <script>$(document).ready(function(){
   $('.autoplay').slick({
-      slidesToShow: 3,
+      slidesToShow: 4,
       slidesToScroll: 1,
       autoplay: true,
       autoplaySpeed: 1000,
