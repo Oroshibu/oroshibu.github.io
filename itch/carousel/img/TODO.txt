@@ -15,4 +15,4 @@ X COOKBO
 
 jelling fish logo retro update
 
-Doodle-jump like game made in 5 hours for a small gamejam.
+Casual platformer made in 5 hours for a short gamejam.
