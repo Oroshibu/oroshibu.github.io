@@ -1,37 +1,5 @@
-NAME OF GAME          embed video
-by who
-engine                        screen shot
+2022
+Mr final boss
+Cookbo
 
-desc
-
-link to play it
-
-role in it
- - art
- - code
-
-
-X atonement
-X robot chien
-o snake tears
-X gunwyrm
-X tricky keys
-X phractionated
-X lymphosite
-X hivemind
-easymetric
-
-<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1036471399&color=%2320253e&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/oroshibu" title="Oroshibu" target="_blank" style="color: #cccccc; text-decoration: none;">Oroshibu</a> · <a href="https://soundcloud.com/oroshibu/sets/lymphosite-ost" title="Lymphosite OST" target="_blank" style="color: #cccccc; text-decoration: none;">Lymphosite OST</a></div>
-
-The Lunar Nobles have taken the light. infiltrate their facility and take back what is rightfully yours. Use the dark to sneak around and take out your target, though be careful, the cops are right on your tail. 
-Snake Tears is a puzzle platformer. Petra has been cursed by the gods an turned into a gorgon, using her petrifying gaze she can turn her opponents into stone and use them as platforms or solid blocks to solve puzzles. Will she manage to face the ones who cursed her and find a way to turn back into a human?
-In a world where parallax has been destroyed by evil forces, ROBOT CH13N is humanity's last hope. He has been sent in order to retrieve the powerful parallax artifact and fix reality.
-Easymetric is a software developped with the intent 
-
-Easymetric is a software able to create any type of isometric pixel art from any given flat pixel art surfaces. Thanks to its powerful layer system it is able to create a wide variety of complex isometric shapes and to texture them.
-
-
-Pixel Art Tree Generator was a prototype for a prodecural generator for trees in pixel art, this included procedural trunks, branches, leaves and even prodecural color palettes. 
-The procedural leaves are still in a very early state of development.
-
-Easymetric has been prototyped using Python.
+Recording Playing Mr Final Boss/Cookbo
