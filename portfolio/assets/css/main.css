@@ -62,6 +62,16 @@
     height: 50px;
 }
 
+.pfp {
+    border-radius: 50%;
+    float: right;
+}
+
+.mainicons {
+    float: right;
+    margin-top: 75px;
+}
+
 html,
 body,
 div,
