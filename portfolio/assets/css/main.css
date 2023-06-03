@@ -35,6 +35,11 @@
     text-decoration: none;
 }
 
+.navbar .iconlink {
+    float: right;
+    width: 85px;
+}
+
 .navbar a:hover {
     background: #17353E;
     color: #ffffff;
